@@ -42,7 +42,7 @@ public class Player {
 	
 	/**
 	 * A method to return the Player's high score for a given level.
-	 * @param level
+	 * @param level The level.
 	 * @return The Player's high score for a level.
 	 */
 	public int getHighScore(int level) {
