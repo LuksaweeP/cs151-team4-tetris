@@ -1,4 +1,5 @@
 package tetris;
+
 /**
  * A class for managing a player's name, unlocked levels, and high-scores.
  */

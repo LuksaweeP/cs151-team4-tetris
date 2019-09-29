@@ -1,4 +1,5 @@
 package tetris;
+
 /**
  * A class for managing a Block and its location.
  */
