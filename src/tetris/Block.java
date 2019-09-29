@@ -1,5 +1,9 @@
 package tetris;
-
-public class Block {
+/**
+ * This program f get and update the location of the tetromino.
+ * 
+ */
+public class Block 
+{
 
 }
