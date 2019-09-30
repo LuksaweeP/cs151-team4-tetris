@@ -3,4 +3,4 @@ The goal is to manipulate the blocks as they fall to create a solid line of bloc
 This scores the player points and the blocks disappear allowing for the blocks above to shift down. 
 The game is over once the score goal is reached or when any amount of blocks stacks up to the top of the field. 
 
-Authors: Nicholas Burnam, Luksawee Phansri
+UserNames: NickBurnam, LuksaweeP
