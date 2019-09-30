@@ -8,17 +8,28 @@ public class Block {
 	private int yPosition;
 	
 	/**
-	 * The Block Constructor.
+	 * The Default Block Constructor.
 	 */
 	public Block(){
-		
+		this.xPosition = 0;
+		this.yPosition = 0;
+	}
+	
+	/**
+	 * The Block Constructor.
+	 * @param x The X position. 
+	 * @param y The Y position.
+	 */
+	public Block(int x, int y){
+		this.xPosition = x;
+		this.yPosition = y;
 	}
 	/**
 	 * A method to set the X position of the Block.
 	 * @param x The X position.
 	 */
 	public void setXPosition(int x){
-		
+		this.xPosition = x;
 	}
 	
 	/**
@@ -26,7 +37,7 @@ public class Block {
 	 * @param y The Y position.
 	 */
 	public void setYPosition(int y){
-		
+		this.yPosition = y;
 	}
 	
 	/**
