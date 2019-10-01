@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * A class for managing a player's name, unlocked levels, and high-scores.
  */
-public class Player 
+public class Player
 {
 	private String playerName;
 	private int playerScoreLevel1;
@@ -156,16 +156,16 @@ public class Player
 		if (playerScoreLevel1 > playerScoreMax)
 			playerScoreMax = playerScoreLevel1;
 		
-		else if (playerScoreLevel2 > playerScoreMax)
+		if (playerScoreLevel2 > playerScoreMax)
 			playerScoreMax = playerScoreLevel2;
 		
-		else if (playerScoreLevel3 > playerScoreMax)
+		if (playerScoreLevel3 > playerScoreMax)
 			playerScoreMax = playerScoreLevel3;
 		
-		else if (playerScoreLevel4 > playerScoreMax)
+		if (playerScoreLevel4 > playerScoreMax)
 			playerScoreMax = playerScoreLevel4;
 		
-		else if (playerScoreLevel5 > playerScoreMax)
+		if (playerScoreLevel5 > playerScoreMax)
 			playerScoreMax = playerScoreLevel5;
 	}
 	
@@ -201,7 +201,6 @@ public class Player
 		int numberUsers = allUsers.size();
 		String [] existedUsername;
 		String [] usernameTable = new String[numberUsers];
-		System.out.println(numberUsers);
 		/**
 		 * case: there is an existed username.
 		 */
@@ -282,58 +281,50 @@ public class Player
 		return highScoresAtLevel[level - 1];
 	}
 	
-	public boolean isLevelUnlocked(String aName, int aLevel)
+	
+	public boolean isLevelUnlocked(Player newPlayer, int aLevel)
 	{
-		Player temp = head;
-		if (temp == null)
+		ArrayList<String> allUsers = new ArrayList<String>();
+		
+		try 
 		{
-			System.out.println("No username!!");
-			return false;
-		}
-				
-		else 
-			while (temp.next != null)
+			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
+			while (br.ready()) 
 			{
-				if (temp.getName() == aName)
-				{
-					switch (aLevel) 
-					{
-						case 1:
-							if (temp.playerScoreLevel1 != -1)
-							return true;
-						break;
-					}
-				}
-				temp = temp.next;
+				// The output from br.readLine() is string; therefore we need to convert from string to int.
+				allUsers.add(br.readLine());
 			}
+		//close file
+		br.close();
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		int numberUsers = allUsers.size();
+		String [] existedUsername;
+		String [] usernameTable = new String[numberUsers];
+		String [] userScoreTable = new String[numberUsers];
+		
+		/**
+		 * case: there is an existed username.
+		 */
+		for (int i = 0; i < numberUsers; i++)
+		{
+			existedUsername = allUsers.get(i).split(", ");
+			usernameTable[i] = existedUsername[0];
+			userScoreTable[i] = existedUsername[aLevel];
+			if(usernameTable[i].equals(newPlayer.getName()))
+			{
+				if (userScoreTable[i].contentEquals("-1") == false)
+				{
+					return true;
+				}
+			}
+		}
 		return false;
 	}	
-			
-
-	public static void main(String[] args) 
-	{
-		Player newPlayer = new Player();
-		newPlayer.setName("Fern");
-		 
-		System.out.println("Name: " + newPlayer.getName());
-		System.out.println("Score Level: " + newPlayer.getPlayerScoreLevel1());
-		
-		newPlayer.setPlayerScoreLevel1(50);
-		System.out.println("Score Level: " + newPlayer.getPlayerScoreLevel1());
-		
-		newPlayer.getPlayerScoreLevel1();
-		//newPlayer.checkExistedPlayers(newPlayer);
-		newPlayer.addNewPlayer(newPlayer);
-
-		newPlayer.setName("Laura");
-		 
-		System.out.println("Name: " + newPlayer.getName());
-		System.out.println("Score Level: " + newPlayer.getPlayerScoreLevel1());
-
-		newPlayer.addNewPlayer(newPlayer);
-
-		
-	}
 }
 		
 
