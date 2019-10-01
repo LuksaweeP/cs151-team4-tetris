@@ -35,7 +35,7 @@ public class Player
 	public Player() 
 	{
 		playerName = null;
-		playerScoreLevel1 = -1;
+		playerScoreLevel1 = 0;
 		playerScoreLevel2 = -1;
 		playerScoreLevel3 = -1;
 		playerScoreLevel4 = -1;
@@ -281,50 +281,40 @@ public class Player
 		return highScoresAtLevel[level - 1];
 	}
 	
-	
+	/**
+	 * THis method will check the level which player has already unlock
+	 * @param newPlayer the object o
+	 * @param aLevel level which want to check
+	 * @return true if the player have already unlocked the given level
+	 */
 	public boolean isLevelUnlocked(Player newPlayer, int aLevel)
-	{
-		ArrayList<String> allUsers = new ArrayList<String>();
-		
-		try 
+	{ 
+		switch(aLevel)
 		{
-			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
-			while (br.ready()) 
-			{
-				// The output from br.readLine() is string; therefore we need to convert from string to int.
-				allUsers.add(br.readLine());
-			}
-		//close file
-		br.close();
-		} 
-		catch (Exception e) 
-		{
-			System.out.println(e.getMessage());
+			case 1: 
+				if (newPlayer.getPlayerScoreLevel1() != -1)
+						return true;
+						break;
+			case 2: 
+				if (newPlayer.getPlayerScoreLevel2() != -1)
+						return true;
+						break;
+			case 3: 
+				if (newPlayer.getPlayerScoreLevel3() != -1)
+						return true;
+						break;
+			case 4: 
+				if (newPlayer.getPlayerScoreLevel4() != -1)
+						return true;	
+						break;
+			case 5: 
+				if (newPlayer.getPlayerScoreLevel5() != -1)
+						return true;
+						break;
 		}
-		
-		int numberUsers = allUsers.size();
-		String [] existedUsername;
-		String [] usernameTable = new String[numberUsers];
-		String [] userScoreTable = new String[numberUsers];
-		
-		/**
-		 * case: there is an existed username.
-		 */
-		for (int i = 0; i < numberUsers; i++)
-		{
-			existedUsername = allUsers.get(i).split(", ");
-			usernameTable[i] = existedUsername[0];
-			userScoreTable[i] = existedUsername[aLevel];
-			if(usernameTable[i].equals(newPlayer.getName()))
-			{
-				if (userScoreTable[i].contentEquals("-1") == false)
-				{
-					return true;
-				}
-			}
-		}
-		return false;
-	}	
+			return false;		
+	}		
 }
+
 		
 

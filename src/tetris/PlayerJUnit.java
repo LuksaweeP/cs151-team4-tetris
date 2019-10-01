@@ -38,13 +38,13 @@ public class PlayerJUnit
 		
 		System.out.println("Testing newPlayer2");
 		assertEquals(newPlayer2.getName(), "Fern");
-		assertEquals(newPlayer2.getPlayerScoreLevel1(), -1);
+		assertEquals(newPlayer2.getPlayerScoreLevel1(), 0);
 		assertEquals(newPlayer2.getPlayerScoreLevel2(), -1);
 		assertEquals(newPlayer2.getPlayerScoreLevel3(), -1);
 		assertEquals(newPlayer2.getPlayerScoreLevel4(), -1);
 		assertEquals(newPlayer2.getPlayerScoreLevel5(), -1);
 		assertEquals(newPlayer2.getPlayerScoreMax(), -1);
-		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 1));
+		assertTrue(newPlayer2.isLevelUnlocked(newPlayer2, 1));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 2));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 3));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 4));
