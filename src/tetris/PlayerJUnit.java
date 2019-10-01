@@ -43,7 +43,7 @@ public class PlayerJUnit
 		assertEquals(newPlayer2.getPlayerScoreLevel3(), -1);
 		assertEquals(newPlayer2.getPlayerScoreLevel4(), -1);
 		assertEquals(newPlayer2.getPlayerScoreLevel5(), -1);
-		assertEquals(newPlayer2.getPlayerScoreMax(), -1);
+		assertEquals(newPlayer2.getPlayerScoreMax(), 0);
 		assertTrue(newPlayer2.isLevelUnlocked(newPlayer2, 1));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 2));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 3));

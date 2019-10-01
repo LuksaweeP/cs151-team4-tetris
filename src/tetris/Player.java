@@ -40,7 +40,7 @@ public class Player
 		playerScoreLevel3 = -1;
 		playerScoreLevel4 = -1;
 		playerScoreLevel5 = -1;
-		playerScoreMax = -1;
+		playerScoreMax = 0;
 	}
 
 	/**
