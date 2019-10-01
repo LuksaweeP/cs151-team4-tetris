@@ -18,15 +18,11 @@ public class Player
 	private int playerScoreLevel4;
 	private int playerScoreLevel5;
 	private int playerScoreMax;
-	
-	protected Player next;
-	protected Player head;
-	private int index;
-	
+		
 	// level = 1, 2, 3, 4, 5
 	private int[] highScoresAtLevel = new int[5];
 	
-	//
+	// rank, name score from 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 	private int[][] highAllLevelScore = new int[3][10];
 	
 	/**
@@ -175,8 +171,9 @@ public class Player
 	}
 
 	/**
-	 * 
-	 * @param newPlayer
+	 * This method will check wheter not username has already token.
+	 * @param newPlayer newPlayer the obj in the player
+	 * @return true is the 
 	 */
 	public boolean checkExistedPlayers(Player newPlayer)
 	{
@@ -211,20 +208,19 @@ public class Player
 				if(usernameTable[i].equals(newPlayer.getName()))
 				{
 					System.out.println("Invalid new username");
-
-					return false;
+					return true;
 				}
 		}
-		return true;
+		return false;
 	}
 	
 	/**
-	 * 
-	 * @param aName given new username
+	 * This method is used to add new player.
+	 * @param aName given new player
 	 */
 	public void addNewPlayer(Player newPlayer)
 	{
-		if (checkExistedPlayers(newPlayer) == true)
+		if (checkExistedPlayers(newPlayer) == false)
 		{
 			try 
 			{
@@ -252,8 +248,7 @@ public class Player
 		}
 		
 		else
-			System.out.println("The username has already taken");
-			
+			System.out.println("The username has already taken");	
 	}
 		
 	
@@ -282,7 +277,7 @@ public class Player
 	}
 	
 	/**
-	 * THis method will check the level which player has already unlock
+	 * This method will check the level which player has already unlock
 	 * @param newPlayer the object o
 	 * @param aLevel level which want to check
 	 * @return true if the player have already unlocked the given level

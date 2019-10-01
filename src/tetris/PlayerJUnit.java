@@ -10,12 +10,14 @@ public class PlayerJUnit
 	@Test
 	public void test() 
 	{
+		// new username
 		Player newPlayer1 = new Player();
 		newPlayer1.setName("Meiji");
 		newPlayer1.setPlayerScoreLevel1(150);
 		newPlayer1.setPlayerScoreLevel2(300);
 		newPlayer1.setPlayerScoreMax();
 		
+		// this username has already token
 		Player newPlayer2 = new Player();
 		newPlayer2.setName("Fern");
 		
@@ -34,6 +36,7 @@ public class PlayerJUnit
 		assertFalse(newPlayer1.isLevelUnlocked(newPlayer1, 5));
 		assertFalse(newPlayer1.checkExistedPlayers(newPlayer1));
 		System.out.println("Success newPlayer1!\n");
+
 		
 		
 		System.out.println("Testing newPlayer2");
@@ -49,9 +52,9 @@ public class PlayerJUnit
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 3));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 4));
 		assertFalse(newPlayer2.isLevelUnlocked(newPlayer2, 5));
-		assertFalse(newPlayer1.checkExistedPlayers(newPlayer2));
+		assertTrue(newPlayer1.checkExistedPlayers(newPlayer2));
 		
 		System.out.println("Success newPlayer2!");
-		newPlayer1.addNewPlayer(newPlayer1);
+		newPlayer2.addNewPlayer(newPlayer2);
 	}
 }
