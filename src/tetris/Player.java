@@ -1,4 +1,5 @@
 package tetris;
+import java.io.*;
 
 /**
  * A class for managing a player's name, unlocked levels, and high-scores.
@@ -70,6 +71,17 @@ public class Player {
 	 * A method to add the given Player and its data to a .txt file to save its progress.
 	 */
 	public void addPlayer() {
-		
+		// import java.io.*;
+		try (FileWriter fw = new FileWriter("players.txt", true)){
+			BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            // File Format: name highScores[0] highScores[1] ...
+            // Can determine what level is unlocked by how many scores there are
+            pw.println(this.playerName + "0");
+            this.unlockedLevels[0] = 1;
+            this.highScores[0] = 0;
+		} catch(IOException io) {
+			// error
+		}
 	}
 }

@@ -1,2 +1,2 @@
-Nick
-Fern
+Nick 0
+Fern 0
