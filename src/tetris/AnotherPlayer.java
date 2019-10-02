@@ -4,7 +4,7 @@ import java.io.*;
 /**
  * A class for managing a player's name, unlocked levels, and high-scores.
  */
-public class Player {
+public class AnotherPlayer {
 	private String playerName;
 	private int[] unlockedLevels = new int[10];
 	private int[] highScores = new int[10];
@@ -12,7 +12,7 @@ public class Player {
 	/**
 	 * The Player Constructor.
 	 */
-	public Player() {
+	public AnotherPlayer() {
 		
 	}
 	
