@@ -26,9 +26,9 @@ class BlockTest {
 	@Test
 	public void testSetYPosition() {
 		Block block1 = new Block();
-		block1.setXPosition(1);
-		int x = block1.getXPosition();
-		assertEquals(1, x);
+		block1.setYPosition(1);
+		int y = block1.getYPosition();
+		assertEquals(1, y);
 	}
 
 }
