@@ -1,4 +1,4 @@
-package tetris;
+package model;
 
 /**
  * A class for managing a Block and its location.

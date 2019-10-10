@@ -1,4 +1,4 @@
-package tetris;
+package view;
 import javax.swing.*;
 
 /**

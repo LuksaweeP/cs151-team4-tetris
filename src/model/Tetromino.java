@@ -1,4 +1,4 @@
-package tetris;
+package model;
 
 /**
  * A class for managing the Tetromino game pieces and handle their movement.

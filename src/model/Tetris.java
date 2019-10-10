@@ -1,4 +1,4 @@
-package tetris;
+package model;
 /**
 A class that houses the main method for the Tetris program.
  */
