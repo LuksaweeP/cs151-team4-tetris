@@ -5,14 +5,76 @@ package model;
  */
 public class Tetromino {
 	private char shape;
-	private int[] blocks;
+	private Block[] blocks = new Block[4];
+	
+	/**
+	 * Default Tetromino constructor.
+	 */
+	public Tetromino() {
+		// Default set to 'I'
+		shape = 'I';
+		blocks[0] = new Block(0,0);
+		blocks[1] = new Block(0,1);
+		blocks[2] = new Block(0,2);
+		blocks[3] = new Block(0,3);
+	}
 	
 	/**
 	 * This constructs a Tetromino.
 	 * @param aShape The shape to set the Tetromino to.
 	 */
 	public Tetromino(char aShape) {
-		
+		shape = Character.toUpperCase(aShape);
+		switch(shape) {
+			case 'I' : 
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(0,1);
+				blocks[2] = new Block(0,2);
+				blocks[3] = new Block(0,3);
+				break;
+			case 'O' :
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(0,1);
+				blocks[2] = new Block(1,0);
+				blocks[3] = new Block(1,1);
+				break;
+			case 'T' :
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(1,0);
+				blocks[2] = new Block(1,1);
+				blocks[3] = new Block(2,0);
+				break;
+			case 'S' :
+				blocks[0] = new Block(1,0);
+				blocks[1] = new Block(2,0);
+				blocks[2] = new Block(1,1);
+				blocks[3] = new Block(0,1);
+				break;
+			case 'Z' :
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(0,1);
+				blocks[2] = new Block(1,1);
+				blocks[3] = new Block(1,2);
+				break;
+			case 'L' :
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(0,1);
+				blocks[2] = new Block(0,2);
+				blocks[3] = new Block(1,2);
+				break;
+			case 'J' :
+				blocks[0] = new Block(1,0);
+				blocks[1] = new Block(1,1);
+				blocks[2] = new Block(1,2);
+				blocks[3] = new Block(0,2);
+				break;
+			default : // default 'I'
+				blocks[0] = new Block(0,0);
+				blocks[1] = new Block(0,1);
+				blocks[2] = new Block(0,2);
+				blocks[3] = new Block(0,3);
+				break;
+		}
 	}
 	
 	/**
@@ -20,7 +82,7 @@ public class Tetromino {
 	 * @param aShape The shape to set the Tetromino to.
 	 */
 	public void setShape(char aShape) {
-		
+		this.shape = aShape;
 	}
 	
 	/**
@@ -42,7 +104,7 @@ public class Tetromino {
 	 * This method returns the array that contains each Block object of the Tetromino.
 	 * @return The array that contains Block Objects of the Tetromino.
 	 */
-	public int[] getBlocks() {
+	public Block[] getBlocks() {
 		return blocks;
 	}
 	
