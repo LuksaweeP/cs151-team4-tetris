@@ -1,6 +1,7 @@
 package model;
+
 /**
- * A class for managing a player's name, unlocked levels, and high-scores.
+ * A class for managing a player's name, unlocked levels, and high-scores for each player.
  */
 public class Player
 {	
@@ -10,8 +11,7 @@ public class Player
 	public Player() 
 	{
 		playerName = null;
-		playerLevel = new int[] { 0, -1, -1, -1, -1};
-		playerScore = new int[] { 0, 0, 0, 0, 0, 0};
+		playerScore = new int[] { 0, -1, -1, -1, -1, 0};
 	}
 
 	/**
@@ -33,30 +33,13 @@ public class Player
 	}
 	
 	/**
-	 * Sets the player's level.
-	 * @param aLevel
-	 */
-	public void setPlayerLevel(int aLevel)
-	{
-		playerScore[aLevel-1] = 0;
-	}
-	
-	/**
-	 * THe method to get the level score
-	 * @return The playerScore
-	 */
-	public int[] getPlayerLevel()
-	{
-		return playerLevel;
-	}
-	
-	/**
 	 * Sets the player's score at given level.
 	 * @param aName The provided score.
 	 */
 	public void setPlayerScore(int aLevel, int aScore)
 	{
-		playerScore[aLevel-1] = aScore;
+		if (playerScore[aLevel-1] <= aScore)
+			playerScore[aLevel-1] = aScore;
 	}
 	
 	/**
@@ -71,14 +54,12 @@ public class Player
 	/**
 	 * The method to set the player highscore
 	 */
-	public void setPlayerScoreMax()
+	public void setPlayerHighScore()
 	{
-		for(int i =0; i < 5; i++)
+		for(int i =0; i < 5 ; i++)
 		{
-			if(playerScore[i] >= playerScore[i+1] )
+			if(playerScore[i] >= playerScore[5] )
 				playerScore[5] = playerScore[i];
-			else
-				playerScore[5] = playerScore[i+1];
 		}
 	}
 	
@@ -86,14 +67,23 @@ public class Player
 	 * The method to get the max score
 	 * @return the max player's score
 	 */
-	public int getPlayerScoreMax()
+	public int getPlayerHighScore()
 	{
 		return playerScore[5];
 	}
+	
+	public boolean isLevelUnlocked (int aLevel)
+	{
+		if (playerScore [aLevel - 1] > -1)
+				return true;
+		
+		else
+			return false;
+	}
 		
 	private String playerName;	
-	private int [] playerLevel;	// level = 1, 2, 3, 4, 5
 	private int [] playerScore;	// 1, 2, 3, 4, 5, max
+	Player next;
 }
 
 		

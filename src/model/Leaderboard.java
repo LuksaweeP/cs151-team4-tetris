@@ -8,18 +8,25 @@ import java.util.ArrayList;
 
 public class Leaderboard 
 {
+	public Leaderboard()
+	{
+		playerList = new ArrayList<Player>();
+	}
+	
 	/**
-	 * This method reads in new players and adds them to the list of players.
+	 * This method reads in all players and adds them to the existed list of players.
 	 */
 	public void readPlayers()
 	{
+		ArrayList <String> list = new ArrayList<String>();
+		Player tmp = new Player();
 		try 
 		{
 			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
 			while (br.ready()) 
 			{
 				// The output from br.readLine() is string; therefore we need to convert from string to int.
-				playerList.add(br.readLine());
+				list.add(br.readLine());
 				numberPlayers++;
 			}
 		//close file
@@ -28,17 +35,72 @@ public class Leaderboard
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
-		}			
+		}
+		
+		String [] table;
+		String [] playersName = new String[numberPlayers];
+		int [][] playerScore = new int [numberPlayers][6];
+		/**
+		 * case: there is an existed player name.
+		 */
+		for (int i = 0; i < numberPlayers; i++)
+		{
+			table = list.get(i).split(", ");
+			playersName[i] = table[0];
+			tmp.setName(playersName[i]);
+			
+			// update player score level 1, 2, 3, 4, 5
+			for (int j =1; j < 6; j++)
+			{
+			playerScore[i][j] = Integer.parseInt(table[j]);
+			tmp.setPlayerScore(j, playerScore[i][j]);
+			}
+			
+			tmp.setPlayerHighScore();
+			tmp.getPlayerHighScore();
+					
+			playerList.add(i, tmp);
+			tmp = new Player();
+		}
 	}
-
+	
 	/**
 	 * This method returns the current list of players.
 	 * @return The list of players
 	 */
-	public ArrayList<String> getPlayer(){
+	public ArrayList<Player> getPlayer()
+	{
 		return playerList;
 	}
 	
+	/**
+	 * This method return the current number of player in the existed file
+	 * @return numberPlayers
+	 */
+	public int getNumberPlayers()
+	{
+		return numberPlayers;
+	}
+	
+	
+	public int getPlayerIndex(String aName)
+	{
+		Player tmp = new Player();
+		int index = 0;
+		for(int i = 0; i < numberPlayers; i++)
+		{
+			tmp = playerList.get(i);
+			if ((aName).equals(tmp.getName()))
+				index = i;
+		}
+			return index;
+	}
+	
+	public Player loadPlayer(String aName)
+	{
+		int index = getPlayerIndex(aName);
+		return playerList.get(index);
+	}
 	
 	/**
 	 * This method will check whether not player has already token.
@@ -46,23 +108,19 @@ public class Leaderboard
 	 * @return true is the 
 	 */
 	public boolean isValidNewPlayers(Player newPlayer)
-	{
-		String [] name;
-		String [] playersName = new String[numberPlayers];
-		/**
-		 * case: there is an existed player name.
-		 */
+	{		
+		Player tmp = new Player();
 		for (int i = 0; i < numberPlayers; i++)
 		{
-			name = playerList.get(i).split(", ");
-			playersName[i] = name[0];
-				if(playersName[i].equals(newPlayer.getName()))
-				{
-					System.out.println("Invalid new username");
-					return true;
-				}
+			tmp = playerList.get(i);
+			if ((newPlayer.getName()).equalsIgnoreCase(tmp.getName()))
+			{
+				System.out.println("Invalid new username");
+				return false;
+			}
+			tmp = new Player();
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -71,38 +129,33 @@ public class Leaderboard
 	 */
 	public void addNewPlayer(Player newPlayer)
 	{
-		if (isValidNewPlayers(newPlayer) == false)
+		if (isValidNewPlayers(newPlayer) == true)
 		{
 			try 
-			{
+			{				
 				FileWriter writer = new FileWriter("/Users/Luksawee/Desktop/players.txt", true);
 				writer.write(newPlayer.getName());
-				writer.write(", ");
-				int [] playerLevel = newPlayer.getPlayerLevel();
-				for(int i = 0; i < 5; i++)
-				{
-					writer.write(playerLevel[i]);
-					writer.write(", ");
-				}
-				
+				writer.write(", ");				
 				int [] playerScore = newPlayer.getPlayerScore();
 				for(int i = 0; i < 6; i++)
 				{
-					writer.write(playerScore[i]);
+					writer.write(Integer.toString(playerScore[i]));
 					writer.write(", ");
 				}
 				writer.write("\r\n");
 				writer.close();
+				//numberPlayers++;
 			} 
 			catch (IOException e) 
 			{
 				e.printStackTrace();
 			}
 		}
+		
 		else
 			System.out.println("The username has already taken");	
 	}
 	
-	private ArrayList <String> playerList;
+	private ArrayList <Player> playerList;
 	private int numberPlayers;
 }
