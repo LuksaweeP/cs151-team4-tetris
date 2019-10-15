@@ -135,12 +135,12 @@ public class Leaderboard
 			{				
 				FileWriter writer = new FileWriter("/Users/Luksawee/Desktop/players.txt", true);
 				writer.write(newPlayer.getName());
-				writer.write(", ");				
+							
 				int [] playerScore = newPlayer.getPlayerScore();
 				for(int i = 0; i < 6; i++)
 				{
+					writer.write(", ");	
 					writer.write(Integer.toString(playerScore[i]));
-					writer.write(", ");
 				}
 				writer.write("\r\n");
 				writer.close();
