@@ -81,14 +81,16 @@ public class Tetromino {
 	 * This method sets the shape of the Tetromino to one of the following: I,O,T,S,Z,L,J.
 	 * @param aShape The shape to set the Tetromino to.
 	 */
-	public void setShape(char aShape) {
+	public void setShape(char aShape) 
+	{
 		this.shape = aShape;
 	}
 	
 	/**
 	 * This method fills the Tetromino with Block Objects and sets their initial position.
 	 */
-	public void setBlocks() {
+	public void setBlocks() 
+	{
 		
 	}
 	
@@ -96,7 +98,8 @@ public class Tetromino {
 	 * This method returns the shape of the Tetromino.
 	 * @return The shape of the Tetromino game piece.
 	 */
-	public char getShape() {
+	public char getShape() 
+	{
 		return shape;
 	}
 	
