@@ -11,32 +11,40 @@ public class Playfield {
 	
 	/**
 	 * The Playfield Constructor.
+	 * Playfield (Width x Height) = 10 x (20-24)
 	 */
-	public Playfield() {
-		
+	public Playfield() 
+	{
+		gridWidth = 10;
+		gridHeight = 20;
 	}
 	
 	/**
 	 * Sets the Grid Height to the given amount.
 	 * @param height The height to set.
 	 */
-	public void setGridHeight(int height) {
-		
+	public void setGridHeight(int height) 
+	{
+		assert height >= 20 && height <= 24 : "violated precondition 20 <= height <= 24" ;
+		gridHeight = height;
 	}
 	
 	/**
 	 * Sets the Grid Width to the given amount.
 	 * @param width The width to set.
 	 */
-	public void setGridWidth(int width) {
-		
+	public void setGridWidth(int width) 
+	{
+		assert width == 10 : "violated precondition width = 10";
+		gridWidth = width;
 	}
 	
 	/**
 	 * A method to get the Grid Height.
 	 * @return The grid's height.
 	 */
-	public int getGridHeight() {
+	public int getGridHeight() 
+	{
 		return gridHeight;
 	}
 	
@@ -44,7 +52,8 @@ public class Playfield {
 	 * A method to get the Grid Width.
 	 * @return The grid's width.
 	 */
-	public int getGridWidth() {
+	public int getGridWidth() 
+	{
 		return gridWidth;
 	}
 	
@@ -52,7 +61,8 @@ public class Playfield {
 	 * A method to spawn a Tetromino onto the top of Playfield.
 	 * @param tetromino The Tetromino to spawn
 	 */
-	public void spawnTetromino(Tetromino tetromino) {
+	public void spawnTetromino(Tetromino tetromino) 
+	{
 		
 	}
 	
