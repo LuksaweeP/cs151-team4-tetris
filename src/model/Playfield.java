@@ -3,59 +3,65 @@ package model;
 /**
  * A class for creating a play field with a 2D grid of size height x width that can spawn in Tetrominos,
  * and award points to the player when necessary.
+ * This class use the Immutable pattern to not allow the player to change the size of the play field.
+ * The default playfield is (Height x Width) = 20 x 10
  */
-public class Playfield {
-	private int gridHeight;
-	private int gridWidth;
+public class Playfield 
+{
+	private final int gridHeight = 20;
+	private final int gridWidth = 10;
 	private int[][] grid;
+	Tetromino Tetromino;
 	
 	/**
 	 * The Playfield Constructor.
-	 * Playfield (Width x Height) = 10 x (20-24)
+	 * The default playfield size = 20 x 10
 	 */
 	public Playfield() 
 	{
-		gridWidth = 10;
-		gridHeight = 20;
+		grid = new int[gridHeight][gridWidth];
+		for( int i = 0; i < gridHeight; i++)
+			for (int j = 0; j < gridWidth; j++)
+				grid[i][j] = 0;
 	}
 	
 	/**
 	 * Sets the Grid Height to the given amount.
 	 * @param height The height to set.
 	 */
-	public void setGridHeight(int height) 
-	{
-		assert height >= 20 && height <= 24 : "violated precondition 20 <= height <= 24" ;
-		gridHeight = height;
-	}
+	//public void setGridHeight(int height) 
+	//{
+		//assert height >= 20 && height <= 24 : "violated precondition 20 <= height <= 24" ;
+		//gridHeight = height;
+	//}
 	
 	/**
 	 * Sets the Grid Width to the given amount.
 	 * @param width The width to set.
 	 */
-	public void setGridWidth(int width) 
-	{
-		assert width == 10 : "violated precondition width = 10";
-		gridWidth = width;
-	}
+	//public void setGridWidth(int width) 
+	//{
+		//assert width == 10 : "violated precondition width = 10";
+		//gridWidth = width;
+	//}
 	
 	/**
 	 * A method to get the Grid Height.
 	 * @return The grid's height.
 	 */
-	public int getGridHeight() 
-	{
-		return gridHeight;
-	}
+	//public int getGridHeight() 
+	//{
+		//return gridHeight;
+	//}
 	
 	/**
 	 * A method to get the Grid Width.
 	 * @return The grid's width.
 	 */
-	public int getGridWidth() 
-	{
-		return gridWidth;
-	}
+	//public int getGridWidth() 
+	//{
+		//return gridWidth;
+	//}
 	
 	/**
 	 * A method to spawn a Tetromino onto the top of Playfield.
