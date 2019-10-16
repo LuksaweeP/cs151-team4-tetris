@@ -78,12 +78,20 @@ public class Tetromino {
 	}
 	
 	/**
+	 * This method will generate new Tetromino randomly
+	 */
+	public void getRandomShape()
+	{
+		
+	}
+	
+	/**
 	 * This method sets the shape of the Tetromino to one of the following: I,O,T,S,Z,L,J.
 	 * @param aShape The shape to set the Tetromino to.
 	 */
 	public void setShape(char aShape) 
 	{
-		this.shape = aShape;
+		shape = aShape;
 	}
 	
 	/**
