@@ -49,19 +49,19 @@ public class Playfield
 	 * A method to get the Grid Height.
 	 * @return The grid's height.
 	 */
-	//public int getGridHeight() 
-	//{
-		//return gridHeight;
-	//}
+	public int getGridHeight() 
+	{
+		return gridHeight;
+	}
 	
 	/**
 	 * A method to get the Grid Width.
 	 * @return The grid's width.
 	 */
-	//public int getGridWidth() 
-	//{
-		//return gridWidth;
-	//}
+	public int getGridWidth() 
+	{
+		return gridWidth;
+	}
 	
 	/**
 	 * A method to spawn a Tetromino onto the top of Playfield.
