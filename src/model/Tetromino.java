@@ -1,10 +1,11 @@
 package model;
 
+
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
 public class Tetromino {
-	private char shape;	// To specify the type of Tetromino
+	private char shape; // To specify the type of Tetromino
 	private Block[] blocks = new Block[4]; // Each Tetromino has 4 blocks
 	Tetromino nextTromino;
 
@@ -163,6 +164,45 @@ public class Tetromino {
 	 */
 	public Block[] getBlocks() {
 		return blocks;
+	}
+
+	/**
+	 * The method to return the width of the tetromino
+	 * @return the width of the tetromino
+	 */
+	public int getBlockWidth() {
+		int minX = blocks[0].getXPosition();
+		int maxX = blocks[0].getXPosition();
+		for (int i = 1; i < 4; i++) {
+			if (minX > blocks[i].getXPosition())
+				minX = blocks[i].getXPosition();
+
+			if (maxX < blocks[i].getXPosition())
+				maxX = blocks[i].getXPosition();
+		}
+
+		int blockWidth = maxX - minX;
+		return blockWidth;
+	}
+
+	/**
+	 * This method return the height of the Tetromino
+	 * 
+	 * @return the height of the block
+	 */
+	public int getBlockHeight() {
+		int minY = blocks[0].getYPosition();
+		int maxY = blocks[0].getYPosition();
+		for (int i = 1; i < 4; i++) {
+			if (minY > blocks[i].getYPosition())
+				minY = blocks[i].getYPosition();
+
+			if (maxY < blocks[i].getYPosition())
+				maxY = blocks[i].getYPosition();
+		}
+
+		int blockHeight = maxY - minY;
+		return blockHeight;
 	}
 
 	/**
@@ -341,3 +381,4 @@ public class Tetromino {
 
 	}
 }
+
