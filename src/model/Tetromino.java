@@ -1,6 +1,5 @@
 package model;
 
-
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
@@ -16,14 +15,13 @@ public class Tetromino {
 		// Default set to 'I'
 		shape = 'I';
 		blocks[0] = new Block(0, 0);
-		blocks[1] = new Block(0, 1);
-		blocks[2] = new Block(0, 2);
-		blocks[3] = new Block(0, 3);
+		blocks[1] = new Block(0, -1);
+		blocks[2] = new Block(0, -2);
+		blocks[3] = new Block(0, -3);
 	}
 
 	/**
 	 * This constructs a Tetromino.
-	 * 
 	 * @param aShape The shape to set the Tetromino to the constructor.
 	 */
 	public Tetromino(char aShape) {
@@ -31,45 +29,45 @@ public class Tetromino {
 		switch (shape) {
 		case 'I':
 			blocks[0] = new Block(0, 0);
-			blocks[1] = new Block(0, 1);
-			blocks[2] = new Block(0, 2);
-			blocks[3] = new Block(0, 3);
+			blocks[1] = new Block(0, -1);
+			blocks[2] = new Block(0, -2);
+			blocks[3] = new Block(0, -3);
 			break;
 		case 'O':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
-			blocks[2] = new Block(0, 1);
-			blocks[3] = new Block(1, 1);
+			blocks[2] = new Block(0, -1);
+			blocks[3] = new Block(1, -1);
 			break;
 		case 'T':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
 			blocks[2] = new Block(2, 0);
-			blocks[3] = new Block(1, 1);
+			blocks[3] = new Block(1, -1);
 			break;
 		case 'Z':
 			blocks[0] = new Block(1, 0);
 			blocks[1] = new Block(2, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(0, 1);
+			blocks[2] = new Block(1, -1);
+			blocks[3] = new Block(0, -1);
 			break;
 		case 'S':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(2, 1);
+			blocks[2] = new Block(1, -1);
+			blocks[3] = new Block(2, -1);
 			break;
 		case 'L':
 			blocks[0] = new Block(0, 0);
-			blocks[1] = new Block(0, 1);
-			blocks[2] = new Block(0, 2);
-			blocks[3] = new Block(1, 2);
+			blocks[1] = new Block(0, -1);
+			blocks[2] = new Block(0, -2);
+			blocks[3] = new Block(1, -2);
 			break;
 		case 'J':
 			blocks[0] = new Block(1, 0);
-			blocks[1] = new Block(1, 1);
-			blocks[2] = new Block(1, 2);
-			blocks[3] = new Block(0, 2);
+			blocks[1] = new Block(1, -1);
+			blocks[2] = new Block(1, -2);
+			blocks[3] = new Block(0, -2);
 			break;
 		}
 	}
@@ -104,45 +102,45 @@ public class Tetromino {
 		switch (shape) {
 		case 'I':
 			blocks[0] = new Block(0, 0);
-			blocks[1] = new Block(0, 1);
-			blocks[2] = new Block(0, 2);
-			blocks[3] = new Block(0, 3);
+			blocks[1] = new Block(0, -1);
+			blocks[2] = new Block(0, -2);
+			blocks[3] = new Block(0, -3);
 			break;
 		case 'O':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
-			blocks[2] = new Block(0, 1);
-			blocks[3] = new Block(1, 1);
+			blocks[2] = new Block(0, -1);
+			blocks[3] = new Block(1, -1);
 			break;
 		case 'T':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
 			blocks[2] = new Block(2, 0);
-			blocks[3] = new Block(1, 1);
+			blocks[3] = new Block(1, -1);
 			break;
 		case 'Z':
 			blocks[0] = new Block(1, 0);
 			blocks[1] = new Block(2, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(0, 1);
+			blocks[2] = new Block(1, -1);
+			blocks[3] = new Block(0, -1);
 			break;
 		case 'S':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(2, 1);
+			blocks[2] = new Block(1, -1);
+			blocks[3] = new Block(2, -1);
 			break;
 		case 'L':
 			blocks[0] = new Block(0, 0);
-			blocks[1] = new Block(0, 1);
-			blocks[2] = new Block(0, 2);
-			blocks[3] = new Block(1, 2);
+			blocks[1] = new Block(0, -1);
+			blocks[2] = new Block(0, -2);
+			blocks[3] = new Block(1, -2);
 			break;
 		case 'J':
 			blocks[0] = new Block(1, 0);
-			blocks[1] = new Block(1, 1);
-			blocks[2] = new Block(1, 2);
-			blocks[3] = new Block(0, 2);
+			blocks[1] = new Block(1, -1);
+			blocks[2] = new Block(1, -2);
+			blocks[3] = new Block(0, -2);
 			break;
 		}
 	}
