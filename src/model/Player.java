@@ -83,7 +83,6 @@ public class Player
 		
 	private String playerName;	
 	private int [] playerScore;	// 1, 2, 3, 4, 5, max
-	Player next;
 }
 
 		
