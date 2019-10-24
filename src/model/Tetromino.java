@@ -1,14 +1,9 @@
 package model;
 
-
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
 public class Tetromino {
-	private char shape; // To specify the type of Tetromino
-	private Block[] blocks = new Block[4]; // Each Tetromino has 4 blocks
-	Tetromino nextTromino;
-
 	/**
 	 * Default Tetromino constructor.
 	 */
@@ -529,6 +524,9 @@ public class Tetromino {
 	public void drawTetromino() {
 
 	}
+
+	private char shape; // To specify the type of Tetromino
+	private Block[] blocks = new Block[4]; // Each Tetromino has 4 blocks
+	Tetromino curTromino;
+	Tetromino nextTromino;
 }
-
-
