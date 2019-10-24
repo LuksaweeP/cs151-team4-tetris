@@ -1,6 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -63,6 +64,57 @@ public class Leaderboard
 			tmp = new Player();
 		}
 	}
+	
+	/**
+	 * This method will re reads in all players and get all the current data.
+	 */
+	public void getCurrentPlayersData()
+	{
+		ArrayList <String> list = new ArrayList<String>();
+		Player tmp = new Player();
+		try 
+		{
+			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
+			while (br.ready()) 
+			{
+				// The output from br.readLine() is string; therefore we need to convert from string to int.
+				list.add(br.readLine());
+			}
+		//close file
+		br.close();
+		} 
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		String [] table;
+		String [] playersName = new String[numberPlayers];
+		int [][] playerScore = new int [numberPlayers][6];
+		/**
+		 * case: there is an existed player name.
+		 */
+		for (int i = 0; i < numberPlayers; i++)
+		{
+			table = list.get(i).split(", ");
+			playersName[i] = table[0];
+			tmp.setName(playersName[i]);
+			
+			// update player score level 1, 2, 3, 4, 5
+			for (int j =1; j < 6; j++)
+			{
+			playerScore[i][j] = Integer.parseInt(table[j]);
+			tmp.setPlayerScore(j, playerScore[i][j]);
+			}
+			
+			tmp.setPlayerHighScore();
+			tmp.getPlayerHighScore();
+					
+			playerList.add(i, tmp);
+			tmp = new Player();
+		}
+	}
+	
 	
 	/**
 	 * This method returns the current list of players.
@@ -154,6 +206,50 @@ public class Leaderboard
 		
 		else
 			System.out.println("The username has already taken");	
+	}
+	
+	/**
+	 * This method will save the player score to the player.txt
+	 */
+	public void savePlayer(String oldData, String newData) 
+	{
+		String filePath = "/Users/Luksawee/Desktop/players.txt";
+		File file = new File(filePath);
+		String oldContent = "";
+		BufferedReader reader = null;
+		FileWriter writer = null;
+
+		try {
+			reader = new BufferedReader(new FileReader(file));
+
+			// Reading all the lines of input text file into oldContent
+			String line = reader.readLine();
+			while (line != null) {
+				oldContent = oldContent + line + System.lineSeparator();
+
+				line = reader.readLine();
+			}
+			// Replacing oldString with newString in the oldContent
+
+			String newContent = oldContent.replaceAll(oldData, newData);
+
+			// Rewriting the input text file with newContent
+
+			writer = new FileWriter(file);
+			writer.write(newContent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Closing the resources
+
+				reader.close();
+
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private ArrayList <Player> playerList;
