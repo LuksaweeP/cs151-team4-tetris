@@ -20,8 +20,8 @@ public class Playfield
 	public Playfield() 
 	{
 		grid = new int[gridHeight][gridWidth];
-		for( int i = 0; i < gridHeight; i++)
-			for (int j = 0; j < gridWidth; j++)
+		for (int i = 0; i < gridHeight; i++)
+			for( int j = 0; j < gridWidth; j++)
 				grid[i][j] = 0;
 	}
 	
@@ -64,12 +64,22 @@ public class Playfield
 	}
 	
 	/**
+	 * A method to get the Grid 
+	 * @return The grid's width.
+	 */
+	public int [][] getGrid() 
+	{
+		return grid;
+	}
+	
+	/**
 	 * A method to spawn a Tetromino onto the top of Playfield.
 	 * @param tetromino The Tetromino to spawn
 	 */
 	public void spawnTetromino(Tetromino tetromino) 
 	{
-		
+		char shape = tetromino.getShape();
+			
 	}
 	
 	/**
@@ -94,3 +104,4 @@ public class Playfield
 		
 	}
 }
+
