@@ -1,5 +1,6 @@
 package model;
 
+
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
@@ -22,40 +23,41 @@ public class Tetromino {
 
 	/**
 	 * This constructs a Tetromino.
+	 * 
 	 * @param aShape The shape to set the Tetromino to the constructor.
 	 */
 	public Tetromino(char aShape) {
 		shape = Character.toUpperCase(aShape);
 		switch (shape) {
 		case 'I':
-			blocks[0] = new Block(0, 3);
-			blocks[1] = new Block(0, 2);
-			blocks[2] = new Block(0, 1);
-			blocks[3] = new Block(0, 0);
+			blocks[0] = new Block(0, 0);
+			blocks[1] = new Block(0, 1);
+			blocks[2] = new Block(0, 2);
+			blocks[3] = new Block(0, 3);
 			break;
 		case 'O':
-			blocks[0] = new Block(0, 1);
-			blocks[1] = new Block(1, 1);
-			blocks[2] = new Block(0, 0);
-			blocks[3] = new Block(1, 0);
+			blocks[0] = new Block(0, 0);
+			blocks[1] = new Block(1, 0);
+			blocks[2] = new Block(0, 1);
+			blocks[3] = new Block(1, 1);
 			break;
 		case 'T':
-			blocks[0] = new Block(2, 0);
+			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
-			blocks[2] = new Block(0, 0);
+			blocks[2] = new Block(2, 0);
 			blocks[3] = new Block(1, 1);
 			break;
 		case 'Z':
-			blocks[0] = new Block(1, 0);
-			blocks[1] = new Block(2, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(0, 1);
-			break;
-		case 'S':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
 			blocks[2] = new Block(1, 1);
 			blocks[3] = new Block(2, 1);
+			break;
+		case 'S':
+			blocks[0] = new Block(2, 0);
+			blocks[1] = new Block(1, 0);
+			blocks[2] = new Block(1, 1);
+			blocks[3] = new Block(0, 1);
 			break;
 		case 'L':
 			blocks[0] = new Block(0, 0);
@@ -119,16 +121,16 @@ public class Tetromino {
 			blocks[3] = new Block(1, 1);
 			break;
 		case 'Z':
-			blocks[0] = new Block(1, 0);
-			blocks[1] = new Block(2, 0);
-			blocks[2] = new Block(1, 1);
-			blocks[3] = new Block(0, 1);
-			break;
-		case 'S':
 			blocks[0] = new Block(0, 0);
 			blocks[1] = new Block(1, 0);
 			blocks[2] = new Block(1, 1);
 			blocks[3] = new Block(2, 1);
+			break;
+		case 'S':
+			blocks[0] = new Block(2, 0);
+			blocks[1] = new Block(1, 0);
+			blocks[2] = new Block(1, 1);
+			blocks[3] = new Block(0, 1);
 			break;
 		case 'L':
 			blocks[0] = new Block(0, 0);
@@ -166,6 +168,7 @@ public class Tetromino {
 
 	/**
 	 * The method to return the width of the tetromino
+	 * 
 	 * @return the width of the tetromino
 	 */
 	public int getBlockWidth() {
@@ -179,7 +182,7 @@ public class Tetromino {
 				maxX = blocks[i].getXPosition();
 		}
 
-		int blockWidth = Math.abs(maxX - minX);
+		int blockWidth = Math.abs(maxX - minX) + 1;
 		return blockWidth;
 	}
 
@@ -199,7 +202,7 @@ public class Tetromino {
 				maxY = blocks[i].getYPosition();
 		}
 
-		int blockHeight = Math.abs(maxY - minY);
+		int blockHeight = Math.abs(maxY - minY) + 1;
 		return blockHeight;
 	}
 
@@ -217,158 +220,306 @@ public class Tetromino {
 	 * This method moves the Tetromino one unit to the right.
 	 */
 	public void moveRight() {
-		{
-			for (int i = 0; i < 4; i++) {
-				int x = blocks[i].getXPosition() + 1;
-				blocks[i].setXPosition(x);
-			}
+		for (int i = 0; i < 4; i++) {
+			int x = blocks[i].getXPosition() + 1;
+			blocks[i].setXPosition(x);
 		}
 	}
 
 	/**
-	 * This method rotates the Tetromino 90 degrees to the left 1 turn. blocks[0]
-	 * will always at the same position
+	 * This method moves the Tetromino down one unit.
+	 */
+	public void moveDown() {
+
+		for (int i = 0; i < 4; i++) {
+			int x = blocks[i].getYPosition() + 1;
+			blocks[i].setYPosition(x);
+		}
+
+	}
+
+	/**
+	 * This method rotates the Tetromino 90 degrees to the left 1 turn. Rotating
+	 * clockwise
 	 */
 	public void rotateLeft() {
 		switch (shape) {
 		case 'I':
-			for (int i = 1; i < 4; i++) {
-				blocks[i].setXPosition(blocks[i].getXPosition() - i);
-				blocks[i].setYPosition(blocks[i].getYPosition() + i);
+			// block[0] is the pin point
+			if (blocks[0].getYPosition() < blocks[3].getYPosition()) {
+				for (int i = 1; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				break;
 			}
-			break;
+
+			if (blocks[0].getYPosition() > blocks[3].getYPosition()) {
+				for (int i = 1; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				break;
+			}
+
+			if (blocks[0].getXPosition() < blocks[3].getXPosition()) {
+				for (int i = 1; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				break;
+			}
+
+			if (blocks[0].getXPosition() > blocks[3].getXPosition()) {
+				for (int i = 1; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				break;
+			}
+
 		case 'O': // O cannot rotate
 			break;
+
 		case 'T':
-			for (int i = 1; i < 3; i++) {
-				blocks[i].setXPosition(blocks[i].getXPosition() - i);
-				blocks[i].setYPosition(blocks[i].getYPosition() - i);
+			// block[0] is the pin point
+			if (blocks[0].getXPosition() < blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() - 2);
+				System.out.println(1);
+				break;
 			}
 
-			blocks[3].setXPosition(blocks[3].getXPosition() - 2);
-			break;
+			if (blocks[0].getYPosition() < blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setYPosition(blocks[3].getYPosition() - 2);
+				System.out.println(2);
+				break;
+			}
+
+			if (blocks[0].getXPosition() > blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() + 2);
+				System.out.println(3);
+				break;
+			}
+
+			if (blocks[0].getYPosition() > blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setYPosition(blocks[3].getYPosition() + 2);
+				System.out.println(4);
+				break;
+			}
 
 		case 'Z':
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() - 1);
+			// block[0] is the pin point
+			if (blocks[0].getXPosition() < blocks[1].getXPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() - 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() + 1);
 
-			blocks[2].setXPosition(blocks[2].getXPosition() - 1);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 1);
+				blocks[2].setYPosition(blocks[2].getYPosition() - 2);
 
-			blocks[3].setYPosition(blocks[3].getYPosition() + 2);
-			break;
-
-		case 'S':
-
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() - 1);
-
-			blocks[2].setXPosition(blocks[2].getXPosition() - 2);
-
-			blocks[3].setXPosition(blocks[3].getXPosition() - 3);
-			blocks[3].setYPosition(blocks[3].getYPosition() + 1);
-			break;
-
-		case 'L':
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
-
-			blocks[2].setXPosition(blocks[2].getXPosition() - 2);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 2);
-
-			blocks[3].setXPosition(blocks[3].getXPosition() - 3);
-			blocks[3].setYPosition(blocks[3].getYPosition() + 1);
-			break;
-
-		case 'J':
-
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
-
-			blocks[2].setXPosition(blocks[2].getXPosition() - 2);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 2);
-
-			blocks[3].setXPosition(blocks[3].getXPosition() - 1);
-			blocks[3].setYPosition(blocks[3].getYPosition() + 3);
-			break;
-		}
-	}
-
-	/**
-	 * This method rotates the Tetromino 90 degrees to the right 1 turn.
-	 */
-	public void rotateRight(char aShape) {
-		switch (shape) {
-		case 'I':
-			for (int i = 1; i < 4; i++) {
-				blocks[i].setXPosition(blocks[i].getXPosition() + i);
-				blocks[i].setYPosition(blocks[i].getYPosition() + i);
-			}
-			break;
-		case 'O': // O cannot rotate
-			break;
-		case 'T':
-			for (int i = 1; i < 3; i++) {
-				blocks[i].setXPosition(blocks[i].getXPosition() - i);
-				blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				blocks[3].setXPosition(blocks[3].getXPosition() - 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 1);
+				System.out.println(1);
+				break;
 			}
 
-			blocks[3].setXPosition(blocks[3].getXPosition() + 2);
-			break;
+			if (blocks[0].getYPosition() < blocks[1].getYPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() - 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() - 1);
 
-		case 'Z':
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+				blocks[2].setXPosition(blocks[2].getXPosition() - 2);
 
-			blocks[2].setXPosition(blocks[2].getXPosition() + 1);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 1);
+				blocks[3].setXPosition(blocks[3].getXPosition() - 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 3);
+				System.out.println(2);
+				break;
+			}
 
-			blocks[3].setYPosition(blocks[3].getYPosition() + 2);
-			break;
+			if (blocks[0].getXPosition() > blocks[1].getXPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() + 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() - 1);
+
+				blocks[2].setXPosition(blocks[2].getXPosition() + 2);
+
+				blocks[3].setXPosition(blocks[3].getXPosition() + 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 1);
+
+				System.out.println(3);
+				break;
+			}
+
+			if (blocks[0].getYPosition() > blocks[1].getYPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() + 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+
+				blocks[2].setYPosition(blocks[2].getYPosition() + 2);
+
+				blocks[3].setXPosition(blocks[3].getXPosition() + 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 3);
+				System.out.println(4);
+				break;
+			}
 
 		case 'S':
+			// block[0] is the pin point
+			if (blocks[0].getXPosition() > blocks[1].getXPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() + 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() - 1);
 
-			blocks[1].setXPosition(blocks[1].getXPosition() - 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+				blocks[2].setYPosition(blocks[2].getYPosition() - 2);
 
-			blocks[2].setXPosition(blocks[2].getXPosition() + 2);
+				blocks[3].setXPosition(blocks[3].getXPosition() + 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 3);
+				System.out.println(1);
+				break;
+			}
 
-			blocks[3].setXPosition(blocks[3].getXPosition() + 3);
-			blocks[3].setYPosition(blocks[3].getYPosition() - 1);
-			break;
+			if (blocks[0].getYPosition() > blocks[1].getYPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() + 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+
+				blocks[2].setXPosition(blocks[2].getXPosition() + 2);
+
+				blocks[3].setXPosition(blocks[3].getXPosition() + 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 1);
+				System.out.println(2);
+				break;
+			}
+
+			if (blocks[0].getXPosition() < blocks[1].getXPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() - 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+
+				blocks[2].setYPosition(blocks[2].getYPosition() + 2);
+
+				blocks[3].setXPosition(blocks[3].getXPosition() - 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 3);
+
+				System.out.println(3);
+				break;
+			}
+
+			if (blocks[0].getYPosition() < blocks[1].getYPosition()) {
+				blocks[1].setXPosition(blocks[1].getXPosition() - 1);
+				blocks[1].setYPosition(blocks[1].getYPosition() - 1);
+
+				blocks[2].setXPosition(blocks[2].getXPosition() - 2);
+
+				blocks[3].setXPosition(blocks[3].getXPosition() - 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 1);
+				System.out.println(4);
+				break;
+			}
 
 		case 'L':
-			blocks[1].setXPosition(blocks[1].getXPosition() + 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+			// block[0] is the pin point
+			if (blocks[0].getYPosition() < blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() - 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 1);
 
-			blocks[2].setXPosition(blocks[2].getXPosition() + 2);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 2);
+				System.out.println(1);
+				break;
+			}
 
-			blocks[3].setXPosition(blocks[3].getXPosition() + 1);
-			blocks[3].setYPosition(blocks[3].getYPosition() + 3);
-			break;
+			if (blocks[0].getXPosition() > blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() + 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 3);
+
+				System.out.println(2);
+				break;
+			}
+
+			if (blocks[0].getYPosition() > blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() + 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 1);
+				System.out.println(3);
+				break;
+			}
+
+			if (blocks[0].getXPosition() < blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() - 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 3);
+				System.out.println(4);
+				break;
+			}
 
 		case 'J':
+			// block[0] is the pin point
+			if (blocks[0].getYPosition() < blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() - 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 3);
 
-			blocks[1].setXPosition(blocks[1].getXPosition() + 1);
-			blocks[1].setYPosition(blocks[1].getYPosition() + 1);
+				System.out.println(1);
+				break;
+			}
 
-			blocks[2].setXPosition(blocks[2].getXPosition() + 2);
-			blocks[2].setYPosition(blocks[2].getYPosition() + 2);
+			if (blocks[0].getXPosition() > blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() + 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() - 1);
 
-			blocks[3].setXPosition(blocks[3].getXPosition() + 3);
-			blocks[3].setYPosition(blocks[3].getYPosition() + 1);
-			break;
-		}
-	}
+				System.out.println(2);
+				break;
+			}
 
-	/**
-	 * This method moves the Tetromino one unit downward.
-	 */
-	public void moveDown() {
-		for (int i = 0; i < 4; i++) {
-			int y = blocks[i].getYPosition() + 1;
-			blocks[i].setXPosition(y);
+			if (blocks[0].getYPosition() > blocks[2].getYPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() + 1);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 3);
+				System.out.println(3);
+				break;
+			}
+
+			if (blocks[0].getXPosition() < blocks[2].getXPosition()) {
+				for (int i = 1; i < 3; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + i);
+				}
+				blocks[3].setXPosition(blocks[3].getXPosition() - 3);
+				blocks[3].setYPosition(blocks[3].getYPosition() + 1);
+				System.out.println(4);
+				break;
+			}
 		}
 	}
 
@@ -379,4 +530,5 @@ public class Tetromino {
 
 	}
 }
+
 
