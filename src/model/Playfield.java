@@ -3,16 +3,10 @@ package model;
 /**
  * A class for creating a play field with a 2D grid of size height x width that can spawn in Tetrominos,
  * and award points to the player when necessary.
- * This class use the Immutable pattern to not allow the player to change the size of the play field.
  * The default playfield is (Height x Width) = 20 x 10
  */
 public class Playfield 
 {
-	private final int gridHeight = 20;
-	private final int gridWidth = 10;
-	private int[][] grid;
-	Tetromino Tetromino;
-	
 	/**
 	 * The Playfield Constructor.
 	 * The default playfield size = 20 x 10
@@ -73,35 +67,113 @@ public class Playfield
 	}
 	
 	/**
-	 * A method to spawn a Tetromino onto the top of Playfield.
+	 * A method to spawn a Tetromino onto the top-left-side of Playfield.
 	 * @param tetromino The Tetromino to spawn
 	 */
 	public void spawnTetromino(Tetromino tetromino) 
 	{
-		char shape = tetromino.getShape();
-			
+		int tetrominoHeight = tetromino.getBlockHeight();
+		int tetrominoWidth = tetromino.getBlockWidth();
+		
+		for (int i = 0; i < tetrominoHeight; i++)
+		{
+			for (int j = 0; j < tetrominoWidth; j++)
+			{
+				if (grid[i][j]== 1)
+				{
+					gameOver(player);
+					break;
+				}
+			}
+		}
+		tetromino.getBlocks();
 	}
-	
+
 	/**
 	 * A method to check if a row is full of blocks.
 	 * @return True if row is full, false if not.
 	 */
-	public boolean checkRow() {
+	public boolean isRowFull(int index) 
+	{
+		for (int i = 0; i < gridWidth; i++ )
+		{
+			if(grid[index][i] == 0)
+				return false;
+		}
 		return true;
 	}
 	
 	/**
-	 * A method to award points to the player's score when necessary.
+	 * This method to count the full rows
+	 * @return
 	 */
-	public void awardPoints() {
-		
+	public int countFullRows()
+	{
+		int fullrows = 0;
+		for(int i = 0; i < gridHeight; i++)
+		{
+			if(isRowFull(i))
+				fullrows++;
+		}
+		return fullrows;
 	}
 	
+	/**
+	 * This method will count player score
+	 */
+	public void countScore()
+	{
+		int addScore = 0;
+		int lines = countFullRows();
+		if (lines == 1)
+			addScore = 100 * level;
+		if (lines == 2)
+			addScore = 300 * level;
+		if (lines == 3)
+			addScore = 500 * level;
+		if (lines == 4)
+			addScore = 800 * level;
+		
+		score = score + addScore;
+	}
+	/**
+	 * This method to remove the full row
+	 */
+	public void removeRow(int index)
+	{
+		for (int i = 0; i < gridWidth; i++)
+			grid[index][i] = 0;
+		
+		for (int j = index; j > 0; j--)
+		{
+			for(int k = 0; k < gridWidth; k++)
+				grid[j][k] = grid[j-1][k];
+		}
+	}
+
 	/**
 	 * A method to draw the Play Field to the window.
 	 */
 	public void drawPlayfield() {
 		
 	}
+	
+	public void gameOver(Player player)
+	{
+		System.out.println("Game Over!");
+		player.setPlayerScore(level, score);
+		player.setPlayerHighScore();
+	}
+	
+	private final int gridHeight = 20;
+	private final int gridWidth = 10;
+	private int[][] grid;
+	private int score = 0;
+	private int level = 1;
+	Tetromino curTetromino;
+	Tetromino nextTetromino;
+	Player player;
+	
 }
+
 
