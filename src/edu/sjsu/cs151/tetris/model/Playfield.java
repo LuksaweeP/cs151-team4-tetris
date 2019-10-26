@@ -131,6 +131,10 @@ public class Playfield
 		}
 	}
 	
+	/**
+	 * This method is used when the game is over and saves the score to the Player.
+	 * @param player the player to save the score to
+	 */
 	public void gameOver(Player player)
 	{
 		System.out.println("Game Over!");
