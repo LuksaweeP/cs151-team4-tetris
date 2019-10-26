@@ -1,4 +1,4 @@
-package game;
+package edu.sjsu.cs151.tetris.game;
 /**
 A class that houses the main method for the Tetris program.
  */

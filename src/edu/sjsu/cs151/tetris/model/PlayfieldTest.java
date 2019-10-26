@@ -1,4 +1,4 @@
-package model;
+package edu.sjsu.cs151.tetris.model;
 
 public class PlayfieldTest {
 	public static void main(String[] args) {

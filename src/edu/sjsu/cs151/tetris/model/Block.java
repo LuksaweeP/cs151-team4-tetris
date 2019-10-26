@@ -1,4 +1,4 @@
-package model;
+package edu.sjsu.cs151.tetris.model;
 
 /**
  * A class for managing a Block and its location.

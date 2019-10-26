@@ -1,4 +1,4 @@
-package view;
+package edu.sjsu.cs151.tetris.view;
 import javax.swing.*;
 
 /**

@@ -1,4 +1,4 @@
-package model;
+package edu.sjsu.cs151.tetris.model;
 
 /**
  * A class for managing a player's name, unlocked levels, and high-scores for each player.

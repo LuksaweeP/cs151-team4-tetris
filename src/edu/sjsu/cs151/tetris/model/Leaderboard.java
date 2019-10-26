@@ -1,4 +1,4 @@
-package model;
+package edu.sjsu.cs151.tetris.model;
 
 import java.io.BufferedReader;
 import java.io.File;
