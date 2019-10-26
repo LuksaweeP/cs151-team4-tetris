@@ -17,25 +17,25 @@ public class ModelTest {
 		int level = 0;
 		Playfield playField = new Playfield();;
 		Scanner sc = new Scanner(System.in);
-		String input = "";
+		String input;
 		Boolean gameOver = false;
 		
-		while (input != "q") {
+		
 			System.out.println("Welcome to Tetris!");
 			
 			// Read in data from players.txt into Leaderboard's playerList
 			// Display the playerList in the console
 			
-			System.out.println("Are you a new Player? (y/n)");
+			System.out.println("Are you a new Player? (yes/no)");
 			input = sc.nextLine();
-			if(input == "y") {
-				System.out.println("Enter a new username: \n");
+			if(input.equals("yes")) {
+				System.out.println("Enter a new username: ");
 				input = sc.nextLine();
 				user.setName(input);
 				level = 1;
 				System.out.println("\nStarting Level 1...");
 			}
-			else if (input == "n"){
+			else if (input.equals("no")){
 				System.out.println("Enter your username to load: \n");
 				input = sc.nextLine();
 				
@@ -64,16 +64,22 @@ public class ModelTest {
 				
 				// while currTetromino is still falling it can be moved
 				while (playField.getFallingStatus()) {
-					currTetromino.moveRight();
-					currTetromino.moveRight();
-					currTetromino.moveRight();
-					currTetromino.rotateLeft();
-					currTetromino.rotateLeft();
-					currTetromino.moveLeft();
-					currTetromino.rotateLeft();
+					playField.fallingTetromino(currTetromino);
+					System.out.println("Tetromino is falling!");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
+				System.out.println("Tetromino has landed!");
+				
+				// Check if game over
+				
+				gameOver = true;
+				playField.gameOver(user);
 			}
-		}
+		
 
 	}
 
