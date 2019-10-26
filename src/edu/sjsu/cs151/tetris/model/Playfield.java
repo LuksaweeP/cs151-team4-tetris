@@ -142,11 +142,43 @@ public class Playfield
 		player.setPlayerHighScore();
 	}
 	
+	public void fallingTetromino(Tetromino tetromino) {
+		Boolean canMove = false;
+		Block[] blocks = tetromino.getBlocks();
+		for (int i = 1; i < 4; i++) {
+			if(gridHeight - blocks[i].getYPosition() > 1)
+				canMove = true;
+			else {
+				canMove = false;
+				tetrominoIsFalling = false;
+				break;
+			}
+		}
+		if (canMove) {
+			tetromino.moveDown();
+			tetrominoIsFalling = true;
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * This method returns the value of tetrominoIsFalling
+	 * @return the status of the current Tetromino
+	 */
+	public Boolean getFallingStatus() {
+		return tetrominoIsFalling;
+	}
+	
 	private final int gridHeight = 20;
 	private final int gridWidth = 10;
 	private int[][] grid;
 	private int score = 0;
 	private int level = 1;
+	private Boolean tetrominoIsFalling = true; // default to true
 	Tetromino curTetromino;
 	Tetromino nextTetromino;
 	Player player;
