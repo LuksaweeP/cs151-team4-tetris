@@ -203,6 +203,19 @@ public class Tetromino {
 	}
 
 	/**
+	 * This method calculates the lowest Y coordinate of a tetromino.
+	 * @return the lowest Y coordinate
+	 */
+	public int getMinY() {
+		int minY = blocks[0].getYPosition();
+		for (int i = 1; i < 4; i++) {
+			if (minY > blocks[i].getYPosition())
+				minY = blocks[i].getYPosition();
+		}
+		return minY;
+	}
+	
+	/**
 	 * This method moves the Tetromino one unit to the left.
 	 */
 	public void moveLeft() {
