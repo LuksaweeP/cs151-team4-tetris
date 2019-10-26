@@ -20,26 +20,6 @@ public class Playfield
 	}
 	
 	/**
-	 * Sets the Grid Height to the given amount.
-	 * @param height The height to set.
-	 */
-	//public void setGridHeight(int height) 
-	//{
-		//assert height >= 20 && height <= 24 : "violated precondition 20 <= height <= 24" ;
-		//gridHeight = height;
-	//}
-	
-	/**
-	 * Sets the Grid Width to the given amount.
-	 * @param width The width to set.
-	 */
-	//public void setGridWidth(int width) 
-	//{
-		//assert width == 10 : "violated precondition width = 10";
-		//gridWidth = width;
-	//}
-	
-	/**
 	 * A method to get the Grid Height.
 	 * @return The grid's height.
 	 */
@@ -149,13 +129,6 @@ public class Playfield
 			for(int k = 0; k < gridWidth; k++)
 				grid[j][k] = grid[j-1][k];
 		}
-	}
-
-	/**
-	 * A method to draw the Play Field to the window.
-	 */
-	public void drawPlayfield() {
-		
 	}
 	
 	public void gameOver(Player player)
