@@ -142,6 +142,10 @@ public class Playfield
 		player.setPlayerHighScore();
 	}
 	
+	/**
+	 * This method moves the tetromino down the grid if there is room
+	 * @param tetromino the tetromino to be moved
+	 */
 	public void fallingTetromino(Tetromino tetromino) {
 		Boolean canMove = false;
 		Block[] blocks = tetromino.getBlocks();
@@ -157,11 +161,6 @@ public class Playfield
 		if (canMove) {
 			tetromino.moveDown();
 			tetrominoIsFalling = true;
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 	
