@@ -518,15 +518,8 @@ public class Tetromino {
 		}
 	}
 
-	/**
-	 * This method draws the tetromino to the window using its current location.
-	 */
-	public void drawTetromino() {
-
-	}
-
 	private char shape; // To specify the type of Tetromino
 	private Block[] blocks = new Block[4]; // Each Tetromino has 4 blocks
-	Tetromino curTromino;
-	Tetromino nextTromino;
+	//Tetromino curTromino;
+	//Tetromino nextTromino;
 }
