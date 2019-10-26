@@ -1,5 +1,6 @@
 package edu.sjsu.cs151.tetris.model;
 
+
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
@@ -80,14 +81,14 @@ public class Tetromino {
 	}
 
 	/**
-	 * This method set generate new Tetromino shape randomly
+	 * This method set generate new Tetromino shape randomly using the Singleton SingleRandom.
 	 */
 	public void setRandomShape() {
 		char[] array = { 'I', 'O', 'T', 'S', 'Z', 'L', 'J' };
-		int number = array.length;
-		int index = (int) (Math.random() * number);
-		char rand = array[index];
-		setShape(rand);
+		SingleRandom rand = SingleRandom.getInstance();
+		int num = rand.nextInt(array.length);
+		char randShape = array[num];
+		setShape(randShape);
 	}
 
 	/**
