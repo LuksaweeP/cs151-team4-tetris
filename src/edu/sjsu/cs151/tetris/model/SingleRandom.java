@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class SingleRandom {
 	/**
-	 * This method creates the random number generator as a new Random from java.util.Random
+	 * This method constructs the random number generator as a new Random from java.util.Random
 	 */
 	private SingleRandom() { 
 		generator = new Random(); 
@@ -30,20 +30,20 @@ public class SingleRandom {
 	}
 	
 	/**
-	 * This methods returns the only instance of SingleRandom
-	 * @return The single class instance
-	 */
-	public static SingleRandom getInstance() { 
-		return instance; 
-	}
-	
-	/**
 	 * This method returns a random number between 0 (inclusive) and i (exclusive).
 	 * @param i The upper bound of the random number range (exclusive)
 	 * @return The random integer
 	 */
 	public int nextInt(int i) {
 		return generator.nextInt(i);
+	}
+	
+	/**
+	 * This methods returns the only instance of SingleRandom
+	 * @return The single class instance
+	 */
+	public static SingleRandom getInstance() { 
+		return instance; 
 	}
 	
 	private Random generator;
