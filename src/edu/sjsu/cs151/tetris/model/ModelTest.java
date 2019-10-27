@@ -65,7 +65,8 @@ public class ModelTest {
 				// while currTetromino is still falling it can be moved
 				while (playField.getFallingStatus()) {
 					playField.fallingTetromino(currTetromino);
-					System.out.println("Tetromino is falling!");
+					System.out.print(currTetromino.getShape());
+					System.out.println(" Tetromino is falling!");
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
