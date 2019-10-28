@@ -254,35 +254,19 @@ public class Tetromino {
 	public void rotateLeft() {
 		switch (shape) {
 		case 'I':
-			// block[0] is the pin point
-			if (blocks[0].getYPosition() < blocks[3].getYPosition()) {
-				for (int i = 1; i < 4; i++) {
-					blocks[i].setXPosition(blocks[i].getXPosition() - i);
-					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+			if (blocks[0].getXPosition() == blocks[3].getXPosition()) {
+				for (int i = 0; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() - 2 + i);
+					blocks[i].setYPosition(blocks[i].getYPosition() + 2 - i);
 				}
 				break;
 			}
 
-			if (blocks[0].getYPosition() > blocks[3].getYPosition()) {
-				for (int i = 1; i < 4; i++) {
-					blocks[i].setXPosition(blocks[i].getXPosition() + i);
-					blocks[i].setYPosition(blocks[i].getYPosition() + i);
-				}
-				break;
-			}
 
-			if (blocks[0].getXPosition() < blocks[3].getXPosition()) {
-				for (int i = 1; i < 4; i++) {
-					blocks[i].setXPosition(blocks[i].getXPosition() - i);
-					blocks[i].setYPosition(blocks[i].getYPosition() + i);
-				}
-				break;
-			}
-
-			if (blocks[0].getXPosition() > blocks[3].getXPosition()) {
-				for (int i = 1; i < 4; i++) {
-					blocks[i].setXPosition(blocks[i].getXPosition() + i);
-					blocks[i].setYPosition(blocks[i].getYPosition() - i);
+			if (blocks[0].getYPosition() == blocks[3].getYPosition()) {
+				for (int i = 0; i < 4; i++) {
+					blocks[i].setXPosition(blocks[i].getXPosition() + 2 - i);
+					blocks[i].setYPosition(blocks[i].getYPosition() - 2 + i);
 				}
 				break;
 			}
