@@ -96,7 +96,7 @@ public class Tetromino {
 	 * position.
 	 */
 	public void setBlocks() {
-		setRandomShape();
+		//setRandomShape();
 		switch (shape) {
 		case 'I':
 			blocks[0] = new Block(0, 0);
