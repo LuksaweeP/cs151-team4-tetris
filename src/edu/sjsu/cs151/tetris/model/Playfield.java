@@ -196,6 +196,10 @@ public class Playfield {
 		return tetrominoIsFalling;
 	}
 
+	/**
+	 * This method to update the location of tetromino when it reach to the bottom field.
+	 * @param tetromino
+	 */
 	public void reachBottom(Tetromino tetromino) {
 		Block[] blocks = tetromino.getBlocks();
 		int index = tetromino.getIndexSkirt();
@@ -214,7 +218,6 @@ public class Playfield {
 		}
 
 		if (reachBottom) {
-
 			for (int j = 3; j >= 0; j--) {
 				int x = blocks[j].getXPosition();
 				int y = blocks[j].getYPosition();
@@ -222,10 +225,13 @@ public class Playfield {
 				grid[y][x] = 1;
 			}
 			System.out.println("Reach bottom");
-
 		}
 	}
 
+	/**
+	 * This method will return the boolean of reachBottom.
+	 * @return reachBottom
+	 */
 	public boolean getReachBottom() {
 		return reachBottom;
 	}
