@@ -206,13 +206,31 @@ public class Tetromino {
 	 * This method calculates the lowest Y coordinate of a tetromino.
 	 * @return the lowest Y coordinate
 	 */
-	public int getMinY() {
-		int minY = blocks[0].getYPosition();
+	public int getMaxY() {
+		int maxY = blocks[0].getYPosition();
 		for (int i = 1; i < 4; i++) {
-			if (minY > blocks[i].getYPosition())
-				minY = blocks[i].getYPosition();
+			if (maxY < blocks[i].getYPosition())
+				maxY = blocks[i].getYPosition();
 		}
-		return minY;
+		return maxY;
+	}
+	
+	/**
+	 * This method calculates and return the index of the blocks at the lowest Y coordinate of a tetromino.
+	 * @return the lowest Y coordinate
+	 */
+	public int getIndexSkirt() {
+		int maxY = blocks[3].getYPosition();
+		int index = 3;
+		for (int i = 2; i <= 0; i--) 
+		{
+			if (maxY < blocks[i].getYPosition())
+			{
+				maxY = blocks[i].getYPosition();
+				index = i;
+			}		
+		}
+		return index;
 	}
 	
 	/**
