@@ -1,6 +1,11 @@
 package edu.sjsu.cs151.tetris.model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  * A Class to test the Tetris game logic implemented in the edu.sjsu.cs151.tetris.model package
@@ -11,77 +16,107 @@ public class ModelTest {
 	 * The main method to test the game logic.
 	 * @param args unused
 	 */
-	public static void main(String[] args) {
-		Player user = new Player();
-		Leaderboard leaderBoard = new Leaderboard();
-		int level = 0;
-		Playfield playField = new Playfield();;
+	public static void main(String[] args) 
+	{
+		Leaderboard playerList = new Leaderboard();
+		playerList.readPlayers();
+		Playfield playField = new Playfield();
+		ArrayList <Player> list = playerList.getPlayer();
+		int number = playerList.getNumberPlayers();
+		int level = 1;
+
+		Player players = new Player();
+		for (int i =0; i < number; i++)
+		{
+			players = list.get(i);
+			System.out.print(players.getName() + " ");
+			int [] playerScore = players.getPlayerScore();
+			for (int score: playerScore)
+				System.out.print(score + " ");
+			System.out.println();
+		}
+		
 		Scanner sc = new Scanner(System.in);
 		String input;
-		Boolean gameOver = false;
-		
-		
-			System.out.println("Welcome to Tetris!");
+		System.out.println("Welcome to Tetris!");
 			
 			// Read in data from players.txt into Leaderboard's playerList
 			// Display the playerList in the console
-			
 			System.out.println("Are you a new Player? (yes/no)");
 			input = sc.nextLine();
-			if(input.equals("yes")) {
+			Player newPlayer = new Player();
+			
+			if(input.equals("yes")) 
+			{
 				System.out.println("Enter a new username: ");
 				input = sc.nextLine();
-				user.setName(input);
+				newPlayer.setName(input);
+				while (playerList.isValidNewPlayers(newPlayer) == false)
+				{
+					System.out.println("Enter a new username: ");
+					input = sc.nextLine();
+					newPlayer.setName(input);
+				}
+				playerList.addNewPlayer(newPlayer);
 				level = 1;
-				System.out.println("\nStarting Level 1...");
+				playField.setLevel(level);
+				
 			}
 			else if (input.equals("no")){
-				System.out.println("Enter your username to load: \n");
+				System.out.println("Enter your username to load: ");
 				input = sc.nextLine();
+				newPlayer = playerList.loadPlayer(input);
+				int [] loadPlayerScore = newPlayer.getPlayerScore();
+				System.out.print(newPlayer.getName() + " ");
+				for (int score: loadPlayerScore)
+					System.out.print(score + " ");
 				
-				// Check to see if the entered username is valid
-				// Set user equal to the existing Player in the leaderBoard playerList
-				
-				System.out.println("Select Level: ");
-				
+				System.out.println();
 				// Display unlocked levels in console
-				
+				System.out.println("Enter the level to download: ");
 				input = sc.nextLine();
 				
 				// Check if level is unlocked
-				
 				level = Integer.parseInt(input);
-			}
-			else {
-				System.out.println("Invalid input");
+				while (!newPlayer.isLevelUnlocked(level))
+				{
+					System.out.println("Enter the level to download: ");
+					input = sc.nextLine();
+					level = Integer.parseInt(input);
+				}
+				playField.setLevel(level);
 			}
 			
-			// Start gameplay
-			while (!gameOver) {
-				Tetromino currTetromino = new Tetromino();
-				currTetromino.setRandomShape();
-				playField.spawnTetromino(currTetromino);
+			playField.getLevel();
+			Tetromino currTetromino = new Tetromino();
+			currTetromino.setRandomShape();
+			currTetromino.setBlocks();
+			playField.spawnTetromino(currTetromino);
+
+			Tetromino nextTetromino = new Tetromino();
+			
+			while (!playField.isGameOver()) 
+			{
+				
+				nextTetromino.setRandomShape();
+				System.out.println(currTetromino.getShape());
 				
 				// while currTetromino is still falling it can be moved
-				while (playField.getFallingStatus()) {
-					playField.fallingTetromino(currTetromino);
-					System.out.print(currTetromino.getShape());
-					System.out.println(" Tetromino is falling!");
+				while (!playField.getReachBottom()) {
+					playField.reachBottom(currTetromino);
+					
+					//System.out.println(" Tetromino is falling!");
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("Tetromino has landed!");
-				
-				// Check if game over
-				
-				gameOver = true;
-				playField.gameOver(user);
+				currTetromino = nextTetromino;
+				currTetromino.setBlocks();
+				playField.spawnTetromino(currTetromino);
 			}
-		
-
+			
+			newPlayer.setPlayerScore(level, playField.getScore());
 	}
-
 }

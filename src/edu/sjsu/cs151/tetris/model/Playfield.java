@@ -62,6 +62,15 @@ public class Playfield {
 	}
 
 	/**
+	 * This method return score
+	 * @return score
+	 */
+	public int getScore()
+	{
+		return score;
+	}
+	
+	/**
 	 * A method to spawn a Tetromino onto the top-left-side of Playfield.
 	 * 
 	 * @param tetromino The Tetromino to spawn
