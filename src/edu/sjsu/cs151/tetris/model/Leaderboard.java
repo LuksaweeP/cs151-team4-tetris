@@ -167,7 +167,7 @@ public class Leaderboard
 			tmp = playerList.get(i);
 			if ((newPlayer.getName()).equalsIgnoreCase(tmp.getName()))
 			{
-				System.out.println("Invalid new username");
+				//System.out.println("Invalid new username");
 				return false;
 			}
 			tmp = new Player();
