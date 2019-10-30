@@ -23,7 +23,7 @@ public class Leaderboard
 		Player tmp = new Player();
 		try 
 		{
-			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
 			while (br.ready()) 
 			{
 				// The output from br.readLine() is string; therefore we need to convert from string to int.
@@ -74,7 +74,7 @@ public class Leaderboard
 		Player tmp = new Player();
 		try 
 		{
-			BufferedReader br = new BufferedReader(new FileReader("/Users/Luksawee/Desktop/players.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
 			while (br.ready()) 
 			{
 				// The output from br.readLine() is string; therefore we need to convert from string to int.
@@ -185,7 +185,7 @@ public class Leaderboard
 		{
 			try 
 			{				
-				FileWriter writer = new FileWriter("/Users/Luksawee/Desktop/players.txt", true);
+				FileWriter writer = new FileWriter("src/edu/sjsu/cs151/tetris/model/players.txt", true); // /Users/Luksawee/Desktop/
 				writer.write(newPlayer.getName());
 							
 				int [] playerScore = newPlayer.getPlayerScore();
@@ -213,7 +213,7 @@ public class Leaderboard
 	 */
 	public void savePlayer(String oldData, String newData) 
 	{
-		String filePath = "/Users/Luksawee/Desktop/players.txt";
+		String filePath = "src/edu/sjsu/cs151/tetris/model/players.txt";
 		File file = new File(filePath);
 		String oldContent = "";
 		BufferedReader reader = null;
