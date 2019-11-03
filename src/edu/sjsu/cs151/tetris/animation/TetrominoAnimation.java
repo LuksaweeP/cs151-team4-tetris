@@ -8,17 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-//import animation.CarShape;
-//import animation.MoveableShape;
-//import animation.ShapeIcon;
 
 public class TetrominoAnimation {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-	      final MoveableShape shape
-	            = new TetrominoShape(0, 0, TETROMINO_WIDTH);
+	      final MoveableShape shape = new TetrominoShape(0, 0, TETROMINO_WIDTH);
 
 	      ShapeIcon icon = new ShapeIcon(shape,
 	            ICON_WIDTH, ICON_HEIGHT);
@@ -36,6 +32,7 @@ public class TetrominoAnimation {
 	      ActionListener listener = event -> {shape.translate(0, 1); label.repaint(); };
 	  	  Timer t = new Timer(DELAY, listener);
 	      t.start();
+	    	  
 	   }
 	
 	   private static final int ICON_WIDTH = 400;
