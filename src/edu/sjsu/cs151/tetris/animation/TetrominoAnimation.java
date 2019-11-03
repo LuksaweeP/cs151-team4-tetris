@@ -33,18 +33,11 @@ public class TetrominoAnimation {
 
 	      final int DELAY = 100;
 	      // Milliseconds between timer ticks
-	      Timer t = new Timer(DELAY, new
-	         ActionListener()
-	         {
-	            public void actionPerformed(ActionEvent event)
-	            {
-	               shape.translate(0, 1);
-	               label.repaint();
-	            }
-	         });
+	      ActionListener listener = event -> {shape.translate(0, 1); label.repaint(); };
+	  	  Timer t = new Timer(DELAY, listener);
 	      t.start();
 	   }
-
+	
 	   private static final int ICON_WIDTH = 400;
 	   private static final int ICON_HEIGHT = 600;
 	   private static final int TETROMINO_WIDTH = 100;
