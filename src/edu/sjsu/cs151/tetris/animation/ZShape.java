@@ -28,7 +28,6 @@ public class ZShape implements MoveableShape {
 	}
 
 	public void draw(Graphics2D g2) {
-
 		// (double x, double y, double w, double h)
 		Rectangle2D.Double block1 = new Rectangle2D.Double(x, y, width / 4, width / 4);
 		Rectangle2D.Double block2 = new Rectangle2D.Double(x + (width / 4), y, width / 4, width / 4);
