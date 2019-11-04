@@ -14,28 +14,36 @@ public class TetrominoAnimation {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-	      final MoveableShape shape = new TetrominoShape(0, 0, TETROMINO_WIDTH);
+	      final MoveableShape zShape = new ZShape(0, 0, TETROMINO_WIDTH);
+	      final MoveableShape IShape = new IShape(0, 0, TETROMINO_WIDTH);
 
-	      ShapeIcon icon = new ShapeIcon(shape,
+	      ShapeIcon icon1 = new ShapeIcon(zShape,
 	            ICON_WIDTH, ICON_HEIGHT);
+	      ShapeIcon icon2 = new ShapeIcon(IShape,
+		            ICON_WIDTH, ICON_HEIGHT);
+	      
 
-	      final JLabel label = new JLabel(icon);
+	      final JLabel label1 = new JLabel(icon1);
+	      final JLabel label2 = new JLabel(icon2);
 	      frame.setLayout(new FlowLayout());
-	      frame.add(label);
+	      
+	      frame.add(label1);
+	      frame.add(label2);
 
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	      frame.pack();
 	      frame.setVisible(true);
 
-	      final int DELAY = 100;
+	      final int DELAY = 10;
 	      // Milliseconds between timer ticks
-	      ActionListener listener = event -> {shape.translate(0, 1); label.repaint(); };
+	      ActionListener listener = event -> {zShape.translate(0, 1); label1.repaint(); };
 	  	  Timer t = new Timer(DELAY, listener);
 	      t.start();
 	    	  
 	   }
 	
-	   private static final int ICON_WIDTH = 400;
+	   private static final int ICON_WIDTH = 600;
 	   private static final int ICON_HEIGHT = 600;
 	   private static final int TETROMINO_WIDTH = 100;
 }
+
