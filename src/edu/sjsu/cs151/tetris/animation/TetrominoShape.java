@@ -24,6 +24,11 @@ public class TetrominoShape implements MoveableShape
 	      x += dx;
 	      y += dy;
 	   }
+	   
+	   public void moveUp(int dx, int dy) {
+			x -= dx;
+			y -= dy;
+		}
 
 	   public void draw(Graphics2D g2)
 	   {
