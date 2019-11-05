@@ -1,8 +1,9 @@
 package edu.sjsu.cs151.tetris.animation;
+
 import edu.sjsu.cs151.tetris.model.*;
 
-
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,7 +18,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,7 +30,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -72,9 +71,9 @@ public class WelcomeScreen {
 		final JLabel labelJ = new JLabel(iconJ);
 		final JLabel labelS = new JLabel(iconS);
 
-		JButton welcomeButton = new JButton("Start The Tetris Game");
-		welcomeButton.setSize(100, 100);
-		welcomeButton.setBackground(Color.red);
+		JButton welcomeButton = new JButton();
+		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
+		welcomeButton.setText("Start Tetris Game");
 		welcomeButton.setVisible(true);
 
 		Panel northPanel = new Panel();
@@ -159,6 +158,3 @@ public class WelcomeScreen {
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
-
-
-
