@@ -19,4 +19,5 @@ public interface MoveableShape
    */
    void translate(int dx, int dy);
    void moveUp(int dx, int dy);
+   int getY();
 }

@@ -55,6 +55,11 @@ public class TetrominoShape implements MoveableShape
 	      g2.draw(block4);
 	   }
 	   
+	   public int getY()
+		{
+			return y;
+		}
+	   
 	   private int x;
 	   private int y;
 	   private int width;

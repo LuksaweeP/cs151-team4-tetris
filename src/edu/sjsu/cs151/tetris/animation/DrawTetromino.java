@@ -82,6 +82,11 @@ public class DrawTetromino implements MoveableShape {
 			g2.draw(zBlock[i]);	
 		}
 	 }
+	
+	public int getY()
+	{
+		return y;
+	}
 
 	private int x;
 	private int y;
