@@ -8,6 +8,13 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Rectangle2D.Double;
+
 public class DrawTetromino implements MoveableShape {
 
 	/**
@@ -17,7 +24,9 @@ public class DrawTetromino implements MoveableShape {
 	 * @param y     the top of the bounding rectangle
 	 * @param width the width of the bounding rectangle
 	 */
-	public DrawTetromino(char shape, int width) {
+	public DrawTetromino(char shape, int x, int y, int width) {
+		this.x = x;
+		this.y = y;
 		this.shape = shape;
 		this.width = width;
 	}
@@ -38,26 +47,29 @@ public class DrawTetromino implements MoveableShape {
 		 
 		for (int i = 0; i < 4; i++)
 		{
-			x = blocks[i].getXPosition();
-			y = blocks[i].getYPosition();
-			zBlock[i] = new Rectangle2D.Double((x * width / 4), (y * width / 4) , width / 4, width / 4);
+			int xPosition = x + blocks[i].getXPosition();
+			int yPosition = y + blocks[i].getYPosition();
+			zBlock[i] = new Rectangle2D.Double((xPosition * width / 4), (yPosition * width / 4) , width / 4, width / 4);
 			
 			if(shape == 'Z')
-				g2.setColor(Color.pink);
+				g2.setColor(Color.red);
 				
 			if(shape == 'I')
-				g2.setColor(Color.blue);
+				g2.setColor(Color.cyan);
 			
 			if(shape == 'O')
 				g2.setColor(Color.yellow);
 			
 			if(shape == 'L')
-				g2.setColor(Color.red);
+				g2.setColor(Color.orange);
 			
 			if(shape == 'T')
-				g2.setColor(Color.gray);
+				g2.setColor(Color.pink);
 			
 			if(shape == 'J')
+				g2.setColor(Color.blue);
+			
+			if(shape == 'S')
 				g2.setColor(Color.green);
 			
 			g2.fill(zBlock[i]);
@@ -74,4 +86,3 @@ public class DrawTetromino implements MoveableShape {
 	Block [] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
-
