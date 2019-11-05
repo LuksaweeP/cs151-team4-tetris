@@ -1,4 +1,6 @@
 package edu.sjsu.cs151.tetris.animation;
+import edu.sjsu.cs151.tetris.model.*;
+
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -13,35 +15,53 @@ public class TetrominoAnimation {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 
-		final MoveableShape zShape = new ZShape(0, 0, TETROMINO_WIDTH);
-		final MoveableShape IShape = new IShape(0, 0, TETROMINO_WIDTH);
+		final MoveableShape zShape = new DrawTetromino('Z' , TETROMINO_WIDTH);
+		final MoveableShape IShape = new DrawTetromino('I', TETROMINO_WIDTH);
+		final MoveableShape OShape = new DrawTetromino('O', TETROMINO_WIDTH);
 
-		ShapeIcon icon1 = new ShapeIcon(zShape, ICON_WIDTH, ICON_HEIGHT);
-		ShapeIcon icon2 = new ShapeIcon(IShape, ICON_WIDTH, ICON_HEIGHT);
+		ShapeIcon iconZ = new ShapeIcon(zShape, ICON_WIDTH, ICON_HEIGHT);
+		ShapeIcon iconI = new ShapeIcon(IShape, ICON_WIDTH, ICON_HEIGHT);
+		ShapeIcon iconO = new ShapeIcon(OShape, ICON_WIDTH, ICON_HEIGHT);
 
-		final JLabel label1 = new JLabel(icon1);
-		final JLabel label2 = new JLabel(icon2);
+		final JLabel labelZ = new JLabel(iconZ);
+		final JLabel labelI = new JLabel(iconI);
+		final JLabel labelO = new JLabel(iconO);
+
 		frame.setLayout(new FlowLayout());
-
-		frame.add(label1);
-		frame.add(label2);
+		frame.add(labelZ);
+		frame.add(labelI);
+		frame.add(labelO);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 
-		final int DELAY = 10;
+		final int delayZ = 10;
 		// Milliseconds between timer ticks
-		ActionListener listener = event -> {
+		ActionListener listenerZ = event -> {
 			zShape.translate(0, 1);
-			label1.repaint();
+			labelZ.repaint();
 		};
-		Timer t = new Timer(DELAY, listener);
-		t.start();
+
+		final int delayI = 5;
+		// Milliseconds between timer ticks
+		ActionListener listenerI = event -> {
+			IShape.translate(0, 1);
+			labelI.repaint();
+		};
+		Timer z = new Timer(delayZ, listenerI);
+		z.start();
+
+		Timer i = new Timer(delayI, listenerI);
+		i.start();
+		i.setRepeats(true);
 
 	}
 
-	private static final int ICON_WIDTH = 600;
+	private static final int ICON_WIDTH = 100;
 	private static final int ICON_HEIGHT = 600;
 	private static final int TETROMINO_WIDTH = 100;
+	Block [] blocks = new Block[4];
+	Tetromino tetromino = new Tetromino();
 }
+
