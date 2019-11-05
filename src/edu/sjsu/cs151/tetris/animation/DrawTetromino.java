@@ -35,6 +35,11 @@ public class DrawTetromino implements MoveableShape {
 		x += dx;
 		y += dy;
 	}
+	
+	public void moveUp(int dx, int dy) {
+		x -= dx;
+		y -= dy;
+	}
 
 	public void draw(Graphics2D g2) {
 		 tetromino.setShape(shape);
@@ -74,8 +79,7 @@ public class DrawTetromino implements MoveableShape {
 			
 			g2.fill(zBlock[i]);
 			g2.setColor(Color.black);
-			g2.draw(zBlock[i]);
-			
+			g2.draw(zBlock[i]);	
 		}
 	 }
 

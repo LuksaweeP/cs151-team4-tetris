@@ -9,8 +9,7 @@ import javax.swing.*;
 */
 public class ShapeIcon implements Icon
 {
-   public ShapeIcon(MoveableShape shape,
-      int width, int height)
+   public ShapeIcon(MoveableShape shape, int width, int height)
    {
       this.shape = shape;
       this.width = width;

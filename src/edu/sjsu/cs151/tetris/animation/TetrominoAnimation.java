@@ -18,6 +18,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+
 public class TetrominoAnimation {
 
 	public static void main(String[] args) {
@@ -27,9 +40,9 @@ public class TetrominoAnimation {
 		final MoveableShape iShape = new DrawTetromino('I', 0, 0, TETROMINO_WIDTH);
 		final MoveableShape oShape = new DrawTetromino('O', 0, 0, TETROMINO_WIDTH);
 		final MoveableShape lShape = new DrawTetromino('L', 0, 0, TETROMINO_WIDTH);
-		final MoveableShape tShape = new DrawTetromino('T', 0, 0, TETROMINO_WIDTH);
-		final MoveableShape jShape = new DrawTetromino('J', 0, 0, TETROMINO_WIDTH);
-		final MoveableShape sShape = new DrawTetromino('S', 0, 0, TETROMINO_WIDTH);
+		final MoveableShape tShape = new DrawTetromino('T', 0, 9, TETROMINO_WIDTH);
+		final MoveableShape jShape = new DrawTetromino('J', 0, 9, TETROMINO_WIDTH);
+		final MoveableShape sShape = new DrawTetromino('S', 0, 9, TETROMINO_WIDTH);
 
 		ShapeIcon iconZ = new ShapeIcon(zShape, ICON_WIDTH, ICON_HEIGHT);
 		ShapeIcon iconI = new ShapeIcon(iShape, ICON_WIDTH, ICON_HEIGHT);
@@ -46,49 +59,71 @@ public class TetrominoAnimation {
 		final JLabel labelT = new JLabel(iconT);
 		final JLabel labelJ = new JLabel(iconJ);
 		final JLabel labelS = new JLabel(iconS);
-		
-		frame.setLayout(new FlowLayout());
-		frame.add(labelZ);
-		frame.add(labelI);
-		frame.add(labelO);
-		frame.add(labelL);
-		frame.add(labelT);
-		frame.add(labelJ);
-		frame.add(labelS);
-		
+
+		JButton welcomeButton = new JButton("Start The Tetris Game");
+		welcomeButton.setSize(100, 100);
+		welcomeButton.setBackground(Color.red);
+		welcomeButton.setVisible(true);
+
+		Panel northPanel = new Panel();
+		northPanel.setSize(600, 300);
+		northPanel.setLayout(new FlowLayout());
+		northPanel.add(labelZ);
+		northPanel.add(labelI);
+		northPanel.add(labelO);
+		northPanel.add(labelL);
+
+		Panel southPanel = new Panel();
+		southPanel.setSize(600, 300);
+		southPanel.setLayout(new FlowLayout());
+		southPanel.add(labelT);
+		southPanel.add(labelJ);
+		southPanel.add(labelS);
+		southPanel.setVisible(true);
+
+		frame.add(northPanel, BorderLayout.NORTH);
+		frame.add(welcomeButton, BorderLayout.CENTER);
+		frame.add(southPanel, BorderLayout.SOUTH);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 
-		// Z shape
-		while (iconZ.getIconHeight() < 600)
-		{
-			final int delayZ = 100;
-			// Milliseconds between timer ticks
-			ActionListener listenerZ = event -> {
-				zShape.translate(0, 1);
-				labelZ.repaint();
-			};
-			Timer z = new Timer(delayZ, listenerZ);
-			z.start();
-		}
-		
-		
-		// I shape
-		final int delayI = 500;
+		final int delay1 = 2000;
 		// Milliseconds between timer ticks
-		ActionListener listenerI = event -> {
+		ActionListener listener1 = event -> {
+			zShape.translate(0, 1);
+			labelZ.repaint();
+			lShape.translate(0, 1);
+			labelL.repaint();
+			tShape.moveUp(0, 1);
+			labelT.repaint();
+			sShape.moveUp(0, 1);
+			labelS.repaint();
+
+		};
+		Timer t1 = new Timer(delay1, listener1);
+		t1.start();
+
+		final int delay2 = 5000;
+		// Milliseconds between timer ticks
+		ActionListener listener2 = event -> {
 			iShape.translate(0, 1);
 			labelI.repaint();
+			oShape.translate(0, 1);
+			labelO.repaint();
+			jShape.moveUp(0, 1);
+			labelJ.repaint();
 		};
-		Timer i = new Timer(delayI, listenerI);
-		i.start();
+		Timer t2 = new Timer(delay2, listener2);
+		t2.start();
 	}
 
 	private static final int ICON_WIDTH = 100;
-	private static final int ICON_HEIGHT = 600;
+	private static final int ICON_HEIGHT = 300;
 	private static final int TETROMINO_WIDTH = 100;
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
+
 

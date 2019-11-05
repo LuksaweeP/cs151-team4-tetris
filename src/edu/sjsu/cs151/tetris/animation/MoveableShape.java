@@ -18,4 +18,5 @@ public interface MoveableShape
       @param dy the amount to translate in y-direction
    */
    void translate(int dx, int dy);
+   void moveUp(int dx, int dy);
 }
