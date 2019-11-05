@@ -31,7 +31,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class TetrominoAnimation {
+public class WelcomeScreen {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
