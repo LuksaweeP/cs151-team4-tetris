@@ -31,6 +31,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+
 public class WelcomeScreen {
 
 	public static void main(String[] args) {
@@ -89,31 +101,53 @@ public class WelcomeScreen {
 		frame.pack();
 		frame.setVisible(true);
 
-		final int delay1 = 2000;
+		final int delay1 = 3000;
 		// Milliseconds between timer ticks
 		ActionListener listener1 = event -> {
-			zShape.translate(0, 1);
-			labelZ.repaint();
-			lShape.translate(0, 1);
-			labelL.repaint();
-			tShape.moveUp(0, 1);
-			labelT.repaint();
-			sShape.moveUp(0, 1);
-			labelS.repaint();
-
+			if (zShape.getY() >= 0) {
+				zShape.translate(0, 1);
+				labelZ.repaint();
+				lShape.translate(0, 1);
+				labelL.repaint();
+				tShape.moveUp(0, 1);
+				labelT.repaint();
+				sShape.moveUp(0, 1);
+				labelS.repaint();
+			}
+			if (zShape.getY() > 12) {
+				zShape.moveUp(0, 13);
+				labelZ.repaint();
+				lShape.moveUp(0, 13);
+				labelL.repaint();
+				tShape.translate(0, 13);
+				labelT.repaint();
+				sShape.translate(0, 13);
+				labelS.repaint();
+			}
 		};
 		Timer t1 = new Timer(delay1, listener1);
 		t1.start();
 
-		final int delay2 = 5000;
+		final int delay2 = 1000;
 		// Milliseconds between timer ticks
 		ActionListener listener2 = event -> {
-			iShape.translate(0, 1);
-			labelI.repaint();
-			oShape.translate(0, 1);
-			labelO.repaint();
-			jShape.moveUp(0, 1);
-			labelJ.repaint();
+			if (iShape.getY() >= 0) {
+				iShape.translate(0, 1);
+				labelI.repaint();
+				oShape.translate(0, 1);
+				labelO.repaint();
+				jShape.moveUp(0, 1);
+				labelJ.repaint();
+			}
+			if (iShape.getY() > 12) {
+				iShape.moveUp(0, 13);
+				labelI.repaint();
+				oShape.moveUp(0, 13);
+				labelO.repaint();
+				jShape.translate(0, 13);
+				labelJ.repaint();
+			}
+
 		};
 		Timer t2 = new Timer(delay2, listener2);
 		t2.start();
@@ -125,5 +159,6 @@ public class WelcomeScreen {
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
+
 
 
