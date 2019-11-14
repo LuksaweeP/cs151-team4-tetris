@@ -94,4 +94,5 @@ public class DrawTetromino implements MoveableShape {
 	private int width;
 	Block [] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
+	
 }
