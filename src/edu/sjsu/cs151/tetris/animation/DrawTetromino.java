@@ -54,7 +54,7 @@ public class DrawTetromino implements MoveableShape {
 		{
 			int xPosition = x + blocks[i].getXPosition();
 			int yPosition = y + blocks[i].getYPosition();
-			zBlock[i] = new Rectangle2D.Double((xPosition * width / 4), (yPosition * width / 4) , width / 4, width / 4);
+			zBlock[i] = new Rectangle2D.Double((xPosition * width), (yPosition * width) , width, width);
 			
 			if(shape == 'Z')
 				g2.setColor(Color.red);

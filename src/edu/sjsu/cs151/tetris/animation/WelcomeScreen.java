@@ -154,7 +154,7 @@ public class WelcomeScreen {
 
 	private static final int ICON_WIDTH = 100;
 	private static final int ICON_HEIGHT = 300;
-	private static final int TETROMINO_WIDTH = 100;
+	private static final int TETROMINO_WIDTH = 25;
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
