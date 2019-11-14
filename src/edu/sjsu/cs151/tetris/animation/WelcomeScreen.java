@@ -77,6 +77,11 @@ public class WelcomeScreen {
 		welcomePanel.setVisible(true);
 		
 		frame.add(welcomePanel);
+		
+		// to hide the welcome panel
+		welcomeButton.addActionListener(event -> welcomePanel.setVisible(false));
+		// to visible the main screen
+		welcomeButton.addActionListener(event -> northPanel.setVisible(false));
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
