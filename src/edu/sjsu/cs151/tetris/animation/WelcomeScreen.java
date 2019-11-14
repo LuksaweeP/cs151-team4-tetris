@@ -137,4 +137,5 @@ public class WelcomeScreen {
 	private static final int TETROMINO_WIDTH = 30;
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
+	
 }
