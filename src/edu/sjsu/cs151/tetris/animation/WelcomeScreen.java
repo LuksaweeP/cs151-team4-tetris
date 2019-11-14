@@ -2,51 +2,28 @@ package edu.sjsu.cs151.tetris.animation;
 
 import edu.sjsu.cs151.tetris.model.*;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.Timer;
-
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.Timer;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.Timer;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Panel;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 
 public class WelcomeScreen {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-
+		frame.setSize(600, 800);
+		
 		final MoveableShape zShape = new DrawTetromino('Z', 0, 0, TETROMINO_WIDTH);
 		final MoveableShape iShape = new DrawTetromino('I', 0, 0, TETROMINO_WIDTH);
 		final MoveableShape oShape = new DrawTetromino('O', 0, 0, TETROMINO_WIDTH);
@@ -70,34 +47,38 @@ public class WelcomeScreen {
 		final JLabel labelT = new JLabel(iconT);
 		final JLabel labelJ = new JLabel(iconJ);
 		final JLabel labelS = new JLabel(iconS);
-
-		JButton welcomeButton = new JButton();
+		
+		JButton welcomeButton = new JButton("Start Tetris Game");
 		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		welcomeButton.setText("Start Tetris Game");
-		welcomeButton.setVisible(true);
+		welcomeButton.setVisible(true);	
+
 
 		Panel northPanel = new Panel();
-		northPanel.setSize(600, 300);
 		northPanel.setLayout(new FlowLayout());
 		northPanel.add(labelZ);
 		northPanel.add(labelI);
 		northPanel.add(labelO);
 		northPanel.add(labelL);
+		northPanel.setVisible(true);
 
 		Panel southPanel = new Panel();
-		southPanel.setSize(600, 300);
 		southPanel.setLayout(new FlowLayout());
 		southPanel.add(labelT);
 		southPanel.add(labelJ);
 		southPanel.add(labelS);
 		southPanel.setVisible(true);
 
-		frame.add(northPanel, BorderLayout.NORTH);
-		frame.add(welcomeButton, BorderLayout.CENTER);
-		frame.add(southPanel, BorderLayout.SOUTH);
+		JPanel welcomePanel = new JPanel();
+		welcomePanel.setSize(605, 800);
+		welcomePanel.setLayout(new BorderLayout());
+		welcomePanel.add(northPanel, BorderLayout.NORTH);
+		welcomePanel.add(welcomeButton, BorderLayout.CENTER);
+		welcomePanel.add(southPanel, BorderLayout.SOUTH);
+		welcomePanel.setVisible(true);
+		
+		frame.add(welcomePanel);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
 		frame.setVisible(true);
 
 		final int delay1 = 3000;
@@ -146,15 +127,14 @@ public class WelcomeScreen {
 				jShape.translate(0, 13);
 				labelJ.repaint();
 			}
-
 		};
 		Timer t2 = new Timer(delay2, listener2);
 		t2.start();
 	}
 
-	private static final int ICON_WIDTH = 100;
-	private static final int ICON_HEIGHT = 300;
-	private static final int TETROMINO_WIDTH = 25;
+	private static final int ICON_WIDTH = 145;
+	private static final int ICON_HEIGHT = 350;
+	private static final int TETROMINO_WIDTH = 30;
 	Block[] blocks = new Block[4];
 	Tetromino tetromino = new Tetromino();
 }
