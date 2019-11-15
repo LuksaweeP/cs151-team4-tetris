@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -36,9 +37,11 @@ class QuitPanel
 				
 		JButton yes = new JButton("  YES  ");
 		setQuitButton(yes);
+		yes.addActionListener(event -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)));
 		
 		JButton no = new JButton("  NO  ");
 		setQuitButton(no);
+		no.addActionListener(event -> new MainPanel());
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
 		JPanel box2 = new JPanel(new GridLayout(1, 10));
