@@ -49,7 +49,7 @@ public class WelcomeScreen {
 		final JLabel labelS = new JLabel(iconS);
 		
 		JButton welcomeButton = new JButton("Start Tetris Game");
-		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 24));
+		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
 		welcomeButton.setBackground(Color.DARK_GRAY);
 		welcomeButton.setOpaque(true);
 		welcomeButton.setVisible(true);	
@@ -81,7 +81,7 @@ public class WelcomeScreen {
 		frame.add(welcomePanel);
 		
 		// to hide the welcome panel
-		welcomeButton.addActionListener(event -> welcomePanel.setVisible(false));
+		welcomeButton.addActionListener(event -> frame.remove(welcomePanel));
 		// to visible the main screen
 		welcomeButton.addActionListener(event -> northPanel.setVisible(false));
 
