@@ -35,6 +35,7 @@ class MainPanel
 		
 		JButton quitButton = new JButton		("         Quit         ");
 		setMainPanelButton(quitButton);
+		quitButton.addActionListener(event -> new QuitPanel());
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
 		JPanel box2 = new JPanel(new GridLayout(1, 10));
@@ -85,6 +86,4 @@ class MainPanel
 		
 		return button;
 	}
-	
-	JPanel mainPanel;
 }

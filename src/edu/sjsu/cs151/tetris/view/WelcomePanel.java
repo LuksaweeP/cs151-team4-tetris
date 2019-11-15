@@ -139,11 +139,5 @@ class WelcomePanel
 		Timer t2 = new Timer(delay2, listener2);
 		t2.start();
 	}
-	public JPanel getWelcomePanel()
-	{
-		return welcomePanel;
-	}
-	
-	JPanel welcomePanel;
 }
 
