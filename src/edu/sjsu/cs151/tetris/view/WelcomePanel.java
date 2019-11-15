@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,8 +55,9 @@ class WelcomePanel
 
 		JButton welcomeButton = new JButton("Start Tetris Game");
 		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		welcomeButton.setBackground(Color.DARK_GRAY);
+		welcomeButton.setBackground(Color.BLACK);
 		welcomeButton.setOpaque(true);
+		welcomeButton.setBorderPainted(true);
 		welcomeButton.setVisible(true);
 
 		Panel northPanel = new Panel();
@@ -144,6 +146,5 @@ class WelcomePanel
 	}
 	
 	JPanel welcomePanel;
-
-	
 }
+

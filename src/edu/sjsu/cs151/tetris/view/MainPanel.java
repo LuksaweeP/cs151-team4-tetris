@@ -3,13 +3,9 @@ package edu.sjsu.cs151.tetris.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,7 +22,7 @@ class MainPanel
 		JPanel mainPanel = new JPanel();
 		mainPanel.setSize(550, 800);
 	
-		JLabel gameLabel = new JLabel("TERIS");	
+		JLabel gameLabel = new JLabel("T E R I S");	
 		gameLabel.setFont(new Font("TimesRoman", Font.BOLD, 84));
 		gameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		gameLabel.setOpaque(true);
@@ -80,8 +76,10 @@ class MainPanel
 	public JButton setMainPanelButton(JButton button)
 	{
 		button.setFont(new Font("TimesRoman", Font.BOLD, 48));
-		button.setBackground(Color.darkGray);
 		button.setSize(400, 150);
+		button.setBackground(Color.BLACK);
+		button.setOpaque(true);
+		button.setBorderPainted(true);
 		button.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		button.setVisible(true);
@@ -89,12 +87,5 @@ class MainPanel
 		return button;
 	}
 	
-	public JPanel getMainPanel()
-	{
-		return mainPanel;
-	}
-	
 	JPanel mainPanel;
 }
-
-
