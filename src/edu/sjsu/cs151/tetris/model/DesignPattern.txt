@@ -1,1 +1,25 @@
-Design Pattern
+Tetris Project – Design Pattern
+Nicholas Burnam
+Luksawee Phansri
+Dr. Katarzyna Tarnowska
+CS-151-02
+Phase 3.1: Design Pattern
+ 
+Context/Motivation:
+While designing the Tetris game, we realized that each Tetromino that falls needed to be randomized in order to create fair and consistent gameplay. 
+The original approach of assigning a new random number generator to each Tetromino could lead to a similar sequence of random numbers, defeating the purpose of the randomness. 
+The solution to this problem is to implement the Singleton Design Pattern to make a SingleRandom Class.
+
+Implementation:
+The Singleton design pattern has several rules that must be followed in order to create a Singleton Class. First, the constructor must be private. 
+This constructor assigns a new Random() to the private class variable named generator. 
+Next, the Class must make a single instance of itself. This is done by declaring the private static SingleRandom instance and instantiating it as a new SingleRandom(). 
+The next step is to write a static method that returns a reference to the instance. 
+We called this method getInstance() and returns the SingleRandom instance. 
+
+In order to use the singleton in the Tetromino class, we need it to be able to provide a random number between 0 (inclusive) and 7 (exclusive) to choose between 7 possible shapes. 
+This is done by creating a nextInt() method similar to that in java.util.Random, and it returns an int between 0 and i by calling generator.nextInt(i).
+
+The singleton is called in the Tetromino class in the setRandomShape() method. 
+This is done by creating a SingleRandom called rand and setting it to SingleRandom.getInstance() to refer it to the only instance created within the SingleRandom class. 
+After that it can be used in a similar way to java.util.Random in that we can use the nextInt(int i) method.
