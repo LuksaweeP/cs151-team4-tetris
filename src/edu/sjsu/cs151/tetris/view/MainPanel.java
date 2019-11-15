@@ -95,8 +95,6 @@ class MainPanel
 	}
 	
 	JPanel mainPanel;
-	
-	
 }
 
 
