@@ -3,8 +3,13 @@ package edu.sjsu.cs151.tetris.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,32 +23,51 @@ class MainPanel
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);
 		
-		
 		JPanel mainPanel = new JPanel();
-		mainPanel.setSize(605, 800);
+		mainPanel.setSize(550, 800);
 	
-		JLabel gameLabel = new JLabel("TERIS");
+		JLabel gameLabel = new JLabel("TERIS");	
 		gameLabel.setFont(new Font("TimesRoman", Font.BOLD, 84));
+		gameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		gameLabel.setOpaque(true);
-		gameLabel.setVisible(true);
-		
-		
-		JButton playgameButton = new JButton("Play Game");
+		gameLabel.setVisible(true);		
+
+		JButton playgameButton = new JButton	("    Play Game   ");
 		setMainPanelButton(playgameButton);
 		
-		JButton leaderboardsButton = new JButton("Leaderboards");
+		JButton leaderboardsButton = new JButton(" Leaderboards ");
 		setMainPanelButton(leaderboardsButton);
 		
-		JButton quitButton = new JButton("Quit");
+		JButton quitButton = new JButton		("         Quit         ");
 		setMainPanelButton(quitButton);
 		
-		mainPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		JPanel box1 = new JPanel(new GridLayout(1, 10));
+		JPanel box2 = new JPanel(new GridLayout(1, 10));
+		JPanel box3 = new JPanel(new GridLayout(1, 10));
+		JPanel box4 = new JPanel(new GridLayout(1, 10));
+		JPanel box5 = new JPanel(new GridLayout(1, 10));
+		JPanel box6 = new JPanel(new GridLayout(1, 10));
+		JPanel box7 = new JPanel(new GridLayout(1, 10));
+		JPanel box8 = new JPanel(new GridLayout(1, 10));
+		JPanel box9 = new JPanel(new GridLayout(1, 10));
+        
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));		
+		mainPanel.add(box1);
+		mainPanel.add(box2);
+		mainPanel.add(box3);
 		mainPanel.add(gameLabel);
+		
+		mainPanel.add(box4);
 		mainPanel.add(playgameButton);
+		
+		mainPanel.add(box5);
 		mainPanel.add(leaderboardsButton);
+		
+		mainPanel.add(box6);
 		mainPanel.add(quitButton);
+		mainPanel.add(box7);
+		mainPanel.add(box8);
+		mainPanel.add(box9);
 		
 		mainPanel.setVisible(true);
 		
@@ -58,6 +82,8 @@ class MainPanel
 		button.setFont(new Font("TimesRoman", Font.BOLD, 48));
 		button.setBackground(Color.darkGray);
 		button.setSize(400, 150);
+		button.setAlignmentX(Component.CENTER_ALIGNMENT);
+		button.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		button.setVisible(true);
 		
 		return button;
@@ -72,4 +98,5 @@ class MainPanel
 	
 	
 }
+
 
