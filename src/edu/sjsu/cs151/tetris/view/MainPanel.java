@@ -37,6 +37,7 @@ class MainPanel extends Panel
 		
 		JButton quitButton = new JButton		("         Quit         ");
 		setButton(quitButton, 48);
+		quitButton.addActionListener(event -> frame.setVisible(false));
 		quitButton.addActionListener(event -> new QuitPanel());
 		
 		JPanel box1 = empty3Boxs();

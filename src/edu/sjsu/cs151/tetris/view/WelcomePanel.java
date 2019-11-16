@@ -86,9 +86,7 @@ class WelcomePanel
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 	
-		// To hide the welcome panel
-		//welcomeButton.addActionListener(event -> );
-		// to visible the main screen
+		welcomeButton.addActionListener(event -> frame.setVisible(false));
 		welcomeButton.addActionListener(event -> new MainPanel());
 		
 		final int delay1 = 3000;

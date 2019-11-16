@@ -2,6 +2,7 @@ package edu.sjsu.cs151.tetris.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -37,6 +38,7 @@ class QuitPanel extends Panel
 		
 		JButton no = new JButton("  NO  ");
 		setButton(no, 48);
+		no.addActionListener(event -> frame.setVisible(false));
 		no.addActionListener(event -> new MainPanel());
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
