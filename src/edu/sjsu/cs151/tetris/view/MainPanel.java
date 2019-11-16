@@ -31,6 +31,8 @@ class MainPanel extends Panel
 
 		JButton playgameButton = new JButton	("    Play Game   ");
 		setButton(playgameButton, 48);
+		playgameButton.addActionListener(event -> frame.setVisible(false));
+		playgameButton.addActionListener(event -> new PlayGamePanel());
 		
 		JButton leaderboardsButton = new JButton(" Leaderboards ");
 		setButton(leaderboardsButton, 48);
