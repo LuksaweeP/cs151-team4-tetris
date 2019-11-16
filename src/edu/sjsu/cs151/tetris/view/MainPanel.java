@@ -34,6 +34,8 @@ class MainPanel extends Panel
 		
 		JButton leaderboardsButton = new JButton(" Leaderboards ");
 		setButton(leaderboardsButton, 48);
+		leaderboardsButton.addActionListener(event -> frame.setVisible(false));
+		leaderboardsButton.addActionListener(event -> new LeaderboardPanel());
 		
 		JButton quitButton = new JButton		("         Quit         ");
 		setButton(quitButton, 48);

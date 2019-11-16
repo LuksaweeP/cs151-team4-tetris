@@ -7,5 +7,3 @@ public class ViewMainClass
 		new WelcomePanel();
 	}
 }
-
-
