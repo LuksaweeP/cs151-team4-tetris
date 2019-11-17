@@ -117,11 +117,11 @@ class LeaderboardPanel extends Panel {
 		JLabel box2 = new JLabel("                           ");
 		box2.setFont(new Font("TimesRoman", Font.BOLD, 36));
 		
-		JPanel box3 = empty3Boxs();
+		JPanel box3 = empty2Boxs();
 		box3.setSize(50, 100);
 		box3.setVisible(true);
 		
-		JPanel box4 = empty3Boxs();
+		JPanel box4 = empty2Boxs();
 		box4.setSize(50, 100);
 		box4.setVisible(true);
 		
