@@ -14,9 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ControlsPanel extends Panel
+public class PausePanel extends Panel
 {
-	public ControlsPanel()
+	public PausePanel()
 	{
 			JFrame frame = new JFrame();
 			frame.setSize(600, 800);
