@@ -42,8 +42,14 @@ public class Panel
 		containner.setLayout(new BoxLayout(containner, BoxLayout.Y_AXIS));
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
+		box1.setBackground(new Color(204,229,255));
+		box1.setOpaque(true);
 		JPanel box2 = new JPanel(new GridLayout(1, 10));
+		box2.setBackground(new Color(204,229,255));
+		box2.setOpaque(true);
 		JPanel box3 = new JPanel(new GridLayout(1, 10));
+		box3.setBackground(new Color(204,229,255));
+		box3.setOpaque(true);
 		
 		containner.add(box1);
 		containner.add(box2);
