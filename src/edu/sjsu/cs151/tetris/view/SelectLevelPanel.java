@@ -87,7 +87,7 @@ public class SelectLevelPanel extends PlayerPanel
 			
 			else
 			{
-				Icon lock = new ImageIcon("/Users/Luksawee/Desktop/locked.png");
+				Icon lock = new ImageIcon("src/edu/sjsu/cs151/tetris/view/locked.png");
 				levelButton[i] = new JButton(lock);
 				levelButton[i].setBackground(Color.BLACK);
 				levelButton[i].setOpaque(true);
