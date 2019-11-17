@@ -124,7 +124,7 @@ public class Panel
 	public JPanel iconT()
 	{
 		MoveableShape tShape = new DrawTetromino('T', 0, 0, 30);
-		ShapeIcon iconT = new ShapeIcon(tShape, 35, 95);
+		ShapeIcon iconT = new ShapeIcon(tShape, 95, 95);
 		JLabel labelT = new JLabel(iconT);
 		
 		JPanel panelT = new JPanel();
