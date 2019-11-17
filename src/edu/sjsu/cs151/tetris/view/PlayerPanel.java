@@ -9,6 +9,8 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -18,9 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-class PlayPanel extends Panel
+class PlayerPanel extends Panel
 {
-	public PlayPanel()
+	public PlayerPanel()
 	{
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);
@@ -86,8 +88,6 @@ class PlayPanel extends Panel
 		int number = playerList.getNumberPlayers(); // number of players
 		String[] players = new String[number];
 		JButton [] existPlayer = new JButton[number];
-		JPanel existPlayers = new JPanel();
-		existPlayers.setLayout(new BoxLayout(existPlayers, BoxLayout.Y_AXIS));
 		
 		Container contentPane = new Container();
 		GridBagLayout gridbag = new GridBagLayout();
@@ -108,6 +108,7 @@ class PlayPanel extends Panel
 		for (int i = 0; i < number; i++) {
 			player = list.get(i);
 			players[i] = player.getName();
+			String name = player.getName();
 			existPlayer[i] = new JButton(players[i]);
 			existPlayer[i].setFont(new Font("TimesRoman", Font.PLAIN, 30));
 			existPlayer[i].setBackground(Color.BLACK);
@@ -116,19 +117,32 @@ class PlayPanel extends Panel
 			c.ipady = 5;
 			c.weightx = 0.5;
 			c.gridx = 2;
-			c.gridy = i+2;
+			c.gridy = i + 2;
 			c.gridwidth = 1;
-			
-			existPlayer[i].addActionListener(event -> frame.setVisible(false));
-			
-			existPlayer[i].addActionListener(event -> new MainPanel());
-			
+
+			existPlayer[i].addMouseListener(new MouseAdapter()
+			{
+				public void mousePressed(MouseEvent e)
+				{
+					Object o = e.getSource();
+					JButton pressedButton = (JButton) o;
+					String text = pressedButton.getText();
+					
+					System.out.println(text);
+					loadPlayer = playerList.loadPlayer(text);
+					
+					System.out.println(loadPlayer.getName());
+					System.out.println(loadPlayer.getPlayerHighScore());
+					
+					frame.setVisible(false);
+					new SelectLevelPanel();
+				}	
+			});
 			
 			gridbag.setConstraints(existPlayer[i], c);
 			contentPane.add(existPlayer[i]);
+			
 		}
-		contentPane.setVisible(true);
-		
 		
 		frame.setLayout(new BorderLayout());
 		frame.add(northPanel, BorderLayout.NORTH);
@@ -137,5 +151,12 @@ class PlayPanel extends Panel
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	public Player getLoadPlayer()
+	{
+		return loadPlayer;
+	}
+	
+	static Player loadPlayer;
 }
 
