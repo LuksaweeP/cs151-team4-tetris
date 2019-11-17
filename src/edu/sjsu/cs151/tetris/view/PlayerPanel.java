@@ -18,9 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-class PlayGamePanel extends Panel
+class PlayPanel extends Panel
 {
-	public PlayGamePanel()
+	public PlayPanel()
 	{
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);
@@ -120,7 +120,9 @@ class PlayGamePanel extends Panel
 			c.gridwidth = 1;
 			
 			existPlayer[i].addActionListener(event -> frame.setVisible(false));
+			
 			existPlayer[i].addActionListener(event -> new MainPanel());
+			
 			
 			gridbag.setConstraints(existPlayer[i], c);
 			contentPane.add(existPlayer[i]);
