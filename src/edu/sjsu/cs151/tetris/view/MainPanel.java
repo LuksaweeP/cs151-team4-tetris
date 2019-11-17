@@ -1,6 +1,7 @@
 package edu.sjsu.cs151.tetris.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -15,24 +16,36 @@ class MainPanel extends Panel
 	public MainPanel()
 	{
 		JFrame frame = new JFrame();
+		frame.setBackground(new Color(204,229,255));
 		frame.setSize(600, 800);
 		
 		JPanel mainPanel = new JPanel();
+		mainPanel.setBackground(new Color(204,229,255));
+		mainPanel.setOpaque(true);
 		mainPanel.setSize(550, 800);
 		
 		JPanel iconZ = iconZ();
+		iconZ.setBackground(new Color(204,229,255));
+		iconZ.setOpaque(true);
+		
 		JPanel iconL = iconL();
+		iconL.setBackground(new Color(204,229,255));
+		iconL.setOpaque(true);
+		
 		JPanel iconO = iconO();
+		iconO.setBackground(new Color(204,229,255));
+		iconO.setOpaque(true);
 		
 		JLabel gameLabel = new JLabel("T E R I S");	
 		gameLabel.setFont(new Font("TimesRoman", Font.BOLD, 84));
 		setLabelCenter(gameLabel);
-			
-
+		gameLabel.setBackground(new Color(204,229,255));
+		gameLabel.setOpaque(true);
+		
 		JButton playgameButton = new JButton	("    Play Game   ");
 		setButton(playgameButton, 48);
 		playgameButton.addActionListener(event -> frame.setVisible(false));
-		playgameButton.addActionListener(event -> new PlayPanel());
+		playgameButton.addActionListener(event -> new PlayerPanel());
 		
 		JButton leaderboardsButton = new JButton(" Leaderboards ");
 		setButton(leaderboardsButton, 48);
@@ -45,10 +58,24 @@ class MainPanel extends Panel
 		quitButton.addActionListener(event -> new QuitPanel());
 		
 		JPanel box1 = empty3Boxs();
+		box1.setBackground(new Color(204,229,255));
+		box1.setOpaque(true);
+		
 		JPanel box2 = new JPanel(new GridLayout(1, 10));
+		box2.setBackground(new Color(204,229,255));
+		box2.setOpaque(true);
+		
 		JPanel box3 = new JPanel(new GridLayout(1, 10));
+		box3.setBackground(new Color(204,229,255));
+		box3.setOpaque(true);
+		
 		JPanel box4 = new JPanel(new GridLayout(1, 10));
+		box4.setBackground(new Color(204,229,255));
+		box4.setOpaque(true);
+		
 		JPanel box5 = empty3Boxs();
+		box5.setBackground(new Color(204,229,255));
+		box5.setOpaque(true);
         
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		
