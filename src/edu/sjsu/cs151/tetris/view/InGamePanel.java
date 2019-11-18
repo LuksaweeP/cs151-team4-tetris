@@ -85,7 +85,6 @@ class InGamePanel extends Panel {
 		frame.add(gameInfo, BorderLayout.WEST);
 		frame.setVisible(true);
 		
-		
 		frame.addKeyListener(new KeyAdapter() {
 
 			@Override
