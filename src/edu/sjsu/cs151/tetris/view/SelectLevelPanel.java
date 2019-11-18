@@ -29,7 +29,7 @@ public class SelectLevelPanel extends PlayerPanel
 		
 		
 		JPanel selectLevelPanel = new JPanel();
-		selectLevelPanel.setPreferredSize(new Dimension(800, 400));
+		selectLevelPanel.setPreferredSize(new Dimension(605, 800));
 		selectLevelPanel.setBackground(new Color(255,229,204));
 		selectLevelPanel.setOpaque(true);
 		
