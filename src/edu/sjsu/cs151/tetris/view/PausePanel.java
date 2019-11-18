@@ -44,11 +44,10 @@ public class PausePanel extends Panel
 
 			JButton leaderboardsButton = new JButton	(" Leaderboards ");
 			setButton(leaderboardsButton, 48);
-			leaderboardsButton.addActionListener(event -> new LeaderboardPanel());
+			leaderboardsButton.addActionListener(event -> new LeaderboardInPausePanel());
 			
 			JButton controlsButton = new JButton(" Controls ");
 			setButton(controlsButton, 48);
-			controlsButton.addActionListener(event -> frame.setVisible(false));
 			controlsButton.addActionListener(event -> new ControlsPanel());
 			
 			JButton returnToMainManuButton = new JButton		("  Return to Main Manu  ");
