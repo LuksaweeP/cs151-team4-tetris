@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PausePanel extends Panel
+public class PausePanel extends InGamePanel
 {
 	public PausePanel()
 	{
@@ -53,6 +53,7 @@ public class PausePanel extends Panel
 			JButton returnToMainManuButton = new JButton		("  Return to Main Manu  ");
 			setButton(returnToMainManuButton, 40);
 			returnToMainManuButton.addActionListener(event -> frame.setVisible(false));
+			returnToMainManuButton.addActionListener(event -> getInGameFrame().setVisible(false));
 			returnToMainManuButton.addActionListener(event -> new MainPanel());
 			
 			JPanel box1 = empty2Boxs();					

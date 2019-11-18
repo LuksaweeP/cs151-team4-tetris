@@ -21,7 +21,9 @@ import javax.swing.JPanel;
 
 class InGamePanel extends PlayerPanel {
 	public InGamePanel() {
-		JFrame frame = new JFrame();
+		getPlayerFrame().setVisible(false);
+		
+		frame = new JFrame();
 		frame.setSize(600, 800);
 
 		JLabel level = new JLabel(" Level : ______");
@@ -98,6 +100,7 @@ class InGamePanel extends PlayerPanel {
 					int pauseDalay = 0;
 					//Timer tPause = new Timer(pauseDalay, "");
 					//tPause.start();
+					frame.setVisible(false);
 					new PausePanel();
 					break;
 				}
@@ -106,8 +109,20 @@ class InGamePanel extends PlayerPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	public void setInGameInvisible(JFrame frame)
+	{
+		this.frame.setVisible(false);
+	}
+	
+	public JFrame getInGameFrame()
+	{
+		return frame;
+	}
+	
 	Tetromino cur = new Tetromino();
 	Block [] blockCur = new Block[4];
 	Tetromino next = new Tetromino();
 	Block [] blockNext = new Block[4];
+	
+	static JFrame frame;
 }

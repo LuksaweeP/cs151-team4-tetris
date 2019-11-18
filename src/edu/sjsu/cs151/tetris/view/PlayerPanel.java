@@ -24,7 +24,7 @@ class PlayerPanel extends Panel
 {
 	public PlayerPanel()
 	{
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setSize(600, 800);
 		
 		JPanel playGamePanel = new JPanel();
@@ -64,7 +64,10 @@ class PlayerPanel extends Panel
 		JButton createButton = new JButton("   Create   ");
 		setButton(createButton, 36);
 		createButton.setVisible(true);
+		
+		createButton.addActionListener(event -> frame.setVisible(false));
 		createButton.addActionListener(event -> new InGamePanel());
+		createButton.addActionListener(event -> setPlayerInvisible(frame));
 		
 		JPanel northPanel = new JPanel();
 		northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
@@ -135,6 +138,7 @@ class PlayerPanel extends Panel
 					System.out.println(loadPlayer.getName());
 					System.out.println(loadPlayer.getPlayerHighScore());
 					
+					setPlayerInvisible(frame);
 					frame.setVisible(false);
 					new SelectLevelPanel();
 				}	
@@ -158,6 +162,18 @@ class PlayerPanel extends Panel
 		return loadPlayer;
 	}
 	
+	public void setPlayerInvisible(JFrame frame)
+	{
+		this.frame.setVisible(false);
+	}
+	
+	public JFrame getPlayerFrame()
+	{
+		return frame;
+	}
+	
 	static Player loadPlayer;
+	static JFrame frame;
+	
 }
 

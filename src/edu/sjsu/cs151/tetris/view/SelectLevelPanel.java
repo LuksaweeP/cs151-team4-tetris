@@ -24,6 +24,7 @@ public class SelectLevelPanel extends PlayerPanel
 {
 	public SelectLevelPanel()
 	{
+		getPlayerFrame().setVisible(false);
 		JFrame frame = new JFrame();
 		frame.setSize(605, 800);
 		
