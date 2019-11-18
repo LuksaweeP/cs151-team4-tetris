@@ -33,9 +33,8 @@ public class PausePanel extends Panel
 			
 			JButton back = new JButton("   <-  Back   ");
 			setButton(back, 36);
-			//back.addActionListener(event -> frame.setVisible(false));
-			//back.addActionListener(event -> new controlsPanel());
-
+			back.addActionListener(event -> frame.setVisible(false));
+			
 			JLabel back1 = new JLabel("                   ");  // create empty box
 			back1.setFont(new Font("TimesRoman", Font.BOLD, 100));
 			back1.setVisible(true);
