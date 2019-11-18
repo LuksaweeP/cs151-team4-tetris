@@ -19,7 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class InGamePanel extends Panel {
+class InGamePanel extends PlayerPanel {
 	public InGamePanel() {
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);
@@ -62,7 +62,6 @@ class InGamePanel extends Panel {
 		pausePanel.setBackground(new Color(176, 196, 222));
 		pausePanel.setOpaque(true);
 		pausePanel.add(pause);
-		
 		
 		gameInfo.setLayout(new BoxLayout(gameInfo, BoxLayout.Y_AXIS));
 		gameInfo.add(playerPanel);
