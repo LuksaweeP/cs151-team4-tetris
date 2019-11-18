@@ -81,7 +81,7 @@ public class SelectLevelPanel extends PlayerPanel
 				c.ipady = 25;
 				c.gridy = 10;
 				levelButton[i].addActionListener(event -> frame.setVisible(false));
-				levelButton[i].addActionListener(event -> new MainPanel());
+				levelButton[i].addActionListener(event -> new InGamePanel());
 				
 			}
 			

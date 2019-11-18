@@ -64,6 +64,7 @@ class PlayerPanel extends Panel
 		JButton createButton = new JButton("   Create   ");
 		setButton(createButton, 36);
 		createButton.setVisible(true);
+		createButton.addActionListener(event -> new InGamePanel());
 		
 		JPanel northPanel = new JPanel();
 		northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
