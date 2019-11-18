@@ -35,7 +35,6 @@ public class ControlsPanel extends Panel
 	back.setVisible(true);
 	
 	back.addActionListener(event -> frame.setVisible(false));
-	back.addActionListener(event -> new MainPanel());
 
 	JLabel back1 = new JLabel("                   ");  // create empty box
 	back1.setFont(new Font("TimesRoman", Font.BOLD, 100));
