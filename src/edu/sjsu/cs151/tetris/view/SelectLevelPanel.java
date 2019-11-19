@@ -37,13 +37,8 @@ public class SelectLevelPanel extends PlayerPanel
 		Leaderboard playerList = new Leaderboard();
 		playerList.readPlayers();
 		ArrayList<Player> list = playerList.getPlayer();
-		
-		
+			
 		Player player = getLoadPlayer();
-		
-		
-		System.out.println(player.getName());
-		System.out.println(player.getPlayerHighScore());
 		
 		JLabel selectLevel = new JLabel("Select a Level");
 		selectLevel.setFont(new Font("TimesRoman", Font.BOLD, 72));

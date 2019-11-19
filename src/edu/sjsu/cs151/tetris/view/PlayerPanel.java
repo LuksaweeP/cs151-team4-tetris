@@ -132,11 +132,7 @@ class PlayerPanel extends Panel
 					JButton pressedButton = (JButton) o;
 					String text = pressedButton.getText();
 					
-					System.out.println(text);
 					loadPlayer = playerList.loadPlayer(text);
-					
-					System.out.println(loadPlayer.getName());
-					System.out.println(loadPlayer.getPlayerHighScore());
 					
 					setPlayerInvisible(frame);
 					frame.setVisible(false);
