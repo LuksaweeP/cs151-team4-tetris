@@ -1,6 +1,9 @@
 package edu.sjsu.cs151.tetris.controller;
 
 import java.awt.event.WindowEvent;
+import java.util.concurrent.BlockingQueue;
+
+import com.sun.xml.internal.ws.api.message.Message;
 
 public class View 
 {
@@ -9,7 +12,7 @@ public class View
 		welcomePanel = new WelcomePanel();
 	}
 	
-	public void init()
+	public void init(queue)
 	{
 		
 	}
@@ -28,7 +31,7 @@ public class View
 	{
 		
 	}
-	
+	static BlockingQueue<Message> queue;
 
 }
 
