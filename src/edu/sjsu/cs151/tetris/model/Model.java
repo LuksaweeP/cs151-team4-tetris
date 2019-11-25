@@ -4,26 +4,26 @@ public class Model
 {
 	public Model()
 	{
-		newPlayfield = new Playfield();
-		newLeaderboard = new Leaderboard();
-		newPlayer = new Player();
+		playfield = new Playfield();
+		leaderboard = new Leaderboard();
+		player = new Player();
 		curTetromino = new Tetromino();
 		nextTetromino = new Tetromino();;
 	}
 	
 	public Playfield getPlayfield()
 	{
-		return newPlayfield;
+		return playfield;
 	}
 	
 	public Leaderboard getLeaderboard()
 	{
-		return newLeaderboard;
+		return leaderboard;
 	}
 	
 	public Player getPlayer()
 	{
-		return newPlayer;
+		return player;
 	}
 	
 	public Tetromino getCurTetromino()
@@ -46,9 +46,9 @@ public class Model
 		return roundOver;
 	}
 	
-	private Playfield newPlayfield;
-	private Leaderboard newLeaderboard;
-	private Player newPlayer;
+	private Playfield playfield;
+	private Leaderboard leaderboard;
+	private Player player;
 	private Tetromino curTetromino;
 	private Tetromino nextTetromino;
 	boolean roundStarted = false;
