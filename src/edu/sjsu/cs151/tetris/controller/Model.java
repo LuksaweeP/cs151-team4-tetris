@@ -1,4 +1,6 @@
-package edu.sjsu.cs151.tetris.model;
+package edu.sjsu.cs151.tetris.controller;
+
+import edu.sjsu.cs151.tetris.model.*;
 
 public class Model 
 {
@@ -36,6 +38,11 @@ public class Model
 		return nextTetromino;
 	}
 	
+	public boolean checkIfWon()
+	{
+		return wonGame;
+	}
+	
 	public boolean isStarted()
 	{
 		return roundStarted;
@@ -53,5 +60,7 @@ public class Model
 	private Tetromino nextTetromino;
 	boolean roundStarted = false;
 	boolean roundOver = false;
+	boolean wonGame = false;
 }
+
 
