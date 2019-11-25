@@ -71,7 +71,7 @@ public class SelectLevelPanel extends PlayerPanel
 			{
 				levelButton[i] = new JButton("Level   " + i);
 				levelButton[i].setFont(new Font("TimesRoman", Font.BOLD, 36));
-				levelButton[i].setBackground(Color.BLACK);
+				levelButton[i].setBackground(Color.WHITE);
 				levelButton[i].setOpaque(true);
 				levelButton[i].setBorderPainted(true);
 				c.ipady = 25;

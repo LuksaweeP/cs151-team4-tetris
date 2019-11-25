@@ -1,6 +1,7 @@
 package edu.sjsu.cs151.tetris.view;
 
 import edu.sjsu.cs151.tetris.animation.*;
+import javafx.scene.layout.Border;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -62,6 +63,7 @@ class WelcomePanel
 		welcomeButton.setVisible(true);
 
 		Panel northPanel = new Panel();
+		northPanel.setBackground(Color.LIGHT_GRAY);
 		northPanel.setLayout(new FlowLayout());
 		northPanel.add(labelZ);
 		northPanel.add(labelI);
@@ -70,6 +72,7 @@ class WelcomePanel
 		northPanel.setVisible(true);
 
 		Panel southPanel = new Panel();
+		southPanel.setBackground(Color.LIGHT_GRAY);
 		southPanel.setLayout(new FlowLayout());
 		southPanel.add(labelT);
 		southPanel.add(labelJ);
