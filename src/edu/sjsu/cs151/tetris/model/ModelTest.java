@@ -18,7 +18,6 @@ public class ModelTest {
 	 */
 	public static void main(String[] args) 
 	{
-		Model model = new Model();
 		Leaderboard playerList = new Leaderboard();
 		playerList.readPlayers();
 		Playfield playField = new Playfield();
