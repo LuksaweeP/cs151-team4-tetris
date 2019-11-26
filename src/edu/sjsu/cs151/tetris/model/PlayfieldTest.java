@@ -5,8 +5,8 @@ public class PlayfieldTest {
 		char[] array = { 'I', 'O', 'T', 'S', 'Z', 'L', 'J' };
 		int number = array.length;
 
-		Model model = new Model();
-		int[][] screen = model.getGrid();
+		Playfield playfield = new Playfield();
+		int[][] screen = playfield.getGrid();
 
 		Tetromino curr = new Tetromino('J');
 
