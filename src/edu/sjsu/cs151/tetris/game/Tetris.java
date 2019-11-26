@@ -30,7 +30,7 @@ public class Tetris
 		model = new Model();
 		
 		Controller game = new Controller(view, model, queue);
-		game.mainLoop();
+		//game.mainLoop();
 		view.dispose();
 		queue.clear();
 	}
