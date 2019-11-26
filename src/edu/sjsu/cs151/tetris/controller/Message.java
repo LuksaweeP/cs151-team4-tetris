@@ -1,9 +1,5 @@
 package edu.sjsu.cs151.tetris.controller;
 
-
-
-
-
 	/**
 	 * Class created to allow communication between View and Controller.
 	 */
