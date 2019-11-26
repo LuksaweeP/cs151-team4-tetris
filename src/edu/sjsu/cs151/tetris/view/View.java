@@ -5,6 +5,8 @@ import java.util.concurrent.BlockingQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import edu.sjsu.cs151.tetris.controller.Message;
+
 public class View implements Runnable
 {
 	public View()

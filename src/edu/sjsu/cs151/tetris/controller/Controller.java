@@ -7,7 +7,7 @@ import edu.sjsu.cs151.tetris.model.Model;
 import edu.sjsu.cs151.tetris.view.View;
 
 
-public class Controller 
+public class Controller implements Runnable
 {
 	public Controller(View view, Model model, BlockingQueue<Message> queue)
 	{
@@ -28,8 +28,13 @@ public class Controller
 		
 	}
 	
-	private static View view;
-	private static Model model;
+	public void run()
+	{
+		
+	}
+	
+	private View view;
+	private  Model model;
 	static BlockingQueue<Message> queue;
 	
 }
