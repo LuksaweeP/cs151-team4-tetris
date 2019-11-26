@@ -4,6 +4,6 @@ public class ViewMainClass
 {
 	public static void main(String[] args)
 	{
-		new WelcomePanel();
+		new View();
 	}
 }

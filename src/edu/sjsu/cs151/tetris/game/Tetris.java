@@ -23,7 +23,7 @@ public class Tetris
 	 */
 	public static void main(String[] args) 
 	{
-		view = View.init(queue);
+		view = view.init();
 		model = new Model();
 		
 		Controller game = new Controller(view, model, queue);
