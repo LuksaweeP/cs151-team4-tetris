@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.sun.xml.internal.ws.api.message.Message;
 
 import edu.sjsu.cs151.tetris.controller.Controller;
-import edu.sjsu.cs151.tetris.model.Model;
+import edu.sjsu.cs151.tetris.model.Playfield;
 import edu.sjsu.cs151.tetris.view.View;
 
 
@@ -16,9 +16,9 @@ A class that houses the main method for the Tetris program.
 public class Tetris 
 {
 	
-	private static BlockingQueue<Message> queue = new LinkedBlockingQueue<Message>();
+	//private static BlockingQueue<Message> queue = new LinkedBlockingQueue<Message>();
 	private static View view;
-	private static Model model;
+	private static Playfield playfield;
 	
 	/**
 	The Main Method for Tetris.
@@ -27,9 +27,9 @@ public class Tetris
 	public static void main(String[] args) 
 	{
 		//view = View.init(queue);
-		model = new Model();
+		playfield = new Playfield();
 		
-		Controller game = new Controller(view, model, queue);
+		Controller game = new Controller(view, playfield, queue);
 		//game.mainLoop();
 		view.dispose();
 		queue.clear();

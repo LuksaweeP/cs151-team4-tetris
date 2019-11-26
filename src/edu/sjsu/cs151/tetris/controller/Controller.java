@@ -6,16 +6,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import com.sun.xml.internal.ws.api.message.Message;
 
-import edu.sjsu.cs151.tetris.model.Model;
+import edu.sjsu.cs151.tetris.model.Playfield;
 import edu.sjsu.cs151.tetris.view.View;
 
 
 public class Controller implements Runnable
 {
-	public Controller(View view, Model model, LinkedBlockingQueue<Message> queue)
+	public Controller(View view, Playfield playfield, LinkedBlockingQueue<Message> queue)
 	{
 		this.view = view;
-		this.model = model;
+		this.playfield = playfield;
 		this.queue = queue;
 	}
 	
@@ -38,7 +38,7 @@ public class Controller implements Runnable
 	}
 	
 	private View view;
-	private Model model;
+	private Playfield playfield;
 	static LinkedBlockingQueue<Message> queue;
 	
 }
