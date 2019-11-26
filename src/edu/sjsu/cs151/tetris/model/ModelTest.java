@@ -20,7 +20,7 @@ public class ModelTest {
 	{
 		Leaderboard playerList = new Leaderboard();
 		playerList.readPlayers();
-		Model playField = new Model();
+		Playfield playField = new Playfield();
 		ArrayList <Player> list = playerList.getPlayer();
 		int number = playerList.getNumberPlayers();
 		int level = 1;

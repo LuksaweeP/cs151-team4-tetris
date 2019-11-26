@@ -5,12 +5,12 @@ package edu.sjsu.cs151.tetris.model;
  * can spawn in Tetrominos, and award points to the player when necessary. The
  * default playfield is (Height x Width) = 20 x 10
  */
-public class Model {
+public class Playfield {
 	/**
 	 * The Playfield Constructor. The default playfield size = 20 x 10
 	 */
 	
-	public Model() 
+	public Playfield() 
 	{
 		start();
 	}
