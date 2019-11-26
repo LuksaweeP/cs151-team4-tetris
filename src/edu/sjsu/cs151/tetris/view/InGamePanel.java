@@ -38,16 +38,27 @@ class InGamePanel extends PlayerPanel {
 		score.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		score.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel pause = new JLabel("esc - PAUSE");
-		pause.setFont(new Font("TimesRoman", Font.BOLD, 24));
+		JLabel pause = new JLabel		("esc        PAUSE      ");
+		pause.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		
+		JLabel moveLeft = new JLabel	(" <-          Move Left  ");
+		moveLeft.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		
+		JLabel moveRight = new JLabel	("   ->          Move Right  ");
+		moveRight.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		
+		JLabel rotate = new JLabel		("z          Rotate      ");
+		rotate.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		
+		JLabel dropFaster = new JLabel	(" Space   Drop faster");
+		dropFaster.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
 		JPanel gameInfo = new JPanel();
 		gameInfo.setPreferredSize(new Dimension(200, 800));
 		gameInfo.setBackground(new Color(176, 196, 222));
-		
-		
+				
 		JPanel playerPanel = new JPanel();
-		playerPanel.setPreferredSize(new Dimension(200, 500));
+		playerPanel.setPreferredSize(new Dimension(200, 400));
 		playerPanel.setBackground(new Color(176, 196, 222));
 		playerPanel.setOpaque(true);
 		playerPanel.add(level);
@@ -59,16 +70,22 @@ class InGamePanel extends PlayerPanel {
 		nextTetrominoPanel.setBackground(new Color(176, 196, 222));
 		nextTetrominoPanel.setOpaque(true);
 		
-		JPanel pausePanel = new JPanel();
-		pausePanel.setPreferredSize(new Dimension(200, 100));
-		pausePanel.setBackground(new Color(176, 196, 222));
-		pausePanel.setOpaque(true);
-		pausePanel.add(pause);
+		JPanel controlPanel = new JPanel();
+		controlPanel.setPreferredSize(new Dimension(200, 200));
+		controlPanel.setBackground(new Color(176, 196, 222));
+		controlPanel.setOpaque(true);
+		//controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+		controlPanel.add(pause);
+		controlPanel.add(moveLeft);
+		controlPanel.add(moveRight);
+		controlPanel.add(rotate);
+		controlPanel.add(dropFaster);
+		
 		
 		gameInfo.setLayout(new BoxLayout(gameInfo, BoxLayout.Y_AXIS));
 		gameInfo.add(playerPanel);
 		gameInfo.add(nextTetrominoPanel);
-		gameInfo.add(pausePanel);
+		gameInfo.add(controlPanel);
 
 		JPanel center = new JPanel();
 		center.setPreferredSize(new Dimension(400, 800));
