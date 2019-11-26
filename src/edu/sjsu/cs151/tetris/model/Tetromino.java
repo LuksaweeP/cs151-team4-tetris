@@ -4,7 +4,7 @@ package edu.sjsu.cs151.tetris.model;
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
  */
-public class Tetromino {
+public class Tetromino curTetromino; {
 	/**
 	 * Default Tetromino constructor.
 	 */
