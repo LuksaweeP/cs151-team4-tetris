@@ -9,6 +9,7 @@ public class Model {
 	/**
 	 * The Playfield Constructor. The default playfield size = 20 x 10
 	 */
+	
 	public Model() 
 	{
 		start();
