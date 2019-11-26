@@ -5,15 +5,38 @@ package edu.sjsu.cs151.tetris.model;
  * can spawn in Tetrominos, and award points to the player when necessary. The
  * default playfield is (Height x Width) = 20 x 10
  */
-public class Playfield {
+public class Model {
 	/**
 	 * The Playfield Constructor. The default playfield size = 20 x 10
 	 */
-	public Playfield() {
+	public Model() 
+	{
+		start();
+	}
+	
+	public void start()
+	{
 		grid = new int[gridHeight][gridWidth];
 		for (int i = 0; i < gridHeight; i++)
 			for (int j = 0; j < gridWidth; j++)
 				grid[i][j] = 0;
+		
+		score = 0;
+		
+		curTetromino = new Tetromino();
+		curTetromino.setRandomShape();
+		curTetromino.setBlocks();
+		
+		nextTetromino = nextDraw();
+	}
+	
+	public Tetromino nextDraw()
+	{
+		nextTetromino = new Tetromino();
+		nextTetromino.setRandomShape();
+		nextTetromino.setBlocks();
+		
+		return nextTetromino;
 	}
 
 	/**
@@ -45,7 +68,6 @@ public class Playfield {
 
 	/**
 	 * The method to get the level of the game
-	 * 
 	 * @param aLevel
 	 */
 	public void setLevel(int aLevel) {
@@ -72,7 +94,6 @@ public class Playfield {
 	
 	/**
 	 * A method to spawn a Tetromino onto the top-left-side of Playfield.
-	 * 
 	 * @param tetromino The Tetromino to spawn
 	 */
 	public void spawnTetromino(Tetromino tetromino) {
@@ -189,7 +210,6 @@ public class Playfield {
 
 	/**
 	 * This method returns the value of tetrominoIsFalling
-	 * 
 	 * @return the status of the current Tetromino
 	 */
 	public Boolean getFallingStatus() {
@@ -217,14 +237,19 @@ public class Playfield {
 			tetromino.moveDown();
 		}
 
-		if (reachBottom) {
-			for (int j = 3; j >= 0; j--) {
+		if (reachBottom) 
+		{
+			for (int j = 3; j >= 0; j--) 
+			{
 				int x = blocks[j].getXPosition();
 				int y = blocks[j].getYPosition();
 				System.out.println(x + " , " + y);
 				grid[y][x] = 1;
 			}
-			System.out.println("Reach bottom");
+			
+			curTetromino = nextTetromino;
+			spawnTetromino(curTetromino);
+			nextTetromino = nextDraw();
 		}
 	}
 
@@ -239,12 +264,15 @@ public class Playfield {
 	private final int gridHeight = 20;
 	private final int gridWidth = 10;
 	private int[][] grid;
-	private int score = 0;
+	private int score;
 	private int level;
 	private Boolean tetrominoIsFalling = true; // default to true
 	private Boolean reachBottom = false; // default to false
 	private Boolean gameOver = false;
 	Tetromino curTetromino;
 	Tetromino nextTetromino;
+	char curShape;
+	char nextShape;
 	Player player;
+	Leaderboard leaderboard;
 }
