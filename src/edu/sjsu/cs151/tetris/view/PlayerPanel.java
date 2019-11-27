@@ -56,12 +56,13 @@ class PlayerPanel extends Panel
 		createPlayerLabel.setFont(new Font("TimesRoman", Font.BOLD, 36));
 		createPlayerLabel.setVisible(true);
 		
-		JTextField inputBox = new JTextField(15);  
+		inputBox = new JTextField(15);  
 		inputBox.setFont(new Font("TimesRoman", Font.BOLD, 30));
 		inputBox.setBackground(Color.LIGHT_GRAY);
 		inputBox.setOpaque(true);
+		
 			
-		JButton createButton = new JButton("   Create   ");
+		createButton = new JButton("   Create   ");
 		setButton(createButton, 36);
 		createButton.setVisible(true);
 		
@@ -168,8 +169,20 @@ class PlayerPanel extends Panel
 		return frame;
 	}
 	
+	public JButton getCreateButton()
+	{
+		return createButton;
+	}
+	
+	public JTextField getInputBox()
+	{
+		return inputBox;
+	}
+	
+	
 	static Player loadPlayer;
 	static JFrame frame;
-	
+	private JTextField inputBox;
+	private JButton createButton;
 }
 
