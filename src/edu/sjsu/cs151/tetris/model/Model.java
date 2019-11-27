@@ -38,10 +38,22 @@ public class Model
 		return playfield;
 	}
 	
+	public void setStarted(boolean start)
+	{
+		this.start = start;
+	}
+	
+	public boolean isStarted()
+	{
+		return start;
+	}
 	
 	private Player player;
 	private Block block;
 	private Tetromino tetromino;
 	private Leaderboard leaderboard;
 	private Playfield playfield;
+	private boolean start = false;
+	private boolean gameOver = false;
+	private boolean gameWin = false;
 }
