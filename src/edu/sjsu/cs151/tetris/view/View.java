@@ -12,20 +12,71 @@ public class View
 		welcomePanel = new WelcomePanel();
 	}
 	
+	public JFrame getFrame()
+	{
+		return frame;
+	}
+	
+	public WelcomePanel getWelcomePanel()
+	{
+		return welcomePanel;
+	}
+	
+	public MainPanel getMainPanel()
+	{
+		return mainPanel;
+	}
+	
+	public PlayerPanel getPayerPanel()
+	{
+		return playerPanel;
+	}
+	
+	public SelectLevelPanel getSelectLevelPanel()
+	{
+		return selectLevelPanel;
+	}
+	
+	public LeaderboardPanel getLeaderboardPanel()
+	{
+		return leaderboardPanel;
+	}
+	
+	public QuitPanel getQuitPanel()
+	{
+		return quitPanel;
+	}
+	
+	public InGamePanel getInGamePanel()
+	{
+		return inGamePanel;
+	}
+	
+	public GameOverPanel getGameOverPanel()
+	{
+		return gameOverPanel;
+	}
+	
+	public ControlsPanel getControlsPanel()
+	{
+		return controlsPanel;
+	}
+	
+	public LeaderboardInPausePanel getLeaderboardInPausePanel()
+	{
+		return leaderboardInPausePanel;
+	}
+	
 	private JFrame frame;
-	private WelcomePanel welcomePanel;
-	private MainPanel mainPanel;
-	private PlayerPanel playerPanel;
-	private SelectLevelPanel selectLevelPanel;
-	private LeaderboardPanel leaderboardPanel;
-	private QuitPanel quitPanel;
-	private InGamePanel inGamePanel;
-	private GameOverPanel gameOverPanel;
-	private ControlsPanel cintrolsPanel;
-	private LeaderboardInPausePanel leaderboardInPausePanel;
-
-	
-	
-	
+	private WelcomePanel welcomePanel = new WelcomePanel();
+	private MainPanel mainPanel = new MainPanel();
+	private PlayerPanel playerPanel = new PlayerPanel();
+	private SelectLevelPanel selectLevelPanel = new SelectLevelPanel();
+	private LeaderboardPanel leaderboardPanel = new LeaderboardPanel();
+	private QuitPanel quitPanel = new QuitPanel();
+	private InGamePanel inGamePanel = new InGamePanel();
+	private GameOverPanel gameOverPanel = new GameOverPanel();
+	private ControlsPanel controlsPanel = new ControlsPanel();
+	private LeaderboardInPausePanel leaderboardInPausePanel = new LeaderboardInPausePanel();
 }
 
