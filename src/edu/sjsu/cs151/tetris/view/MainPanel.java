@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class MainPanel extends Panel
+public class MainPanel extends Panel
 {
 	public MainPanel()
 	{

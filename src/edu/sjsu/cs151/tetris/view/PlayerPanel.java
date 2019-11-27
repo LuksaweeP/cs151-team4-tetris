@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-class PlayerPanel extends Panel
+public class PlayerPanel extends Panel
 {
 	public PlayerPanel()
 	{

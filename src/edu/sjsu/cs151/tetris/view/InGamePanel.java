@@ -19,7 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class InGamePanel extends PlayerPanel {
+public class InGamePanel extends PlayerPanel {
 	public InGamePanel() {
 		getPlayerFrame().setVisible(false);
 		

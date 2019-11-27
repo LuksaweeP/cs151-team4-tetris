@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class LeaderboardInPausePanel extends Panel {
+public class LeaderboardInPausePanel extends Panel {
 	public LeaderboardInPausePanel() {
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);

@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class GameOverPanel extends Panel
+public class GameOverPanel extends Panel
 {
 	public GameOverPanel()
 	{

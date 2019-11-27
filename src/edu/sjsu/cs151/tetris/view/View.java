@@ -27,7 +27,7 @@ public class View
 		return mainPanel;
 	}
 	
-	public PlayerPanel getPayerPanel()
+	public PlayerPanel getPlayerPanel()
 	{
 		return playerPanel;
 	}

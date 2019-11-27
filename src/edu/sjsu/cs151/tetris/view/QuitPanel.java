@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class QuitPanel extends Panel
+public class QuitPanel extends Panel
 {
 	public QuitPanel()
 	{
