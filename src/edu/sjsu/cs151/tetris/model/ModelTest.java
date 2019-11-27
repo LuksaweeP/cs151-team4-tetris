@@ -50,14 +50,13 @@ public class ModelTest {
 			{
 				System.out.println("Enter a new username: ");
 				input = sc.nextLine();
-				newPlayer.setName(input);
-				while (playerList.isValidNewPlayers(newPlayer) == false)
+				while (playerList.isValidNewPlayers(input) == false)
 				{
 					System.out.println("Enter a new username: ");
 					input = sc.nextLine();
 					newPlayer.setName(input);
 				}
-				playerList.addNewPlayer(newPlayer);
+				playerList.addNewPlayer(input);
 				level = 1;
 				playField.setLevel(level);
 				

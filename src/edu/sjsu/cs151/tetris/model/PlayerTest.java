@@ -27,13 +27,13 @@ public class PlayerTest
 			
 			Player newPlayer = new Player();
 			newPlayer.setName("Fern");
-			playerList.addNewPlayer(newPlayer);
+			playerList.addNewPlayer("Fern");
 			
 			System.out.println("Number of player: " + number);
 			
 			Player newPlayer1 = new Player();
 			newPlayer1.setName("Menjiao");
-			playerList.addNewPlayer(newPlayer1);
+			playerList.addNewPlayer("Ken");
 			System.out.println("Number of player: " + number);
 			
 			

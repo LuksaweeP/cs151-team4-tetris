@@ -159,15 +159,15 @@ public class Leaderboard
 	 * @param newPlayer newPlayer the object in the player
 	 * @return true is the 
 	 */
-	public boolean isValidNewPlayers(Player newPlayer)
+	public boolean isValidNewPlayers(String newPlayer)
 	{		
 		Player tmp = new Player();
 		for (int i = 0; i < numberPlayers; i++)
 		{
 			tmp = playerList.get(i);
-			if ((newPlayer.getName()).equalsIgnoreCase(tmp.getName()))
+			if (newPlayer.equalsIgnoreCase(tmp.getName()))
 			{
-				//System.out.println("Invalid new username");
+				System.out.println("Invalid new username");
 				return false;
 			}
 			tmp = new Player();
@@ -179,21 +179,22 @@ public class Leaderboard
 	 * This method is used to add new player.
 	 * @param aName given new player
 	 */
-	public void addNewPlayer(Player newPlayer)
+	public void addNewPlayer(String newPlayer)
 	{
 		if (isValidNewPlayers(newPlayer) == true)
 		{
 			try 
 			{				
 				FileWriter writer = new FileWriter("src/edu/sjsu/cs151/tetris/model/players.txt", true); // /Users/Luksawee/Desktop/
-				writer.write(newPlayer.getName());
+				writer.write(newPlayer);
 							
-				int [] playerScore = newPlayer.getPlayerScore();
-				for(int i = 0; i < 6; i++)
+				//int [] playerScore = newPlayer.getPlayerScore();
+				for(int i = 0; i < 5; i++)
 				{
-					writer.write(", ");	
-					writer.write(Integer.toString(playerScore[i]));
+					writer.write(", -1");	
+					//writer.write(Integer.toString(playerScore[i]));
 				}
+				writer.write(", 0");
 				writer.write("\r\n");
 				writer.close();
 				//numberPlayers++;
