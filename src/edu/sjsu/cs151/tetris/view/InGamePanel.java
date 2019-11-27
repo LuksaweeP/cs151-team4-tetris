@@ -26,15 +26,15 @@ class InGamePanel extends PlayerPanel {
 		frame = new JFrame();
 		frame.setSize(600, 800);
 
-		JLabel level = new JLabel(" Level : ______");
+		JLabel level = new JLabel("Level:  " + playerLevel);
 		level.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		level.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel name = new JLabel("Player: Name");
+		JLabel name = new JLabel("Name:  " + playerName);
 		name.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		name.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel score = new JLabel(" Score : ______");
+		JLabel score = new JLabel("Score  :" +  playerScore);
 		score.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		score.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
@@ -136,10 +136,46 @@ class InGamePanel extends PlayerPanel {
 		return frame;
 	}
 	
+	public void setLevelInGamePanel(String playerLevel)
+	{
+		this.playerLevel = playerLevel;
+	}
+	
+	public String getLevelInGamePanel()
+	{
+		return playerLevel;
+	}
+	
+	public void setPlayerInGamePanel(String playerName)
+	{
+		this.playerName = playerName;
+	}
+	
+	public String getNameInGamePanel()
+	{
+		return playerName;
+	}
+	
+	public void setScoreInGamePanel(String playerScore)
+	{
+		this.playerScore = playerScore;
+	}
+	
+	public String getScoreInGamePanel()
+	{
+		return playerScore;
+	}
+	
+	
+	
 	Tetromino cur = new Tetromino();
 	Block [] blockCur = new Block[4];
 	Tetromino next = new Tetromino();
 	Block [] blockNext = new Block[4];
+	
+	private String playerLevel;
+	private String playerName;
+	private String playerScore;
 	
 	static JFrame frame;
 }
