@@ -4,6 +4,8 @@ public class ViewMainClass
 {
 	public static void main(String[] args)
 	{
-		new View();
+		//new View();
+		new PlayerPanel();
+		//new GameOverPanel();
 	}
 }
