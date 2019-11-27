@@ -46,14 +46,12 @@ public class SelectLevelPanel extends PlayerPanel
 		selectLevel.setBackground(new Color(255,229,204));
 		selectLevel.setOpaque(true);
 		
-	
-		JButton [] levelButton = new JButton[6];
+		levelButton = new JButton[6];
 		
 		Container contentPane = new Container();
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		contentPane.setLayout(gridbag);
-		
 		
 		c.fill = GridBagConstraints.CENTER; 
 		c.ipady = 5;
@@ -77,8 +75,7 @@ public class SelectLevelPanel extends PlayerPanel
 				c.ipady = 25;
 				c.gridy = 10;
 				levelButton[i].addActionListener(event -> frame.setVisible(false));
-				levelButton[i].addActionListener(event -> new InGamePanel());
-				
+				levelButton[i].addActionListener(event -> new InGamePanel());	
 			}
 			
 			else
@@ -109,5 +106,12 @@ public class SelectLevelPanel extends PlayerPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+	
+	private JButton[] getLevelButton()
+	{
+		return levelButton;
+	}
+	
+	private JButton [] levelButton;
 }
 
