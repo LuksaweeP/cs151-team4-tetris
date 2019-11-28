@@ -3,6 +3,7 @@ package edu.sjsu.cs151.tetris.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,11 +19,11 @@ public class PausePanel extends InGamePanel
 {
 	public PausePanel()
 	{
-			JFrame frame = new JFrame();
-			frame.setSize(600, 800);
-			
+			pausePanel = new JPanel();
+			pausePanel.setPreferredSize(new Dimension(600, 800));
+
 			JPanel controlsPanel = new JPanel();
-			controlsPanel.setSize(550, 800);
+			controlsPanel.setPreferredSize(new Dimension(400, 800));
 			
 			JPanel iconL = iconL();
 			JPanel iconI = iconI();
@@ -31,31 +32,25 @@ public class PausePanel extends InGamePanel
 			JPanel backPanel = new JPanel();
 			backPanel.setLayout(new BoxLayout(backPanel, BoxLayout.X_AXIS));
 			
-			JButton back = new JButton("   <-  Back   ");
+			back = new JButton("   <-  Back   ");
 			setButton(back, 36);
-			back.addActionListener(event -> frame.setVisible(false));
-			
+
 			JLabel back1 = new JLabel("                   ");  // create empty box
-			back1.setFont(new Font("TimesRoman", Font.BOLD, 100));
+			back1.setFont(new Font("TimesRoman", Font.BOLD, 50));
 			back1.setVisible(true);
 			
 			backPanel.add(back);
 			backPanel.add(back1);
 
-			JButton leaderboardsButton = new JButton	(" Leaderboards ");
+			leaderboardsButton = new JButton	(" Leaderboards ");
 			setButton(leaderboardsButton, 48);
-			leaderboardsButton.addActionListener(event -> new LeaderboardInPausePanel());
 			
-			JButton controlsButton = new JButton(" Controls ");
+			controlsButton = new JButton(" Controls ");
 			setButton(controlsButton, 48);
-			controlsButton.addActionListener(event -> new ControlsPanel());
 			
-			JButton returnToMainManuButton = new JButton		("  Return to Main Manu  ");
+			returnToMainManuButton = new JButton		("  Return to Main Manu  ");
 			setButton(returnToMainManuButton, 40);
-			returnToMainManuButton.addActionListener(event -> frame.setVisible(false));
-			returnToMainManuButton.addActionListener(event -> getInGameFrame().setVisible(false));
-			returnToMainManuButton.addActionListener(event -> new MainPanel());
-			
+				
 			JPanel box1 = empty2Boxs();					
 			JPanel box2 = new JPanel(new GridLayout(1, 10));			
 			JPanel box3 = new JPanel(new GridLayout(1, 10));			
@@ -74,14 +69,44 @@ public class PausePanel extends InGamePanel
 			
 			controlsPanel.setVisible(true);
 			
-			frame.setLayout(new BorderLayout());
-			frame.add(backPanel, BorderLayout.NORTH);
-			frame.add(controlsPanel, BorderLayout.CENTER);
-			frame.add(iconI, BorderLayout.WEST);
-			frame.add(iconL, BorderLayout.EAST);
-			frame.add(iconO, BorderLayout.SOUTH);
+			pausePanel.setLayout(new BorderLayout());
+			pausePanel.add(backPanel, BorderLayout.NORTH);
+			pausePanel.add(controlsPanel, BorderLayout.CENTER);
+			pausePanel.add(iconI, BorderLayout.WEST);
+			pausePanel.add(iconL, BorderLayout.EAST);
+			pausePanel.add(iconO, BorderLayout.SOUTH);
 			
-			frame.setVisible(true);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			pausePanel.setVisible(true);
 	}
+	
+	public JPanel getPausePanel()
+	{
+		return pausePanel;
+	}
+	
+	public JButton getBack()
+	{
+		return back;
+	}
+	
+	public JButton getLeaderboardsButton()
+	{
+		return leaderboardsButton;
+	}
+	
+	public JButton getControlsButton()
+	{
+		return controlsButton;
+	}
+	
+	public JButton getReturnToMainManuButton()
+	{
+		return returnToMainManuButton;
+	}
+	
+	private JPanel pausePanel;
+	private JButton back;
+	private JButton leaderboardsButton;
+	private JButton controlsButton;
+	private JButton returnToMainManuButton;
 }

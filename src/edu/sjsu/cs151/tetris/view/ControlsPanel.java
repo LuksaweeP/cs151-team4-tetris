@@ -18,23 +18,22 @@ public class ControlsPanel extends Panel
 {
 	public ControlsPanel()
 	{	
-	JFrame frame = new JFrame();
-	frame.setSize(605, 800);
+	controlsPanel = new JPanel();
+	controlsPanel.setPreferredSize(new Dimension(600, 800));
 	
 	JPanel backPanel = new JPanel();
 	backPanel.setBackground(new Color(204,229,255));
 	backPanel.setOpaque(true);
 	backPanel.setLayout(new BoxLayout(backPanel, BoxLayout.X_AXIS));
 	
-	JButton back = new JButton("   <-  Back   ");
+	back = new JButton("   <-  Back   ");
 	back.setFont(new Font("TimesRoman", Font.BOLD, 30));
 	back.setBackground(Color.BLACK);
 	back.setOpaque(true);
 	back.setAlignmentX(Component.CENTER_ALIGNMENT);
 	back.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 	back.setVisible(true);
-	
-	back.addActionListener(event -> frame.setVisible(false));
+
 
 	JLabel back1 = new JLabel("                   ");  // create empty box
 	back1.setFont(new Font("TimesRoman", Font.BOLD, 100));
@@ -163,12 +162,24 @@ public class ControlsPanel extends Panel
 	panel.add(leftPanel);
 	panel.add(rightPanel);
 
-	frame.setLayout(new BorderLayout());
-	frame.add(backPanel, BorderLayout.NORTH);
-	frame.add(panel, BorderLayout.CENTER);
-	frame.add(icon, BorderLayout.SOUTH);
+	controlsPanel.setLayout(new BorderLayout());
+	controlsPanel.add(backPanel, BorderLayout.NORTH);
+	controlsPanel.add(panel, BorderLayout.CENTER);
+	controlsPanel.add(icon, BorderLayout.SOUTH);
 	
-	frame.setVisible(true);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	controlsPanel.setVisible(true);	
 	}
+	
+	public JPanel getControlsPanel()
+	{
+		return controlsPanel;
+	}
+	
+	public JButton getBack()
+	{
+		return back;
+	}
+	
+	private JPanel controlsPanel;
+	private JButton back;
 }

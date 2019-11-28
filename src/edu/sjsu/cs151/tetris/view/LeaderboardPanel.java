@@ -15,16 +15,16 @@ import javax.swing.JPanel;
 
 public class LeaderboardPanel extends Panel {
 	public LeaderboardPanel() {
-		JFrame frame = new JFrame();
-		frame.setSize(600, 800);
+		leaderboardPanel = new JPanel();
+		leaderboardPanel.setSize(600, 800);
 
 		JPanel backPanel = new JPanel();
 		backPanel.setLayout(new BoxLayout(backPanel, BoxLayout.X_AXIS));
 		
-		JButton back = new JButton("   <-  Back   ");
+		back = new JButton("   <-  Back   ");
 		setButton(back, 36);
-		back.addActionListener(event -> frame.setVisible(false));
-		back.addActionListener(event -> new MainPanel());
+		//back.addActionListener(event -> frame.setVisible(false));
+		//back.addActionListener(event -> new MainPanel());
 
 		JLabel back1 = new JLabel("                   ");  // create empty box
 		back1.setFont(new Font("TimesRoman", Font.BOLD, 100));
@@ -33,10 +33,10 @@ public class LeaderboardPanel extends Panel {
 		backPanel.add(back);
 		backPanel.add(back1);
 		
-		JPanel leaderboardPanel = new JPanel();
-		leaderboardPanel.setLayout(new BoxLayout(leaderboardPanel, BoxLayout.Y_AXIS));
-		leaderboardPanel.setOpaque(true);
-		leaderboardPanel.setVisible(true);
+		JPanel bigPanel = new JPanel();
+		bigPanel.setLayout(new BoxLayout(bigPanel, BoxLayout.Y_AXIS));
+		bigPanel.setOpaque(true);
+		bigPanel.setVisible(true);
 		
 		JLabel leaderBoard = new JLabel("Leaderboard");
 		leaderBoard.setFont(new Font("TimesRoman", Font.BOLD, 48));
@@ -51,7 +51,6 @@ public class LeaderboardPanel extends Panel {
 		scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.Y_AXIS));
 			
 		Leaderboard playerList = new Leaderboard();
-		playerList.readPlayers();
 		ArrayList<Player> list = playerList.getPlayer();
 		int number = playerList.getNumberPlayers(); // number of players
 		String[] players = new String[number];
@@ -125,19 +124,18 @@ public class LeaderboardPanel extends Panel {
 		box4.setSize(50, 100);
 		box4.setVisible(true);
 		
-		leaderboardPanel.add(box3);
-		leaderboardPanel.add(leaderBoard);
-		leaderboardPanel.add(box2);
-		leaderboardPanel.add(scoreTable);
-		leaderboardPanel.add(box4);
+		bigPanel.add(box3);
+		bigPanel.add(leaderBoard);
+		bigPanel.add(box2);
+		bigPanel.add(scoreTable);
+		bigPanel.add(box4);
 		
+		leaderboardPanel.setLayout(new BorderLayout());
+		leaderboardPanel.add(backPanel, BorderLayout.NORTH);
+		leaderboardPanel.add(bigPanel, BorderLayout.CENTER);
 		
-		frame.setLayout(new BorderLayout());
-		frame.add(backPanel, BorderLayout.NORTH);
-		frame.add(leaderboardPanel, BorderLayout.CENTER);
-		
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		leaderboardPanel.setVisible(true);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -188,4 +186,17 @@ public class LeaderboardPanel extends Panel {
 		array[first] = array[seconds];
 		array[seconds] = tmp;
 	}
+	
+	public JButton getBackButton()
+	{
+		return back;
+	}
+	
+	public JPanel getLeaderboardPanel()
+	{
+		return leaderboardPanel;
+	}
+	
+	JButton back;
+	JPanel leaderboardPanel;
 }

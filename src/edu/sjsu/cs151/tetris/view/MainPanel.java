@@ -2,6 +2,7 @@ package edu.sjsu.cs151.tetris.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -15,14 +16,14 @@ public class MainPanel extends Panel
 {
 	public MainPanel()
 	{
-		JFrame frame = new JFrame();
-		frame.setBackground(new Color(204,229,255));
-		frame.setSize(600, 800);
-		
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(204,229,255));
-		mainPanel.setOpaque(true);
-		mainPanel.setSize(550, 800);
+		mainPanel.setSize(600, 800);
+		
+		JPanel bigPanel = new JPanel();
+		bigPanel.setBackground(new Color(204,229,255));
+		bigPanel.setOpaque(true);
+		bigPanel.setPreferredSize(new Dimension(550, 550));
 		
 		JPanel iconZ = iconZ();
 		iconZ.setBackground(new Color(204,229,255));
@@ -42,20 +43,14 @@ public class MainPanel extends Panel
 		gameLabel.setBackground(new Color(204,229,255));
 		gameLabel.setOpaque(true);
 		
-		JButton playgameButton = new JButton	("    Play Game   ");
+		playgameButton = new JButton	("    Play Game   ");
 		setButton(playgameButton, 48);
-		playgameButton.addActionListener(event -> frame.setVisible(false));
-		playgameButton.addActionListener(event -> new PlayerPanel());
 		
-		JButton leaderboardsButton = new JButton(" Leaderboards ");
+		leaderboardsButton = new JButton(" Leaderboards ");
 		setButton(leaderboardsButton, 48);
-		leaderboardsButton.addActionListener(event -> frame.setVisible(false));
-		leaderboardsButton.addActionListener(event -> new LeaderboardPanel());
-		
-		JButton quitButton = new JButton		("         Quit         ");
+
+		quitButton = new JButton		("         Quit         ");
 		setButton(quitButton, 48);
-		quitButton.addActionListener(event -> frame.setVisible(false));
-		quitButton.addActionListener(event -> new QuitPanel());
 		
 		JPanel box1 = empty3Boxs();
 		box1.setBackground(new Color(204,229,255));
@@ -77,33 +72,56 @@ public class MainPanel extends Panel
 		box5.setBackground(new Color(204,229,255));
 		box5.setOpaque(true);
         
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		bigPanel.setLayout(new BoxLayout(bigPanel, BoxLayout.Y_AXIS));
 		
+		bigPanel.add(box1);
+		bigPanel.add(gameLabel);
 		
-		mainPanel.add(box1);
-		mainPanel.add(gameLabel);
+		bigPanel.add(box2);
+		bigPanel.add(playgameButton);
 		
-		mainPanel.add(box2);
-		mainPanel.add(playgameButton);
+		bigPanel.add(box3);
+		bigPanel.add(leaderboardsButton);
 		
-		mainPanel.add(box3);
-		mainPanel.add(leaderboardsButton);
+		bigPanel.add(box4);
+		bigPanel.add(quitButton);
+		bigPanel.add(box5);
 		
-		mainPanel.add(box4);
-		mainPanel.add(quitButton);
-		mainPanel.add(box5);
+		bigPanel.setVisible(true);
+		
+		mainPanel.setLayout(new BorderLayout());
+		mainPanel.add(bigPanel, BorderLayout.CENTER);
+		mainPanel.add(iconZ, BorderLayout.WEST);
+		mainPanel.add(iconL, BorderLayout.EAST);
+		mainPanel.add(iconO, BorderLayout.SOUTH);
 		
 		mainPanel.setVisible(true);
-		
-		frame.setLayout(new BorderLayout());
-		frame.add(mainPanel, BorderLayout.CENTER);
-		frame.add(iconZ, BorderLayout.WEST);
-		frame.add(iconL, BorderLayout.EAST);
-		frame.add(iconO, BorderLayout.SOUTH);
-		
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	public JPanel getMainPanel()
+	{
+		return mainPanel;
+	}
+	
+	public JButton getPlaygameButtun()
+	{
+		return playgameButton;
+	}
+	
+	public JButton getLeaderboardsButton()
+	{
+		return leaderboardsButton;
+	}
+	
+	public JButton getQuitButton()
+	{
+		return quitButton;
+	}
+	
+	JPanel mainPanel;
+	JButton playgameButton;
+	JButton leaderboardsButton;
+	JButton quitButton;	
 }
 
 
