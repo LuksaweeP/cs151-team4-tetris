@@ -18,11 +18,8 @@ public class QuitPanel extends Panel
 {
 	public QuitPanel()
 	{
-		JFrame frame = new JFrame();
-		frame.setSize(605, 800);
-		
-		JPanel quitPanel = new JPanel();
-		quitPanel.setPreferredSize(new Dimension(800, 400));
+		quitPanel = new JPanel();
+		quitPanel.setPreferredSize(new Dimension(600, 800));
 		quitPanel.setBackground(new Color(176,196,222));
 		quitPanel.setOpaque(true);
 		
@@ -32,14 +29,11 @@ public class QuitPanel extends Panel
 		confirm.setFont(new Font("TimesRoman", Font.BOLD, 84));	
 		setLabelCenter(confirm);
 		
-		JButton yes = new JButton("  YES  ");
+		yes = new JButton("  YES  ");
 		setButton(yes, 48);
-		yes.addActionListener(event -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)));
 		
-		JButton no = new JButton("  NO  ");
+		no = new JButton("  NO  ");
 		setButton(no, 48);
-		no.addActionListener(event -> frame.setVisible(false));
-		no.addActionListener(event -> new MainPanel());
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
 		box1.setBackground(new Color(176,196,222));
@@ -50,7 +44,6 @@ public class QuitPanel extends Panel
 		JPanel box4 = new JPanel(new GridLayout(1, 10));
 		box4.setBackground(new Color(176,196,222));
 		
-        
 		quitPanel.setLayout(new BoxLayout(quitPanel, BoxLayout.Y_AXIS));		
 		quitPanel.add(box1);
 		quitPanel.add(confirm);
@@ -63,13 +56,27 @@ public class QuitPanel extends Panel
 		quitPanel.add(box4);
 
 		quitPanel.setVisible(true);
-		
-		frame.setLayout(new BorderLayout());		
-		frame.add(quitPanel, BorderLayout.CENTER);
-
-		
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		quitPanel.setVisible(true);
 	}
+	
+	public JPanel getQuitPane()
+	{
+		return quitPanel;
+	}
+	
+	public JButton getYes()
+	{
+		return yes;
+	}
+	
+	public JButton getNo()
+	{
+		return no;
+	}
+	
+	private JPanel quitPanel;
+	private JButton yes;
+	private JButton no;
 }
 

@@ -9,22 +9,25 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 public class WelcomePanel
 {
-	public WelcomePanel(){
+	public WelcomePanel()
+	{
 		
-		JFrame frame = new JFrame();
-		frame.setSize(600, 800);
-		JPanel welcomePanel = new JPanel();
-		welcomePanel.setSize(605, 800);
+		welcomePanel = new JPanel();
+		welcomePanel.setSize(600, 800);
 
 		int ICON_WIDTH = 145;
 		int ICON_HEIGHT = 350;
@@ -54,7 +57,7 @@ public class WelcomePanel
 		final JLabel labelJ = new JLabel(iconJ);
 		final JLabel labelS = new JLabel(iconS);
 
-		JButton welcomeButton = new JButton("Start Tetris Game");
+		welcomeButton = new JButton("Start Tetris Game");
 		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
 		welcomeButton.setBackground(Color.BLACK);
 		welcomeButton.setOpaque(true);
@@ -83,13 +86,6 @@ public class WelcomePanel
 		welcomePanel.add(welcomeButton, BorderLayout.CENTER);
 		welcomePanel.add(southPanel, BorderLayout.SOUTH);
 		welcomePanel.setVisible(true);
-		
-		frame.add(welcomePanel);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-	
-		welcomeButton.addActionListener(event -> frame.setVisible(false));
-		welcomeButton.addActionListener(event -> new MainPanel());
 		
 		final int delay1 = 3000;
 		// Milliseconds between timer ticks
@@ -140,6 +136,27 @@ public class WelcomePanel
 		};
 		Timer t2 = new Timer(delay2, listener2);
 		t2.start();
+		welcomePanel.setVisible(true);
+		
 	}
+	
+	public void setWelcomePanel(JButton welcomeButton)
+	{
+		this.welcomeButton = welcomeButton;
+	}
+	
+	public JPanel getWelcomePanel()
+	{
+		return welcomePanel;
+	}
+	
+	public JButton getWelcomeButton()
+	{
+		return welcomeButton;
+	}
+	
+	private JButton welcomeButton;
+	private JPanel welcomePanel;
 }
+	
 

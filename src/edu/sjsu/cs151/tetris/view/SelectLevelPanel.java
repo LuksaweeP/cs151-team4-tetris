@@ -9,36 +9,27 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SelectLevelPanel extends PlayerPanel
 {
 	public SelectLevelPanel()
-	{
-		getPlayerFrame().setVisible(false);
-		JFrame frame = new JFrame();
-		frame.setSize(605, 800);
-		
-		
-		JPanel selectLevelPanel = new JPanel();
-		selectLevelPanel.setPreferredSize(new Dimension(605, 800));
+	{				
+		selectLevelPanel = new JPanel();
+		selectLevelPanel.setPreferredSize(new Dimension(600, 800));
 		selectLevelPanel.setBackground(new Color(255,229,204));
 		selectLevelPanel.setOpaque(true);
 		
-		Leaderboard playerList = new Leaderboard();
-		playerList.readPlayers();
-		ArrayList<Player> list = playerList.getPlayer();
+		//Leaderboard playerList = new Leaderboard();
+		//playerList.readPlayers();
+		//ArrayList<Player> list = playerList.getPlayer();
 			
-		Player player = getLoadPlayer();
+		//player = getLoadPlayer();
 		
 		JLabel selectLevel = new JLabel("Select a Level");
 		selectLevel.setFont(new Font("TimesRoman", Font.BOLD, 72));
@@ -53,6 +44,7 @@ public class SelectLevelPanel extends PlayerPanel
 		GridBagConstraints c = new GridBagConstraints();
 		contentPane.setLayout(gridbag);
 		
+		
 		c.fill = GridBagConstraints.CENTER; 
 		c.ipady = 5;
 		c.weightx = 0.5;
@@ -65,7 +57,7 @@ public class SelectLevelPanel extends PlayerPanel
 		
 		for( int i = 1; i <= 5; i++)
 		{
-			if (player.isLevelUnlocked(i) == true)
+			if(loadPlayer.isLevelUnlocked(i) == true)
 			{
 				levelButton[i] = new JButton("Level   " + i);
 				levelButton[i].setFont(new Font("TimesRoman", Font.BOLD, 36));
@@ -74,8 +66,7 @@ public class SelectLevelPanel extends PlayerPanel
 				levelButton[i].setBorderPainted(true);
 				c.ipady = 25;
 				c.gridy = 10;
-				levelButton[i].addActionListener(event -> frame.setVisible(false));
-				levelButton[i].addActionListener(event -> new InGamePanel());	
+				levelButton[i].addActionListener(event -> System.out.println(loadPlayer.getName()));	
 			}
 			
 			else
@@ -99,19 +90,32 @@ public class SelectLevelPanel extends PlayerPanel
         
 		selectLevelPanel.setLayout(new BorderLayout());
 		selectLevelPanel.add(contentPane, BorderLayout.CENTER);
-
-		frame.add(selectLevelPanel);
-		
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		selectLevelPanel.setVisible(true);
+	
 	}
 	
-	private JButton[] getLevelButton()
+	public JPanel getSelectLevelPanel()
+	{
+		return selectLevelPanel;
+	}
+	
+	public JButton[] getLevelButton()
 	{
 		return levelButton;
 	}
 	
+	public void setPlayerInSelectLevel(Player player)
+	{
+		this.player = player;
+	}
+	
+	public Player getPlayerInSelectLevel()
+	{
+		return player;
+	}
+	
+	private JPanel selectLevelPanel;
 	private JButton [] levelButton;
+	private Player player;
 }
 
