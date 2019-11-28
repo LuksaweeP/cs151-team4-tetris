@@ -9,32 +9,35 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 public class InGamePanel extends PlayerPanel {
 	public InGamePanel() {
-		getPlayerFrame().setVisible(false);
 		
-		frame = new JFrame();
-		frame.setSize(600, 800);
+		inGamePanel = new JPanel();
+		inGamePanel.setSize(600, 800);
+		inGamePanel.setFocusable(true);
 
-		JLabel level = new JLabel("Level:  " + playerLevel);
+		level = new JLabel();
 		level.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		level.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel name = new JLabel("Name:  " + playerName);
+		name = new JLabel();
 		name.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		name.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel score = new JLabel("Score  :" +  playerScore);
+		score = new JLabel();
 		score.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		score.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
@@ -61,8 +64,8 @@ public class InGamePanel extends PlayerPanel {
 		playerPanel.setPreferredSize(new Dimension(200, 400));
 		playerPanel.setBackground(new Color(176, 196, 222));
 		playerPanel.setOpaque(true);
-		playerPanel.add(level);
 		playerPanel.add(name);
+		playerPanel.add(level);
 		playerPanel.add(score);
 		
 		JPanel nextTetrominoPanel = new JPanel();
@@ -98,42 +101,12 @@ public class InGamePanel extends PlayerPanel {
 		cur.setBlocks();
 		blockCur = cur.getBlocks();
 	
-		frame.setLayout(new BorderLayout());
-		frame.add(center, BorderLayout.EAST);
-		frame.add(gameInfo, BorderLayout.WEST);
-		frame.setVisible(true);
+		inGamePanel.setLayout(new BorderLayout());
+		inGamePanel.add(center, BorderLayout.EAST);
+		inGamePanel.add(gameInfo, BorderLayout.WEST);
+		inGamePanel.setVisible(true);
 		
-		frame.addKeyListener(new KeyAdapter() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-
-				switch (e.getKeyCode()) {
-
-				/*
-				 *Case press esc to pause the game
-				 */
-				case KeyEvent.VK_ESCAPE:
-					int pauseDalay = 0;
-					//Timer tPause = new Timer(pauseDalay, "");
-					//tPause.start();
-					frame.setVisible(false);
-					new PausePanel();
-					break;
-				}
-			}
-		});
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	public void setInGameInvisible(JFrame frame)
-	{
-		this.frame.setVisible(false);
-	}
-	
-	public JFrame getInGameFrame()
-	{
-		return frame;
+		
 	}
 	
 	public void setLevelInGamePanel(String playerLevel)
@@ -166,7 +139,40 @@ public class InGamePanel extends PlayerPanel {
 		return playerScore;
 	}
 	
+	public JPanel getInGamePanel()
+	{
+		return inGamePanel;
+	}
 	
+	public void setLabelName(String name)
+	{
+		this.name.setText("Name:   " + name);
+	}
+	
+	public JLabel getNameLabel()
+	{
+		return name;
+	}
+	
+	public void setScoreLabel(String score)
+	{
+		this.score.setText("Score:   " + score);
+	}
+	
+	public JLabel getScoreLabel()
+	{
+		return score;
+	}
+	
+	public void setLevelLabel(String level)
+	{
+		this.level.setText("Level:   " + level);
+	}
+	
+	public JLabel getLevelLabel()
+	{
+		return level;
+	}
 	
 	Tetromino cur = new Tetromino();
 	Block [] blockCur = new Block[4];
@@ -177,5 +183,9 @@ public class InGamePanel extends PlayerPanel {
 	private String playerName;
 	private String playerScore;
 	
-	static JFrame frame;
+	private JPanel inGamePanel;
+	private JLabel name;
+	private JLabel score;
+	private JLabel level;
+
 }
