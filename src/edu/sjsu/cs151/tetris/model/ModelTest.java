@@ -19,7 +19,7 @@ public class ModelTest {
 	public static void main(String[] args) 
 	{
 		Leaderboard playerList = new Leaderboard();
-		playerList.readPlayers();
+		//playerList.readPlayers();
 		Playfield playField = new Playfield();
 		ArrayList <Player> list = playerList.getPlayer();
 		int number = playerList.getNumberPlayers();
