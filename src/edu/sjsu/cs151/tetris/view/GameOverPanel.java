@@ -16,13 +16,10 @@ public class GameOverPanel extends Panel
 {
 	public GameOverPanel()
 	{
-		JFrame frame = new JFrame();
-		frame.setSize(605, 800);
-		
-		JPanel quitPanel = new JPanel();
-		quitPanel.setPreferredSize(new Dimension(800, 400));
-		quitPanel.setBackground(new Color(128,128,128));
-		quitPanel.setOpaque(true);
+		gameOverPanel = new JPanel();
+		gameOverPanel.setPreferredSize(new Dimension(600, 800));
+		gameOverPanel.setBackground(new Color(128,128,128));
+		gameOverPanel.setOpaque(true);
 		
 		JLabel gameOver = new JLabel("  GAME OVER!!!  ");
 		gameOver.setBackground(new Color(128,128,128));
@@ -30,14 +27,11 @@ public class GameOverPanel extends Panel
 		gameOver.setFont(new Font("TimesRoman", Font.BOLD, 64));	
 		setLabelCenter(gameOver);
 		
-		JButton retryButton = new JButton("  Retry Level  ");
+		retryButton = new JButton("  Retry Level  ");
 		setButton(retryButton, 48);
-		//retryButton.addActionListener(event -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)));
 		
-		JButton returnToMainManu = new JButton("  Return to Main Manu  ");
+		returnToMainManu = new JButton("  Return to Main Manu  ");
 		setButton(returnToMainManu, 48);
-		returnToMainManu.addActionListener(event -> frame.setVisible(false));
-		returnToMainManu.addActionListener(event -> new MainPanel());
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
 		box1.setBackground(new Color(128,128,128));
@@ -49,25 +43,38 @@ public class GameOverPanel extends Panel
 		box4.setBackground(new Color (128,128,128));
 		
         
-		quitPanel.setLayout(new BoxLayout(quitPanel, BoxLayout.Y_AXIS));		
-		quitPanel.add(box1);
-		quitPanel.add(gameOver);
+		gameOverPanel.setLayout(new BoxLayout(gameOverPanel, BoxLayout.Y_AXIS));		
+		gameOverPanel.add(box1);
+		gameOverPanel.add(gameOver);
 		
-		quitPanel.add(box2);
-		quitPanel.add(retryButton);
+		gameOverPanel.add(box2);
+		gameOverPanel.add(retryButton);
 		
-		quitPanel.add(box3);
-		quitPanel.add(returnToMainManu);
-		quitPanel.add(box4);
+		gameOverPanel.add(box3);
+		gameOverPanel.add(returnToMainManu);
+		gameOverPanel.add(box4);
 
-		quitPanel.setVisible(true);
+		gameOverPanel.setVisible(true);
 		
-		frame.setLayout(new BorderLayout());		
-		frame.add(quitPanel, BorderLayout.CENTER);
-
-		
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	public JPanel getGameOverPanel()
+	{
+		return gameOverPanel;
+	}
+	
+	public JButton getRetryButton()
+	{
+		return retryButton;
+	}
+	
+	public JButton getReturnToMainManu()
+	{
+		return returnToMainManu;
+	}
+	
+	private JPanel gameOverPanel;
+	private JButton retryButton;
+	private JButton returnToMainManu;
 }
 

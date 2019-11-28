@@ -105,8 +105,8 @@ public class View
 	private LeaderboardPanel leaderboardPanel = new LeaderboardPanel();
 	private QuitPanel quitPanel = new QuitPanel();
 	private InGamePanel inGamePanel = new InGamePanel();
-	private GameOverPanel gameOverPanel;
+	private GameOverPanel gameOverPanel = new GameOverPanel();
 	private ControlsPanel controlsPanel = new ControlsPanel();
-	private LeaderboardInPausePanel leaderboardInPausePanel;
+	private LeaderboardInPausePanel leaderboardInPausePanel = new LeaderboardInPausePanel();
 	private PausePanel pausePanel = new PausePanel();
 }

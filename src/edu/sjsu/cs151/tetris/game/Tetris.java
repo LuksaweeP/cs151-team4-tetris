@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.sun.xml.internal.ws.api.message.Message;
 
 import edu.sjsu.cs151.tetris.controller.Controller;
+import edu.sjsu.cs151.tetris.model.Model;
 import edu.sjsu.cs151.tetris.model.Playfield;
 import edu.sjsu.cs151.tetris.view.View;
 
@@ -27,12 +28,19 @@ public class Tetris
 	public static void main(String[] args) 
 	{
 		//view = View.init(queue);
-		playfield = new Playfield();
+		//playfield = new Playfield();
 		
-		Controller game = new Controller(view, playfield, queue);
-		//game.mainLoop();
-		view.dispose();
-		queue.clear();
+		//Controller game = new Controller(view, playfield, queue);
+		////game.mainLoop();
+		//view.dispose();
+		//queue.clear();
+		
+
+			View view = new View();
+			Model model = new Model();
+			Controller controller = new Controller(view, model);
+			controller.updateGameInfo();
+
 	}
 
 }
