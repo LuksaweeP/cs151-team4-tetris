@@ -12,13 +12,6 @@ public class Leaderboard
 	public Leaderboard()
 	{
 		playerList = new ArrayList<Player>();
-	}
-	
-	/**
-	 * This method reads in all players and adds them to the existed list of players.
-	 */
-	public void readPlayers()
-	{
 		ArrayList <String> list = new ArrayList<String>();
 		Player tmp = new Player();
 		try 
@@ -62,8 +55,9 @@ public class Leaderboard
 					
 			playerList.add(i, tmp);
 			tmp = new Player();
-		}
+		}	
 	}
+	
 	
 	/**
 	 * This method will re reads in all players and get all the current data.
@@ -154,6 +148,13 @@ public class Leaderboard
 		return playerList.get(index);
 	}
 	
+	public Player getCurPlayer(String aName)
+	{
+		int index = getPlayerIndex(aName);
+		player =  playerList.get(index);
+		return player;
+	}
+	
 	/**
 	 * This method will check whether not player has already token.
 	 * @param newPlayer newPlayer the object in the player
@@ -162,6 +163,7 @@ public class Leaderboard
 	public boolean isValidNewPlayers(String newPlayer)
 	{		
 		Player tmp = new Player();
+		String inValidname = "INVALID NAME";
 		for (int i = 0; i < numberPlayers; i++)
 		{
 			tmp = playerList.get(i);
@@ -170,6 +172,19 @@ public class Leaderboard
 				System.out.println("Invalid new username");
 				return false;
 			}
+			
+			if(newPlayer.equalsIgnoreCase(inValidname))
+			{
+				System.out.println("Invalid new username");
+				return false;
+			}
+			
+			if (newPlayer.equalsIgnoreCase(""))
+			{
+				System.out.println("Invalid new username");
+				return false;
+			}
+			
 			tmp = new Player();
 		}
 		return true;
@@ -183,6 +198,9 @@ public class Leaderboard
 	{
 		if (isValidNewPlayers(newPlayer) == true)
 		{
+			player = new Player();
+			player.setName(newPlayer);
+			
 			try 
 			{				
 				FileWriter writer = new FileWriter("src/edu/sjsu/cs151/tetris/model/players.txt", true); // /Users/Luksawee/Desktop/
@@ -197,7 +215,9 @@ public class Leaderboard
 				writer.write(", 0");
 				writer.write("\r\n");
 				writer.close();
-				//numberPlayers++;
+				
+				playerList.add(player);
+				numberPlayers++;
 			} 
 			catch (IOException e) 
 			{
@@ -255,4 +275,5 @@ public class Leaderboard
 	
 	private ArrayList <Player> playerList;
 	private int numberPlayers;
+	private Player player;
 }
