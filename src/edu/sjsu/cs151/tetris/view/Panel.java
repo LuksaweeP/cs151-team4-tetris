@@ -17,7 +17,6 @@ public class Panel
 {
 	public JButton setButton(JButton button, int fontSize)
 	{
-		button.setSize(400, 150);
 		button.setFont(new Font("TimesRoman", Font.BOLD, fontSize));
 		button.setBackground(Color.BLACK);
 		button.setOpaque(true);
@@ -64,7 +63,6 @@ public class Panel
 		containner.setLayout(new BoxLayout(containner, BoxLayout.Y_AXIS));
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));
-		box1.setPreferredSize(new Dimension(600, 100));
 		JPanel box2 = new JPanel(new GridLayout(1, 10));
 		
 		containner.add(box1);
@@ -156,6 +154,8 @@ public class Panel
 		
 		return panelS;
 	}
+	
+	JPanel panel = new JPanel();
 }
 
 
