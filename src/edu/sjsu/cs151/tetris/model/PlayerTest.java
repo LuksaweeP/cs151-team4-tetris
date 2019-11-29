@@ -7,7 +7,6 @@ public class PlayerTest
 	public static void main(String[] args)
 	{
 			Leaderboard playerList = new Leaderboard();
-			playerList.readPlayers();
 			
 			ArrayList <Player> list = playerList.getPlayer();
 			
