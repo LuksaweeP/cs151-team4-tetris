@@ -18,6 +18,20 @@ public class ModelTest {
 	 */
 	public static void main(String[] args) 
 	{
+		
+		SingleRandom rand = SingleRandom.getInstance();
+		int num;
+		
+		for (int i = 0; i < 100; i++)
+		{
+			num = rand.nextInt(7);
+			System.out.println(num);
+		}
+		
+		
+		
+				
+		
 		Leaderboard playerList = new Leaderboard();
 		//playerList.readPlayers();
 		Playfield playField = new Playfield();
