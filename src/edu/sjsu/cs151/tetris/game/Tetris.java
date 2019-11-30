@@ -8,7 +8,7 @@ import com.sun.xml.internal.ws.api.message.Message;
 import edu.sjsu.cs151.tetris.controller.Controller;
 import edu.sjsu.cs151.tetris.model.Model;
 import edu.sjsu.cs151.tetris.model.Playfield;
-import edu.sjsu.cs151.tetris.view.View;
+import edu.sjsu.cs151.tetris.view.ViewAllPanels;
 
 
 /**
@@ -18,7 +18,7 @@ public class Tetris
 {
 	
 	//private static BlockingQueue<Message> queue = new LinkedBlockingQueue<Message>();
-	private static View view;
+	private static ViewAllPanels viewAllPanels;
 	private static Playfield playfield;
 	
 	/**
@@ -36,9 +36,9 @@ public class Tetris
 		//queue.clear();
 		
 
-			View view = new View();
+			ViewAllPanels viewAllPanels = new ViewAllPanels();
 			Model model = new Model();
-			Controller controller = new Controller(view, model);
+			Controller controller = new Controller(viewAllPanels, model);
 			controller.updateGameInfo();
 
 	}
