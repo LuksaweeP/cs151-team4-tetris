@@ -23,9 +23,9 @@ import edu.sjsu.cs151.tetris.view.*;
 
 public class Controller
 {
-	public Controller(View view, Model model)
+	public Controller(ViewAllPanels viewAllPanels, Model model)
 	{
-		this.view = view;
+		this.viewAllPanels = viewAllPanels;
 		this.model = model;
 		//updateGameInfo();
 	}
@@ -43,48 +43,48 @@ public class Controller
 		/**
 		 * WelcomePanel
 		 */
-		view.getFrame().add(view.getWelcomePanel().getWelcomePanel());
-		view.getFrame().setVisible(true);
+		viewAllPanels.getFrame().add(viewAllPanels.getWelcomePanel().getWelcomePanel());
+		viewAllPanels.getFrame().setVisible(true);
 
 		/**
 		 * MainPanel
 		 */
 		//welcomeButton
-		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().remove(view.getWelcomePanel().getWelcomePanel()));		
-		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));		
-		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().pack());		
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getWelcomePanel().getWelcomePanel()));		
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));		
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().pack());		
 		
 		// playgameButton
-		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().remove(view.getMainPanel().getMainPanel()));	
-		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().add(view.getPlayerPanel().getPlayerPanel()));
-		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().repaint());
-		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().setSize(600, 800));
-		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getMainPanel().getMainPanel()));	
+		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPlayerPanel().getPlayerPanel()));
+		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));
+		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().pack());
 
 		
 		//leaderboardButton
-		view.getMainPanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().remove(view.getMainPanel().getMainPanel()));
-		view.getMainPanel().getLeaderboardsButton().addActionListener(event -> view.add(view.getLeaderboardPanel().getLeaderboardPanel()));
-		view.getMainPanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().repaint());
-		view.getMainPanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().setSize(600, 800));
-		view.getMainPanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getMainPanel().getMainPanel()));
+		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.add(viewAllPanels.getLeaderboardPanel().getLeaderboardPanel()));
+		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));
+		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		//quit
-		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().remove(view.getMainPanel().getMainPanel()));
-		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().add(view.getQuitPanel().getQuitPane()));
-		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().repaint());
-		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().setSize(600, 800));
-		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getMainPanel().getQuitButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getMainPanel().getMainPanel()));
+		viewAllPanels.getMainPanel().getQuitButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getQuitPanel().getQuitPane()));
+		viewAllPanels.getMainPanel().getQuitButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getMainPanel().getQuitButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));
+		viewAllPanels.getMainPanel().getQuitButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		/**
 		 * PlayerPanel
 		 */
 		//createButton
-		view.getPlayerPanel().getCreateButton().addActionListener(new ActionListener()
+		viewAllPanels.getPlayerPanel().getCreateButton().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				String input = view.getPlayerPanel().getInputBox().getText();
+				String input = viewAllPanels.getPlayerPanel().getInputBox().getText();
 				System.out.println(input);
 				
 				boolean validname = model.getLeaderboard().isValidNewPlayers(input);
@@ -95,29 +95,29 @@ public class Controller
 					
 					model.getLeaderboard().loadPlayer(input);
 					
-					view.getInGamePanel().setPlayerInGamePanel(input);
-					view.getInGamePanel().setLevelLabel("0");
-					view.getInGamePanel().setScoreLabel("0");
-					view.getInGamePanel().setLabelName(input);
+					viewAllPanels.getInGamePanel().setPlayerInGamePanel(input);
+					viewAllPanels.getInGamePanel().setLevelLabel("0");
+					viewAllPanels.getInGamePanel().setScoreLabel("0");
+					viewAllPanels.getInGamePanel().setLabelName(input);
 					
-					view.getFrame().remove(view.getPlayerPanel().getPlayerPanel());
-					view.getFrame().add(view.getInGamePanel().getInGamePanel());
-					view.getInGamePanel().getInGamePanel().setFocusable(true);
-					view.getInGamePanel().getInGamePanel().requestFocusInWindow();
-					view.getFrame().repaint();
-					view.getFrame().setSize(600, 800);
-					view.getFrame().pack();
-					view.getFrame().setVisible(true);
+					viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel());
+					viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel());
+					viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true);
+					viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow();
+					viewAllPanels.getFrame().repaint();
+					viewAllPanels.getFrame().setSize(600, 800);
+					viewAllPanels.getFrame().pack();
+					viewAllPanels.getFrame().setVisible(true);
 					
 				}
 				
 				if(!validname)
 				{
-					view.getPlayerPanel().getInputBox().setText("INVALID NAME");
-					view.getPlayerPanel().getInputBox().addMouseListener(new MouseAdapter(){
+					viewAllPanels.getPlayerPanel().getInputBox().setText("INVALID NAME");
+					viewAllPanels.getPlayerPanel().getInputBox().addMouseListener(new MouseAdapter(){
 			            @Override
 			            public void mouseClicked(MouseEvent e){
-			            	view.getPlayerPanel().getInputBox().setText("");
+			            	viewAllPanels.getPlayerPanel().getInputBox().setText("");
 			            }
 			        });
 				}
@@ -125,10 +125,10 @@ public class Controller
 		});
 		
 		//loadPlayer
-		int numberOfLoadPlayer = view.getPlayerPanel().getExistPlayerButton().length;
+		int numberOfLoadPlayer = viewAllPanels.getPlayerPanel().getExistPlayerButton().length;
 		for(int i = 0; i < numberOfLoadPlayer; i++)
 		{
-			view.getPlayerPanel().getExistPlayerButton()[i].addMouseListener(new MouseAdapter()
+			viewAllPanels.getPlayerPanel().getExistPlayerButton()[i].addMouseListener(new MouseAdapter()
 			{
 				public void mousePressed(MouseEvent e)
 				{
@@ -136,22 +136,22 @@ public class Controller
 					JButton pressedButton = (JButton) o;
 					String text = pressedButton.getText();
 					
-					view.getInGamePanel().setPlayerInGamePanel(text);
-					view.getInGamePanel().setScoreLabel("0");
-					view.getInGamePanel().setLabelName(text);
+					viewAllPanels.getInGamePanel().setPlayerInGamePanel(text);
+					viewAllPanels.getInGamePanel().setScoreLabel("0");
+					viewAllPanels.getInGamePanel().setLabelName(text);
 					
 					Player loadPlayer = model.getLeaderboard().loadPlayer(text);
 					System.out.println("Load Player:  " + loadPlayer.getName());
 					System.out.println("highScore: " + loadPlayer.getPlayerHighScore());
 					
-					view.getPlayerPanel().setLoadPlayer(loadPlayer);			
-					view.setSelectLevelPanel();					
+					viewAllPanels.getPlayerPanel().setLoadPlayer(loadPlayer);			
+					viewAllPanels.setSelectLevelPanel();					
 					
-					view.getFrame().remove(view.getPlayerPanel().getPlayerPanel());		
-					view.getFrame().add(view.getSelectLevelPanel().getSelectLevelPanel());
-					view.getFrame().repaint();
-					view.getFrame().setSize(600, 800);
-					view.getFrame().pack();
+					viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel());		
+					viewAllPanels.getFrame().add(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel());
+					viewAllPanels.getFrame().repaint();
+					viewAllPanels.getFrame().setSize(600, 800);
+					viewAllPanels.getFrame().pack();
 					
 					/**
 					 * InGamePanel
@@ -162,15 +162,15 @@ public class Controller
 						if(loadPlayer.isLevelUnlocked(i) == true)
 						{
 							String selectLevel = Integer.toString(i);
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setLevelLabel(selectLevel));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().remove(view.getSelectLevelPanel().getSelectLevelPanel()));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().add(view.getInGamePanel().getInGamePanel()));	
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getInGamePanel().requestFocusInWindow());
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getInGamePanel().setFocusable(true));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().repaint());
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().setSize(600, 800));	
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().pack());
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().setVisible(true));	
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setLevelLabel(selectLevel));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel()));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));	
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow());
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().repaint());
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().pack());
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setVisible(true));	
 						}
 					}		
 				}	
@@ -178,39 +178,39 @@ public class Controller
 		}
 		
 		//back
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getPlayerPanel().getPlayerPanel()));
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getPlayerPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel()));
+		viewAllPanels.getPlayerPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
+		viewAllPanels.getPlayerPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getPlayerPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getPlayerPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		/**
 		 * LeaderboardPanel
 		 */
-		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getLeaderboardPanel().getLeaderboardPanel()));
-		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
-		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
-		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getLeaderboardPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getLeaderboardPanel().getLeaderboardPanel()));
+		viewAllPanels.getLeaderboardPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
+		viewAllPanels.getLeaderboardPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getLeaderboardPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getLeaderboardPanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		/**
 		 * QuitPanel
 		 */
 		//no
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().remove(view.getQuitPanel().getQuitPane()));
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().repaint());
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getQuitPanel().getQuitPane()));
+		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));
+		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		//yes
-		view.getQuitPanel().getYes().addActionListener(event -> view.getFrame().dispatchEvent(new WindowEvent(view.getFrame(), WindowEvent.WINDOW_CLOSING)));
+		viewAllPanels.getQuitPanel().getYes().addActionListener(event -> viewAllPanels.getFrame().dispatchEvent(new WindowEvent(viewAllPanels.getFrame(), WindowEvent.WINDOW_CLOSING)));
 		
 		
 		/**
 		 * InGamePanel
 		 */
 
-		view.getInGamePanel().getInGamePanel().addKeyListener(new KeyAdapter() {
+		viewAllPanels.getInGamePanel().getInGamePanel().addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
@@ -223,11 +223,11 @@ public class Controller
 					//Timer tPause = new Timer(pauseDalay, "");
 					//tPause.start();
 
-					view.getFrame().remove(view.getInGamePanel().getInGamePanel());
-					view.getFrame().add(view.getPausePanel().getPausePanel());
-					view.getFrame().repaint();
-					view.getFrame().setSize(600, 800);	
-					view.getFrame().pack();
+					viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
+					viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel());
+					viewAllPanels.getFrame().repaint();
+					viewAllPanels.getFrame().setSize(600, 800);	
+					viewAllPanels.getFrame().pack();
 					break;
 				}
 			}
@@ -237,56 +237,56 @@ public class Controller
 		 * PausePanel
 		 */
 		//back
-		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
-		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().add(view.getInGamePanel().getInGamePanel()));
-		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().repaint());
-		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
+		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));
+		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
 				
 		//LeaderBoardInPausePanel
-		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
-		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().add(view.getLeaderboardInPausePanel().getLeaderboardPanel()));
-		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().repaint());
-		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getPausePanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
+		viewAllPanels.getPausePanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getLeaderboardInPausePanel().getLeaderboardPanel()));
+		viewAllPanels.getPausePanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getPausePanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getPausePanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		//ControlsPanel
-		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
-		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().add(view.getControlsPanel().getControlsPanel()));
-		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().repaint());
-		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
+		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getControlsPanel().getControlsPanel()));
+		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 			
 		//retrunToMainMnuButton
-		view.getPausePanel().getReturnToMainManuButton().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
-		view.getPausePanel().getReturnToMainManuButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
-		view.getPausePanel().getReturnToMainManuButton().addActionListener(event -> view.getFrame().repaint());
-		view.getPausePanel().getReturnToMainManuButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getPausePanel().getReturnToMainManuButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		/**
 		 * LeaderboardInGame
 		 */
-		view.getLeaderboardInPausePanel().getBackButton().addActionListener(Event -> view.getFrame().remove(view.getLeaderboardInPausePanel().getLeaderboardPanel()));
-		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getPausePanel().getPausePanel()));	
-		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
-		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(Event -> viewAllPanels.getFrame().remove(viewAllPanels.getLeaderboardInPausePanel().getLeaderboardPanel()));
+		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel()));	
+		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		
 		/**
 		 * ControlPanel
 		 */
-		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().remove(view.getControlsPanel().getControlsPanel()));
-		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().add(view.getPausePanel().getPausePanel()));	
-		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().repaint());
-		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().setSize(600, 800));	
-		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().pack());
+		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getControlsPanel().getControlsPanel()));
+		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel()));	
+		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
 	}
 	
 	
 	
-	private View view;
+	private ViewAllPanels viewAllPanels;
 	private Model model;
 	//private ActionListener actionListener;
 	
