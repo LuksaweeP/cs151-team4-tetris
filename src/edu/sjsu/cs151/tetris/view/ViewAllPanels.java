@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-public class View
+public class ViewAllPanels
 {
-	public View()
+	public ViewAllPanels()
 	{
 		frame = new JFrame("TETRIS");
 		frame.setSize(600, 800);
