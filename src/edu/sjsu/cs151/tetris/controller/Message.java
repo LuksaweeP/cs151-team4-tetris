@@ -1,23 +1,21 @@
 package edu.sjsu.cs151.tetris.controller;
 
 	/**
-	 * Class created to allow communication between View and Controller.
+	 * Class that will create the connection between model and view.
 	 */
-
 
 	public class Message 
 	{
-		public static enum TYPE {REDRAW, CHANGE_NEXT, SCORES_UPDATE, LOOSE, MOVE_LEFT, MOVE_RIGHT, FASTER, ROTATE_LEFT, ROTATE_RIGHT, RESTART;};
-		private TYPE type;
+		private ValveResponse valveResponse;
 		private int add_info;
 		private int [][] data;
 		
 		/**
 		 * @param t Type of the message we create
 		 */
-		public Message(TYPE t)
+		public Message(ValveResponse v)
 		{
-			type = t;
+			valveResponse = v;
 			add_info = 0;
 		}
 		
@@ -25,9 +23,9 @@ package edu.sjsu.cs151.tetris.controller;
 		 * @param t	Type of the message we create.
 		 * @param a	Additional information for example scores while updating scores.
 		 */
-		public Message (TYPE t, int a)
+		public Message (ValveResponse v, int a)
 		{
-			type = t;
+			valveResponse = v;
 			add_info = a;
 		}
 		
@@ -35,18 +33,18 @@ package edu.sjsu.cs151.tetris.controller;
 		 * @param t	Type of the message we create.
 		 * @param d	Two dimensional array with data to be shown on the board type int.
 		 */
-		public Message (TYPE t, int [][] d)
+		public Message (ValveResponse v, int [][] d)
 		{
-			type = t;
+			valveResponse = v;
 			data = d;
 		}
 		
 		/**
 		 * @return Type of the received message.
 		 */
-		public TYPE getType()
+		public ValveResponse getValveResponse()
 		{
-			return type;
+			return valveResponse;
 		}
 		
 		/**
