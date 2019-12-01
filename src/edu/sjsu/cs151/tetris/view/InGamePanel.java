@@ -69,7 +69,7 @@ public class InGamePanel extends PlayerPanel {
 		playerPanel.add(score);
 		
 		JPanel nextTetrominoPanel = new JPanel();
-		nextTetrominoPanel.setPreferredSize(new Dimension(200, 200));
+		nextTetrominoPanel.setPreferredSize(new Dimension(200, 400));
 		nextTetrominoPanel.setBackground(new Color(176, 196, 222));
 		nextTetrominoPanel.setOpaque(true);
 		
@@ -95,14 +95,19 @@ public class InGamePanel extends PlayerPanel {
 		center.setBackground(new Color(0, 0, 0));
 		center.setOpaque(true);
 		
-		MoveableShape curr = new DrawTetromino('O', 0, 0, 35);
+		colors = new Color[20][10];
+		for(int i = 0; i< 20 ; ++i)
+			for(int j = 0; j<10; ++j)
+				colors[i][j] = Color.DARK_GRAY;
 		
-		cur.setRandomShape();
-		cur.setBlocks();
-		blockCur = cur.getBlocks();
+		boardGamePanel = new BoardGamePanel(colors);
+		boardGamePanel.setPreferredSize(new Dimension(400, 800));
+		boardGamePanel.setVerifyInputWhenFocusTarget(true);
+		boardGamePanel.setVisible(true);
+		
 	
 		inGamePanel.setLayout(new BorderLayout());
-		inGamePanel.add(center, BorderLayout.EAST);
+		inGamePanel.add(boardGamePanel, BorderLayout.CENTER);
 		inGamePanel.add(gameInfo, BorderLayout.WEST);
 		inGamePanel.setVisible(true);
 		
@@ -174,6 +179,47 @@ public class InGamePanel extends PlayerPanel {
 		return level;
 	}
 	
+	public void setAScore(int aScore)
+	{
+		this.aScore = this.aScore + aScore;
+	}
+	
+	public void setALevel(int aLevel)
+	{
+		this.aLevel = aLevel;
+	}
+	
+	public int getAScore()
+	{
+		return aScore;
+	}
+	
+	public int getALevel()
+	{
+		return aLevel;
+	}
+	
+	public BoardGamePanel getBoardGamePanel()
+	{
+		return boardGamePanel;
+	}
+	
+	public void setLost(boolean lost)
+	{
+		this.lost = lost;
+	}
+	
+	public void setGameStart(boolean gameStart)
+	{
+		this.gameStart = gameStart;
+	}
+	
+	public boolean getGameStart()
+	{
+		return gameStart;
+	}
+	
+	
 	Tetromino cur = new Tetromino();
 	Block [] blockCur = new Block[4];
 	Tetromino next = new Tetromino();
@@ -187,5 +233,13 @@ public class InGamePanel extends PlayerPanel {
 	private JLabel name;
 	private JLabel score;
 	private JLabel level;
+	
+	private BoardGamePanel boardGamePanel;
+	
+	private int aScore;
+	private int aLevel;
+	private Color[][] colors;
+	private boolean lost = false;
+	private boolean gameStart = false; // to make to new figure drop
 
 }
