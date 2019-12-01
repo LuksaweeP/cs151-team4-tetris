@@ -10,7 +10,8 @@ public class Model
 		block = new Block();
 		tetromino = new Tetromino();
 		leaderboard = new Leaderboard();
-		playfield = new Playfield();
+		//playfield = new Playfield();
+		gameRule = new GameRule();
 	}
 	
 	public Player getPlayer()
@@ -48,6 +49,11 @@ public class Model
 		return start;
 	}
 	
+	public GameRule getGameRule()
+	{
+		return gameRule;
+	}
+	
 	private Player player;
 	private Block block;
 	private Tetromino tetromino;
@@ -56,4 +62,5 @@ public class Model
 	private boolean start = false;
 	private boolean gameOver = false;
 	private boolean gameWin = false;
+	private GameRule gameRule;
 }
