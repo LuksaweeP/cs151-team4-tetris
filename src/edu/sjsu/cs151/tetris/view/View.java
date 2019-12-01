@@ -59,7 +59,6 @@ public class View implements Runnable
 		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().repaint());
 		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));
 		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().pack());
-
 		
 		//leaderboardButton
 		viewAllPanels.getMainPanel().getLeaderboardsButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getMainPanel().getMainPanel()));
@@ -92,10 +91,11 @@ public class View implements Runnable
 					model.getLeaderboard().addNewPlayer(input);
 					model = new Model();
 					model.getLeaderboard().loadPlayer(input);
+					model.getGameRule().setLevel(1);
 					
 					viewAllPanels.getInGamePanel().setPlayerInGamePanel(input);
-					viewAllPanels.getInGamePanel().setLevelLabel("0");
-					viewAllPanels.getInGamePanel().setScoreLabel("0");
+					viewAllPanels.getInGamePanel().setLevelLabel(Integer.toString(model.getGameRule().getLevel()));
+					viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
 					viewAllPanels.getInGamePanel().setLabelName(input);
 					
 					viewAllPanels.getInGamePanel().setGameStart(true);
@@ -134,7 +134,7 @@ public class View implements Runnable
 					String text = pressedButton.getText();
 					
 					viewAllPanels.getInGamePanel().setPlayerInGamePanel(text);
-					viewAllPanels.getInGamePanel().setScoreLabel("0");
+					viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
 					viewAllPanels.getInGamePanel().setLabelName(text);
 					
 					Player loadPlayer = model.getLeaderboard().loadPlayer(text);
@@ -154,15 +154,16 @@ public class View implements Runnable
 					 * InGamePanel
 					 */
 					//case select level unlock
-					for(int i = 1; i < 5; i++)
+					for(int i = 1; i <= 5; i++)
 					{
 						if(loadPlayer.isLevelUnlocked(i) == true)
 						{
 							String selectLevel = Integer.toString(i);
+							int level = i;
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> model.getGameRule().setLevel(level));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setLevelLabel(selectLevel));
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));			
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel()));
-							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow());
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true));
@@ -170,8 +171,7 @@ public class View implements Runnable
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().setFocusable(true));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().repaint());	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().pack());
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setVisible(true));
-							
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setVisible(true));				
 						}
 					}		
 				}	
@@ -221,7 +221,7 @@ public class View implements Runnable
 				 *Case press esc to pause the game
 				 */
 				case KeyEvent.VK_ESCAPE:	
-					
+					viewAllPanels.getInGamePanel().setGameStart(false);
 					viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
 					viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel());
 					viewAllPanels.getFrame().repaint();
@@ -234,7 +234,6 @@ public class View implements Runnable
 					
 					try 
 					{
-						System.out.println(message.getValveResponse());
 						viewToControllerQueue.put(message);
 					} 
 					catch (InterruptedException e1) {}
@@ -245,7 +244,6 @@ public class View implements Runnable
 					
 					try 
 					{
-						System.out.println(message.getValveResponse());
 						viewToControllerQueue.put(message);
 					} 
 					catch (InterruptedException e1) {}
@@ -256,7 +254,6 @@ public class View implements Runnable
 					
 					try 
 					{
-						System.out.println(message.getValveResponse());
 						viewToControllerQueue.put(message);
 					} 
 					catch (InterruptedException e1) {}
@@ -268,19 +265,16 @@ public class View implements Runnable
 					try 
 					{
 						System.out.println(message.getValveResponse());
-						System.out.println("FASTER ");
 						viewToControllerQueue.put(message);
 					} 
 					catch (InterruptedException e1) {}
 					break;
 				
 				case KeyEvent.VK_ENTER:
-					System.out.println("LOST CASE");
 					if(lost) 
 					{
 						viewAllPanels.getInGamePanel().setGameStart(true);
 						lost = false;
-						view.getViewAllPanels().getInGamePanel().setLost(lost);
 						message = new Message(Message.ValveResponse.RESTART);
 						try 
 						{
@@ -302,7 +296,6 @@ public class View implements Runnable
 		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
 		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));
 		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
-		//viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
 		viewAllPanels.getPausePanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
 				
 		//LeaderBoardInPausePanel
@@ -338,8 +331,7 @@ public class View implements Runnable
 		
 		/**
 		 * ControlPanel
-		 */
-		
+		 */	
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getControlsPanel().getControlsPanel()));
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel()));	
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
@@ -348,11 +340,10 @@ public class View implements Runnable
 		
 	}
 	
-	public void setGameStart(boolean gameStart)
-	{
-		this.gameStart = gameStart;
-	}
-
+	/**
+	 * Method to get viewAllPanels
+	 * @return
+	 */
 	public ViewAllPanels getViewAllPanels()
 	{
 		return viewAllPanels;
@@ -378,17 +369,25 @@ public class View implements Runnable
 	{
 		try 
 		{
-			//System.out.println("VIEW: Try");
 			while (lost != true)
 			{
 				System.out.print("");
 				
 				while (viewAllPanels.getInGamePanel().getGameStart() == true)
 				{
-					System.out.println("VIEW: RUN()");
 					loop();
 				}
 			}
+			
+			if( lost == true)
+			{
+				viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
+				//viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel());	
+				//viewAllPanels.getFrame().repaint();
+				//viewAllPanels.getFrame().setSize(600, 800);	
+				//viewAllPanels.getFrame().pack();
+			}
+			
 			
 		}
 		catch (Exception exception) 
@@ -403,7 +402,6 @@ public class View implements Runnable
 	private void loop() throws InterruptedException
 	{
 		Message message;
-		System.out.println("VIEW: LOOP IN VIEW");
 		try
 		{
 			while(true)
@@ -412,42 +410,43 @@ public class View implements Runnable
 					message = controllerToViewQueue.take();
 					if(message == null)
 					{
-						//System.out.println("VIEW: MESSAGE NULL");
 						continue;
 					}
 					
 					switch(message.getValveResponse())
 					{
 						case REDRAW:
-							System.out.println("VIEW: REDRAW");
 							redraw(message.getData());
 							break;
 					
 						case CHANGE_NEXT: 
-							//System.out.println("CIEW: SETNEXT");
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setNext(message.getAdd());
 							break;
 						
 						case SCORES_UPDATE:
-							//System.out.println("VIEW: SCORE");
-							viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(message.getAdd()));
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
 							break;
 							
 						case LOST:
 							lost = true;
-							//System.out.println("VIEW: LOST");
-							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
-							viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
+							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel()));
+							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel()));	
+							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
+							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
+							
+							
 							break;
 							
 						default: 
-							//System.out.println("default");
 							break;
 					}
 				}
 			}
 		
-				
 				catch (InterruptedException e) 
 				{
 					System.out.println(e);
@@ -467,28 +466,34 @@ public class View implements Runnable
 			{
 				switch (board[i][j])
 				{
-					case 0:	colors[i][j] = Color.GRAY;
+					//empty
+					case 0:	colors[i][j] = Color.GRAY; 
 						break;
-					case 1:	colors[i][j] = Color.BLUE;
+					//J - shape
+					case 1:	colors[i][j] = Color.BLUE; 
 						break;
-					case 2:	colors[i][j] = Color.RED;
+						//Z shape
+					case 2:	colors[i][j] = Color.RED; 
 						break;
-					case 3:	colors[i][j] = Color.ORANGE;
+					//L shape
+					case 3:	colors[i][j] = Color.ORANGE; 
 						break;
-					case 4:	colors[i][j] = Color.GREEN;
+					//S shape
+					case 4:	colors[i][j] = new Color(102,255,102);  ;
 						break;
-					case 5:	colors[i][j] = Color.CYAN;
+					//I shape
+					case 5:	colors[i][j] = Color.CYAN; 
 						break;
-					case 6:	colors[i][j] = Color.YELLOW;
+					//O shape
+					case 6:	colors[i][j] = Color.YELLOW; 
 						break;
-					case 7:	colors[i][j] = Color.PINK;
+					//T shape
+					case 7:	colors[i][j] = Color.PINK; 
 						break;	
 				}
 			}
 		}
-		//System.out.println("VIEW: REDRAW()");
-		viewAllPanels.getInGamePanel().getBoardGamePanel().redraw(colors);
-		
+		viewAllPanels.getInGamePanel().getBoardGamePanel().redraw(colors);	
 	}
 	
 	private boolean lost = false;
