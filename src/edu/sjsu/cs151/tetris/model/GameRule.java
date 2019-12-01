@@ -44,7 +44,6 @@ public class GameRule
 		fPosition.setYPosition(0);
 		fRotation = 0;
 		fShape = nextFigure;
-		System.out.println("SHAPE: " + fShape);
 		nextFigure = rand.nextInt(7) + 1;
 	}
 		
