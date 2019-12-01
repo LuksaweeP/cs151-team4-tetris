@@ -1,6 +1,5 @@
 package edu.sjsu.cs151.tetris.view;
 
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -65,11 +64,11 @@ public class BoardGamePanel extends JPanel
 	{
 		//mainboard
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 522, 40*16);
+		g.fillRect(0, 0, 400, 800);
 		
 		//this playfield panel
-		for(int i=0; i<16; ++i)
-			for(int j=0; j<10; ++j)
+		for(int i=0; i < 20; ++i)
+			for(int j=0; j <10; ++j)
 			{
 				g.setColor(colors[i][j]);
 				g.fillRect(40*j, 40*i, 38, 38);
@@ -83,6 +82,12 @@ public class BoardGamePanel extends JPanel
 				g.fillRect(402 + 25*j, 30 + 25*i, 23, 23);
 			}
 		
+		g.setFont(font);
+		g.setColor(Color.WHITE);
+		g.drawString("SCORES", 415, 200);
+		g.drawString(""+scores, 442, 230);
+		
+		
 		if(lost)
 		{
 			g.setColor(Color.WHITE);
@@ -91,6 +96,11 @@ public class BoardGamePanel extends JPanel
 			g.setFont(font);
 			g.drawString("(Press ENTER to play again)", 145, 350);
 		}
+	}
+	
+	public int getScore()
+	{
+		return scores;
 	}
 	
 	private static final long serialVersionUID = -8715353373678321308L;
