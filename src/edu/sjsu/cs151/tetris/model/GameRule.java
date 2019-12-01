@@ -4,26 +4,12 @@ import java.util.Random;
 import java.awt.Point;
 
 /**
- * A class for creating a play field with a 2D grid of size height x width that
- * can spawn in Tetrominos, and award points to the player when necessary. 
+ * A class for creating a play field with a 2D grid of size height x width that can spawn in Tetrominos, and award points to the player when necessary. 
  * The default playfield is (Height x Width) = 20 x 10. 
- * THis class also contains all game rule
+ * THis class also contains all game rules
  */
 public class GameRule 
 {
-	private int [][] board;	
-	private int [][] boardToPlayer = new int [20][10];
-	private int fShape;  /*to get the index of the figure*/
-	private int fRotation;  /*0, 1, 2, 3 which will determine the position of each figure after move*/
-	private Block fPosition;  /*to record the first block of figure when it will drop in the board*/
-	private int nextFigure;
-	private int scores; /*player's score*/
-	/**
-	 * Information if the game is lost. True means game is over.
-	 */
-	public boolean lost;
-	SingleRandom rand = SingleRandom.getInstance();
-	
 	public GameRule()
 	{
 		restart();
@@ -35,16 +21,16 @@ public class GameRule
 	public void restart()
 	{
 		/*specify board to have size 20 x 10*/
-		board = new int [20][10];
-		for (int i = 0; i < 20; ++i)
+		board = new int [22][10];
+		for (int i = 0; i < 22; ++i)
 			for(int j = 0; j < 10; ++j)
 				board[i][j] = 0;
 		
 	
-		fShape = rand.nextInt(7); /*we have 7 type of the figure*/
+		fShape = rand.nextInt(7) + 1; /*we have 8 type of the figure*/	
 		fRotation = 0; /*we will start from the first index in the Figure*/
 		fPosition = new Block(4, 0);  /*keep the first position of the 1 block of the tetronimo to make it show in the middle of the board*/
-		nextFigure = rand.nextInt(7);
+		nextFigure = rand.nextInt(7) + 1;
 		scores = 0;
 		lost = false;
 	}
@@ -56,8 +42,10 @@ public class GameRule
 	{
 		fPosition.setXPosition(4);
 		fPosition.setYPosition(0);
+		fRotation = 0;
 		fShape = nextFigure;
-		nextFigure = rand.nextInt(7);
+		System.out.println("SHAPE: " + fShape);
+		nextFigure = rand.nextInt(7) + 1;
 	}
 		
 	/**
@@ -89,10 +77,24 @@ public class GameRule
 				return false;
 			
 			/* We check the collision of every figure's block */
-			if(board[fPosition.getYPosition() + Figure.FiguresList[fShape][fRotation][i].getYPosition()][fPosition.getXPosition() + Figure.FiguresList[fShape][fRotation][i].getXPosition()] != 0)
+			if(board[fPosition.getYPosition() + Figure.FiguresList[fShape][fRotation][i].getYPosition() + 1][fPosition.getXPosition() + Figure.FiguresList[fShape][fRotation][i].getXPosition()] != 0)
 				return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * This method will set the boolean lost to true or false
+	 * @param lost
+	 */
+	public void setGetLost(boolean lost)
+	{
+		this.lost = lost;
+	}
+	
+	public boolean getLost()
+	{
+		return lost;
 	}
 	
 	/**
@@ -133,8 +135,6 @@ public class GameRule
 		return true;
 	}
 	
-	
-	
 	/**
 	 * Method that checks if the figure is possible to rotate right the falling figure.
 	 * @return true if it is possible, false if it is not.
@@ -153,9 +153,7 @@ public class GameRule
 			
 			/* Checking collision for every figure's block */
 			if(board[fPosition.getYPosition() + Figure.FiguresList[fShape][nextPos][i].getYPosition()][fPosition.getXPosition() + Figure.FiguresList[fShape][nextPos][i].getXPosition()] != 0)
-				return false;
-		
-				
+				return false;		
 		}
 		return true;
 	}
@@ -237,7 +235,7 @@ public class GameRule
 	{
 		boolean isLineFull = true;
 		int lines = 0;
-		int tmp = 10;
+		int tmp = 100 * level;
 		
 		/* Checking all rows starting from the top */
 		for(int i = 2; i < 22; ++i)
@@ -312,13 +310,37 @@ public class GameRule
 		for(int i = 0; i < 20; ++i)
 			for(int j = 0; j < 10; ++j)
 			{
-				boardToPlayer[i][j] = board[i+2][j];
+				boardToPlayer[i][j] = board[ i+2 ][j];
 			}
 		/* Copying the falling figure */
 		for(int i=0; i < 4; ++i)
-			if(fPosition.getYPosition() + Figure.FiguresList[fShape][fRotation][i].getYPosition() >= 2)
+			if(fPosition.getYPosition() + Figure.FiguresList[fShape][fRotation][i].getYPosition() - 2 >= 0)
 				boardToPlayer[fPosition.getYPosition() + Figure.FiguresList[fShape][fRotation][i].getYPosition() - 2][fPosition.getXPosition() + Figure.FiguresList[fShape][fRotation][i].getXPosition()] = fShape;
 			
 		return boardToPlayer;
 	}
+	
+	public void setLevel(int level)
+	{
+		this.level = level;
+	}
+	
+	public int getLevel()
+	{
+		return level;
+	}
+	
+	private int [][] board;	
+	private int [][] boardToPlayer = new int [20][10];
+	private int fShape;  /*to get the index of the figure*/
+	private int fRotation;  /*0, 1, 2, 3 which will determine the position of each figure after move*/
+	private Block fPosition;  /*to record the first block of figure when it will drop in the board*/
+	private int nextFigure;
+	private int scores = 0; /*player's score*/
+	private static int level = 1;
+	/**
+	 * Information if the game is lost. True means game is over.
+	 */
+	public boolean lost;
+	SingleRandom rand = SingleRandom.getInstance();
 }
