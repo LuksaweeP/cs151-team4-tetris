@@ -4,11 +4,24 @@ package edu.sjsu.cs151.tetris.controller;
 	 * Class that will create the connection between model and view.
 	 */
 
-	public class Message 
+	public class Message
 	{
+		public static enum ValveResponse 
+		{
+			REDRAW, 
+			CHANGE_NEXT, 
+			SCORES_UPDATE, 
+			LOST, 
+			MOVE_LEFT, 
+			MOVE_RIGHT, 
+			FASTER, 
+			ROTATE_LEFT, 
+			ROTATE_RIGHT, 
+			RESTART, 
+			WIN;};
 		private ValveResponse valveResponse;
-		private int add_info;
-		private int [][] data;
+		private int add_info;  // for the score
+		private int [][] data;  // to draw figure
 		
 		/**
 		 * @param t Type of the message we create
