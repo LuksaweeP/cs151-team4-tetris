@@ -1,14 +1,9 @@
 package edu.sjsu.cs151.tetris.view;
 
+import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
 public class ViewAllPanels
 {
@@ -96,7 +91,17 @@ public class ViewAllPanels
 	{
 		this.playerPanel = new PlayerPanel();
 	}
-	 
+	
+	public void setLeaderBoardPanel()
+	{
+		this.leaderboardPanel = new LeaderboardPanel();
+	}
+	
+	public void setLeaderBoarInPausePanel()
+	{
+		this.leaderboardInPausePanel = new LeaderboardInPausePanel();
+	}
+	
 	private JFrame frame;
 	private WelcomePanel welcomePanel = new WelcomePanel();
 	private MainPanel mainPanel = new MainPanel();
@@ -109,4 +114,5 @@ public class ViewAllPanels
 	private ControlsPanel controlsPanel = new ControlsPanel();
 	private LeaderboardInPausePanel leaderboardInPausePanel = new LeaderboardInPausePanel();
 	private PausePanel pausePanel = new PausePanel();
+	private Color [][] colors;
 }
