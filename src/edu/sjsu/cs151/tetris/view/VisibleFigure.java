@@ -9,6 +9,14 @@ import java.awt.Color;
 public class VisibleFigure {
 	public static final Color[][][] FiguresList = 
 		{
+				
+				{	//empty-shape
+					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},
+					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},
+					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},
+					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY}
+				},
+				
 				{	//J - shape
 					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},
 					{Color.BLUE, Color.BLUE, Color.BLUE, Color.GRAY},

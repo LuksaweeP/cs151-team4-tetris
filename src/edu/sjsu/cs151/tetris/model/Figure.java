@@ -9,6 +9,10 @@ public class Figure
 {
 		public static final Block[][][] FiguresList = {
 				
+			// empty
+			{
+				
+			},		
 			// J-Figure
 			{
 				{ new Block(0, 1), new Block(1, 1), new Block(2, 1), new Block(2, 2) },
