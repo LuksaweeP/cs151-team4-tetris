@@ -38,7 +38,7 @@ public class TimeController implements Runnable
 		while(true)
 		{
 			//continue;
-			System.out.println("");
+			System.out.print("");
 			while (view.getViewAllPanels().getInGamePanel().getGameStart() == true)
 			{
 				if(model.getGameRule().getLost()) 
@@ -83,16 +83,14 @@ public class TimeController implements Runnable
 	
 	public void run()
 	{
-		
-			try {
-				startTimer();
-			} 
+		try 
+		{	
+			startTimer();
+			
+		} 
 			catch (InterruptedException e) 
 			{
-				System.out.println(e);
 			}
-		
-		
 	}
 }
 

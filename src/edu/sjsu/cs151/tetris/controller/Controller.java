@@ -132,7 +132,7 @@ public class Controller implements Runnable
 						controllerToViewQueue.put(message);
 					}
 						else 
-						{
+						{   
 							model.getGameRule().figureCopy();
 							model.getGameRule().newFigure();
 							/* If there were any full lines we send to View new scores amount */
