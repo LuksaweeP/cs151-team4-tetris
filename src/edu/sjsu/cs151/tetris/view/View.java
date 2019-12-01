@@ -264,7 +264,6 @@ public class View implements Runnable
 					
 					try 
 					{
-						System.out.println(message.getValveResponse());
 						viewToControllerQueue.put(message);
 					} 
 					catch (InterruptedException e1) {}
@@ -372,15 +371,16 @@ public class View implements Runnable
 			while (lost != true)
 			{
 				System.out.print("");
-				
 				while (viewAllPanels.getInGamePanel().getGameStart() == true)
 				{
 					loop();
 				}
+				
 			}
 			
 			if( lost == true)
 			{
+				System.out.println("HELLO GAME OVER");
 				viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
 				//viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel());	
 				//viewAllPanels.getFrame().repaint();
@@ -392,7 +392,7 @@ public class View implements Runnable
 		}
 		catch (Exception exception) 
 		{
-			System.out.println(exception);
+			//System.out.println(exception);
 		}
 	}
 	
@@ -431,14 +431,44 @@ public class View implements Runnable
 						case LOST:
 							lost = true;
 							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
-							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel()));
-							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel()));	
-							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
-							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
-							viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
+							viewAllPanels.getInGamePanel().setGameStart(false);
+							viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
+							viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
+							viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel());	
+							viewAllPanels.getFrame().repaint();
+							viewAllPanels.getFrame().setSize(600, 800);	
+							viewAllPanels.getFrame().pack();
 							
-							
+							viewAllPanels.getGameOverPanel().getRetryButton().addActionListener(new ActionListener()
+							{
+								public void actionPerformed(ActionEvent e)
+								{
+									lost = false;
+									//viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
+									viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
+									viewAllPanels.getInGamePanel().setGameStart(true);
+									lost = false;
+									Message message = new Message(Message.ValveResponse.RESTART);
+									try 
+									{
+										viewToControllerQueue.put(message);
+									} 
+									catch (InterruptedException e1) {}
+									viewAllPanels.getFrame().remove(viewAllPanels.getGameOverPanel().getGameOverPanel());
+									viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel());	
+									viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow();
+									viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true);
+									viewAllPanels.getInGamePanel().getBoardGamePanel().requestFocusInWindow();
+									viewAllPanels.getInGamePanel().getBoardGamePanel().setFocusable(true);
+									
+									viewAllPanels.getFrame().repaint();
+									viewAllPanels.getFrame().pack();
+									
+									
+									
+									
+								}
+							});
 							break;
 							
 						default: 
@@ -449,7 +479,6 @@ public class View implements Runnable
 		
 				catch (InterruptedException e) 
 				{
-					System.out.println(e);
 				}
 	}
 	
