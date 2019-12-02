@@ -9,11 +9,6 @@ import edu.sjsu.cs151.tetris.model.Model;
  */
 public class Controller implements Runnable
 {
-	private Model model;
-	
-	private BlockingQueue <Message> controllerToViewQueue;
-	private BlockingQueue <Message> viewToControllerQueue;
-	
 	/**
 	 * @param m Model object shared with TimeController
 	 */
@@ -63,7 +58,6 @@ public class Controller implements Runnable
 		{
 			message = viewToControllerQueue.take();
 			
-			
 			if(message == null)
 			{
 				continue;
@@ -72,6 +66,7 @@ public class Controller implements Runnable
 			/* If the game is lost and user pressed enter the game is being restarted. All other messages are ignored */
 			if(model.getGameRule().getLost() == true)
 			{
+				System.out.println("GAME OVER11");
 				if(message.getValveResponse() == Message.ValveResponse.RESTART) 
 					{
 						model.getGameRule().restart();
@@ -85,9 +80,14 @@ public class Controller implements Runnable
 			
 			switch (message.getValveResponse())
 			{
+			case GET_NEWGAME:
+					model.getGameRule().restart();
+					message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+					message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData());
+					controllerToViewQueue.put(message);
+					break;
 				
 			case MOVE_LEFT:
-				
 				if(model.getGameRule().isLeftEnable()) 
 				{
 					model.getGameRule().moveLeft();
@@ -95,6 +95,7 @@ public class Controller implements Runnable
 					controllerToViewQueue.put(message);
 				}
 				break;
+				
 			case MOVE_RIGHT:
 				if(model.getGameRule().isRightEnable())
 				{
@@ -103,6 +104,7 @@ public class Controller implements Runnable
 					controllerToViewQueue.put(message);
 				}
 				break;
+				
 			case ROTATE_LEFT:
 				if(!model.getGameRule().isLeftRotationEnable()) 
 					break;	
@@ -144,6 +146,7 @@ public class Controller implements Runnable
 							message = new Message(Message.ValveResponse.CHANGE_NEXT, model.getGameRule().getNext());
 							controllerToViewQueue.put(message);
 						}
+				
 				message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData());
 				controllerToViewQueue.put(message);
 				break;
@@ -153,6 +156,11 @@ public class Controller implements Runnable
 			}
 		}
 	}
+	private Model model;
+	
+	private BlockingQueue <Message> controllerToViewQueue;
+	private BlockingQueue <Message> viewToControllerQueue;
+	
 }
 
 
