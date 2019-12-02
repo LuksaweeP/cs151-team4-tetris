@@ -1,8 +1,5 @@
 package edu.sjsu.cs151.tetris.model;
 
-import java.util.Random;
-import java.awt.Point;
-
 /**
  * A class for creating a play field with a 2D grid of size height x width that can spawn in Tetrominos, and award points to the player when necessary. 
  * The default playfield is (Height x Width) = 20 x 10. 
@@ -328,6 +325,7 @@ public class GameRule
 	{
 		return level;
 	}
+
 	
 	private int [][] board;	
 	private int [][] boardToPlayer = new int [20][10];
