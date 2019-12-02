@@ -1,5 +1,6 @@
 package edu.sjsu.cs151.tetris.view;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -31,11 +32,17 @@ public class View implements Runnable
 			for(int j=0; j < 10; ++j)
 				colors[i][j] = Color.DARK_GRAY;
 		
-		BoardGamePanel panel = new BoardGamePanel(colors);
+		panel = new BoardGamePanel(colors);
 		panel.setVisible(true);
 		
 		model = new Model();
 		
+		actionListenner();
+		
+	}
+	
+	public void actionListenner()
+	{
 		/**
 		 * Add action Listener to each JButton.
 		 */
@@ -98,6 +105,11 @@ public class View implements Runnable
 					viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
 					viewAllPanels.getInGamePanel().setLabelName(input);
 					
+					viewAllPanels.getInGamePanel().getBoardGamePanel().setPlayerName(input);
+					viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(model.getGameRule().getLevel());
+					viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(model.getGameRule().getScores());
+					
+
 					viewAllPanels.getInGamePanel().setGameStart(true);
 					viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel());
 					viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel());
@@ -147,8 +159,8 @@ public class View implements Runnable
 					viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel());		
 					viewAllPanels.getFrame().add(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel());
 					viewAllPanels.getFrame().repaint();
-					viewAllPanels.getFrame().setSize(600, 800);
 					viewAllPanels.getFrame().pack();
+					viewAllPanels.getFrame().setVisible(true);
 					
 					/**
 					 * InGamePanel
@@ -160,18 +172,23 @@ public class View implements Runnable
 						{
 							String selectLevel = Integer.toString(i);
 							int level = i;
+							
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().setPlayerName(loadPlayer.getName()));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(level));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(model.getGameRule().getScores()));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> model.getGameRule().setLevel(level));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setLevelLabel(selectLevel));
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));			
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));
+							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel()));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow());
+							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true));
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().requestFocusInWindow());
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getBoardGamePanel().setFocusable(true));
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().repaint());	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().pack());
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setVisible(true));				
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setVisible(true));	
+							
 						}
 					}		
 				}	
@@ -231,7 +248,6 @@ public class View implements Runnable
 				
 				case KeyEvent.VK_LEFT:
 					message = new Message(Message.ValveResponse.MOVE_LEFT);
-					
 					try 
 					{
 						viewToControllerQueue.put(message);
@@ -241,7 +257,6 @@ public class View implements Runnable
 					
 				case KeyEvent.VK_RIGHT:
 					message = new Message(Message.ValveResponse.MOVE_RIGHT);
-					
 					try 
 					{
 						viewToControllerQueue.put(message);
@@ -273,6 +288,7 @@ public class View implements Runnable
 					if(lost) 
 					{
 						viewAllPanels.getInGamePanel().setGameStart(true);
+						viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(false);
 						lost = false;
 						message = new Message(Message.ValveResponse.RESTART);
 						try 
@@ -312,11 +328,48 @@ public class View implements Runnable
 		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 			
 		//retrunToMainMnuButton
-		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
-		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
-		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
-		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
-		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().pack());
+		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
+		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
+		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
+		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().pack());
+		
+		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				//model.getGameRule().restart();
+				//viewAllPanels.getInGamePanel().setGameStart(false);
+
+				//for (int i = 0; i < 22; ++i)
+					//for(int j = 0; j < 10; ++j)
+						//System.out.print(model.getGameRule().getData().toString());
+				//lost = true;
+				//redraw(model.getGameRule().getData());
+				//controllerToViewQueue.clear();
+				//viewToControllerQueue.clear();
+				
+				message = new Message(Message.ValveResponse.GET_NEWGAME);
+				
+				
+				
+				try 
+				{
+					viewToControllerQueue.put(message);
+				} 
+				catch (InterruptedException e1) {}
+				
+				
+		
+
+				viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel());
+				viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel());	
+				viewAllPanels.getFrame().repaint();
+				viewAllPanels.getFrame().setSize(600, 800);	
+				viewAllPanels.getFrame().pack();
+			}
+		});
+		
 		
 		/**
 		 * LeaderboardInGame
@@ -336,7 +389,6 @@ public class View implements Runnable
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().repaint());
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().pack());
-		
 	}
 	
 	/**
@@ -375,20 +427,7 @@ public class View implements Runnable
 				{
 					loop();
 				}
-				
 			}
-			
-			if( lost == true)
-			{
-				System.out.println("HELLO GAME OVER");
-				viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
-				//viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel());	
-				//viewAllPanels.getFrame().repaint();
-				//viewAllPanels.getFrame().setSize(600, 800);	
-				//viewAllPanels.getFrame().pack();
-			}
-			
-			
 		}
 		catch (Exception exception) 
 		{
@@ -425,51 +464,20 @@ public class View implements Runnable
 						
 						case SCORES_UPDATE:
 							viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(message.getAdd()));
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
 							break;
 							
 						case LOST:
+							System.out.println("HELLO LOST");
 							lost = true;
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(false);
-							viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
-							viewAllPanels.getFrame().remove(viewAllPanels.getInGamePanel().getInGamePanel());
-							viewAllPanels.getFrame().add(viewAllPanels.getGameOverPanel().getGameOverPanel());	
-							viewAllPanels.getFrame().repaint();
-							viewAllPanels.getFrame().setSize(600, 800);	
-							viewAllPanels.getFrame().pack();
-							
-							viewAllPanels.getGameOverPanel().getRetryButton().addActionListener(new ActionListener()
-							{
-								public void actionPerformed(ActionEvent e)
-								{
-									lost = false;
-									//viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
-									viewAllPanels.getInGamePanel().getBoardGamePanel().redraw();
-									viewAllPanels.getInGamePanel().setGameStart(true);
-									lost = false;
-									Message message = new Message(Message.ValveResponse.RESTART);
-									try 
-									{
-										viewToControllerQueue.put(message);
-									} 
-									catch (InterruptedException e1) {}
-									viewAllPanels.getFrame().remove(viewAllPanels.getGameOverPanel().getGameOverPanel());
-									viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel());	
-									viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow();
-									viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true);
-									viewAllPanels.getInGamePanel().getBoardGamePanel().requestFocusInWindow();
-									viewAllPanels.getInGamePanel().getBoardGamePanel().setFocusable(true);
-									
-									viewAllPanels.getFrame().repaint();
-									viewAllPanels.getFrame().pack();
-									
-									
-									
-									
-								}
-							});
 							break;
+						case GET_NEWGAME:
+							System.out.println("HELLO GET NEW GAME");
+							lost = true;
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
+							viewAllPanels.getInGamePanel().setGameStart(false);
 							
 						default: 
 							break;
@@ -532,6 +540,7 @@ public class View implements Runnable
 	private ViewAllPanels viewAllPanels;
 	private Message message;
 	private Model model;
+	private BoardGamePanel panel;
 	private View view;
 	private JFrame frame;
 	
