@@ -22,8 +22,8 @@ public class Main {
 	private Thread tControllerThread;
 
 	/* Creating BlockongQueues */
-	private BlockingQueue<Message> controllerToViewQueue = new ArrayBlockingQueue<>(1024);
-	private BlockingQueue<Message> viewToControllerQueue = new ArrayBlockingQueue<>(1024);
+	private BlockingQueue<Message> controllerToViewQueue = new LinkedBlockingQueue<>();
+	private BlockingQueue<Message> viewToControllerQueue = new LinkedBlockingQueue<>();
 
 	public Main() {
 		/* Creating MVC (with 2 controllers) */
@@ -58,10 +58,5 @@ public class Main {
 		controllerThread.start();
 		viewThread.start();
 		tControllerThread.start();
-	}
-	
-	public static void main(String[] args) {
-		/* Creating Main class object starts the game */
-		Main Tetris = new Main();
 	}
 }
