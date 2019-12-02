@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
@@ -22,7 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-public class InGamePanel extends PlayerPanel {
+public class InGamePanel extends JPanel{
 	public InGamePanel() {
 		
 		inGamePanel = new JPanel();
@@ -105,12 +106,10 @@ public class InGamePanel extends PlayerPanel {
 		boardGamePanel.setVerifyInputWhenFocusTarget(true);
 		boardGamePanel.setVisible(true);
 		
-	
 		inGamePanel.setLayout(new BorderLayout());
 		inGamePanel.add(boardGamePanel, BorderLayout.CENTER);
 		inGamePanel.add(gameInfo, BorderLayout.WEST);
 		inGamePanel.setVisible(true);
-		
 		
 	}
 	
@@ -220,6 +219,8 @@ public class InGamePanel extends PlayerPanel {
 	}
 	
 	
+	
+	
 	Tetromino cur = new Tetromino();
 	Block [] blockCur = new Block[4];
 	Tetromino next = new Tetromino();
@@ -241,5 +242,4 @@ public class InGamePanel extends PlayerPanel {
 	private Color[][] colors;
 	private boolean lost = false;
 	private boolean gameStart = false; // to make to new figure drop
-
 }
