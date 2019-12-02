@@ -6,10 +6,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class TimeController implements Runnable
 {
-	private Model model;
-	private View view;
-	private BlockingQueue <Message> controllerToViewQueue;	
-	
 	/**
 	 * @param m Model shared with controller.
 	 */
@@ -43,7 +39,7 @@ public class TimeController implements Runnable
 			{
 				if(model.getGameRule().getLost()) 
 				{
-					Thread.sleep(300);
+					Thread.sleep(500);
 					continue;
 				}
 
@@ -55,9 +51,9 @@ public class TimeController implements Runnable
 			
 				else if(model.getGameRule().isOver())
 				{
+					System.out.println("OVER!!!!");
 					model.getGameRule().setGetLost(true);
 					message = new Message(Message.ValveResponse.LOST);
-					System.out.println("TIMECONTROLLER: OVER");
 					controllerToViewQueue.put(message);
 				}
 					else
@@ -76,7 +72,28 @@ public class TimeController implements Runnable
 					}
 				message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData() );
 				controllerToViewQueue.put(message);
-				Thread.sleep(300);
+				System.out.println("??");
+				switch (model.getGameRule().getLevel())
+				{
+				case 1:
+					Thread.sleep(300);
+					break;
+				case 2:
+					Thread.sleep(200);
+					break;
+				case 3:
+					Thread.sleep(150);
+					break;
+				case 4:
+					Thread.sleep(100);
+					break;
+				case 5:
+					Thread.sleep(80);
+					break;
+				default:
+					Thread.sleep(300);
+					break;
+				}
 			}
 		}
 	}
@@ -92,5 +109,9 @@ public class TimeController implements Runnable
 			{
 			}
 	}
+	
+	private Model model;
+	private View view;
+	private BlockingQueue <Message> controllerToViewQueue;	
 }
 

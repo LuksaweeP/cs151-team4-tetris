@@ -18,6 +18,7 @@ package edu.sjsu.cs151.tetris.controller;
 			ROTATE_LEFT, 
 			ROTATE_RIGHT, 
 			RESTART, 
+			GET_NEWGAME,
 			WIN;};
 		private ValveResponse valveResponse;
 		private int add_info;  // for the score
