@@ -64,25 +64,45 @@ public class Controller implements Runnable
 			}
 					
 			/* If the game is lost and user pressed enter the game is being restarted. All other messages are ignored */
-			if(model.getGameRule().getLost() == true)
+			if (model.getGameRule().getLost() == true)
 			{
-				System.out.println("GAME OVER11");
 				if(message.getValveResponse() == Message.ValveResponse.RESTART) 
 					{
+					
+						int level = model.getGameRule().getLevel();
 						model.getGameRule().restart();
-						message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+						
+						model.getGameRule().setLevel(level);			
+						message = new Message(Message.ValveResponse.INFO_UPDATE, model.getGameRule().getScores(), model.getGameRule().getLevel());
 						controllerToViewQueue.put(message);
 					}
 				else 
 					continue;
 			}
 			
+			else if (model.getGameRule().getWin() == true)
+			{
+				if(message.getValveResponse() == Message.ValveResponse.GET_NEXTLEVEL) 
+					{
+					
+						int level = model.getGameRule().getLevel();
+						model.getGameRule().restart();
+						System.out.println("WIN" + model.getGameRule().getWin() );
+						model.getGameRule().setLevel(level + 1);			
+						message = new Message(Message.ValveResponse.INFO_UPDATE, model.getGameRule().getScores(), model.getGameRule().getLevel());
+						controllerToViewQueue.put(message);
+					}
+				else 
+					continue;
+			}
 			
 			switch (message.getValveResponse())
 			{
+			
 			case GET_NEWGAME:
 					model.getGameRule().restart();
 					message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+					message = new Message(Message.ValveResponse.LEVEL_UPDATE, model.getGameRule().getLevel());
 					message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData());
 					controllerToViewQueue.put(message);
 					break;
@@ -130,7 +150,7 @@ public class Controller implements Runnable
 					{
 						System.out.println("GAME OVER");
 						model.getGameRule().setGetLost(true);
-						message = new Message(Message.ValveResponse.LOST);
+						message = new Message(Message.ValveResponse.LOST, model.getGameRule().getScores(), model.getGameRule().getLevel());
 						controllerToViewQueue.put(message);
 					}
 						else 
@@ -141,6 +161,7 @@ public class Controller implements Runnable
 							if(model.getGameRule().removeFullLines())
 							{
 								message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+								message = new Message(Message.ValveResponse.LEVEL_UPDATE, model.getGameRule().getLevel());
 								controllerToViewQueue.put(message);
 							}
 							message = new Message(Message.ValveResponse.CHANGE_NEXT, model.getGameRule().getNext());

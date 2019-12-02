@@ -108,6 +108,15 @@ public class BoardGamePanel extends JPanel
 			g.setFont(font);
 			g.drawString("(Press ENTER to play again)", 70, 350);
 		}
+		
+		if(winLevel)
+		{
+			g.setColor(Color.WHITE);
+			g.setFont(font1);
+			g.drawString("GAME WIN", 90, 300);
+			g.setFont(font);
+			g.drawString("(Press ENTER to play next Level)", 70, 350);
+		}
 	}
 	
 	public void setPlayerName(String name)
@@ -125,6 +134,11 @@ public class BoardGamePanel extends JPanel
 		return scores;
 	}
 	
+	public void setWinLevel(boolean winLevel)
+	{
+		this.winLevel = winLevel;
+	}
+	
 	private static final long serialVersionUID = -8715353373678321308L;
 	private Color [][] colors;
 	private int nextShape;
@@ -134,6 +148,7 @@ public class BoardGamePanel extends JPanel
 	private boolean lost = false;
 	private Font font = new Font("Dialog", Font.BOLD, 18);
 	private Font font1 = new Font("Dialog", Font.BOLD, 50);
+	private boolean winLevel = false;
 	
 }
 

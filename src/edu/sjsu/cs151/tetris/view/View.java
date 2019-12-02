@@ -285,7 +285,7 @@ public class View implements Runnable
 					break;
 				
 				case KeyEvent.VK_ENTER:
-					if(lost) 
+					if(lost)
 					{
 						viewAllPanels.getInGamePanel().setGameStart(true);
 						viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(false);
@@ -297,6 +297,20 @@ public class View implements Runnable
 						} 
 						catch (InterruptedException e1) {}
 					}
+					
+					if(winLevel)
+					{
+						viewAllPanels.getInGamePanel().setGameStart(true);
+						viewAllPanels.getInGamePanel().getBoardGamePanel().setWinLevel(false);
+						winLevel = false;
+						message = new Message(Message.ValveResponse.GET_NEXTLEVEL);
+						try 
+						{
+							viewToControllerQueue.put(message);
+						} 
+						catch (InterruptedException e1) {}
+					}
+					
 					break;		
 				}
 			}
@@ -337,31 +351,15 @@ public class View implements Runnable
 		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
-			{
-				//model.getGameRule().restart();
-				//viewAllPanels.getInGamePanel().setGameStart(false);
-
-				//for (int i = 0; i < 22; ++i)
-					//for(int j = 0; j < 10; ++j)
-						//System.out.print(model.getGameRule().getData().toString());
-				//lost = true;
-				//redraw(model.getGameRule().getData());
-				//controllerToViewQueue.clear();
-				//viewToControllerQueue.clear();
-				
+			{				
 				message = new Message(Message.ValveResponse.GET_NEWGAME);
-				
-				
-				
+			
 				try 
 				{
 					viewToControllerQueue.put(message);
 				} 
 				catch (InterruptedException e1) {}
 				
-				
-		
-
 				viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel());
 				viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel());	
 				viewAllPanels.getFrame().repaint();
@@ -382,7 +380,7 @@ public class View implements Runnable
 		
 		
 		/**
-		 * ControlPanel
+		 * ControlPanel     
 		 */	
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getControlsPanel().getControlsPanel()));
 		viewAllPanels.getControlsPanel().getBack().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPausePanel().getPausePanel()));	
@@ -467,17 +465,48 @@ public class View implements Runnable
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
 							break;
 							
+						case LEVEL_UPDATE:
+							viewAllPanels.getInGamePanel().setLevelLabel(Integer.toString(message.getAdd()));
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getAdd());
+							break;	
+							
 						case LOST:
 							System.out.println("HELLO LOST");
 							lost = true;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(false);
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
 							break;
+							
+						case WIN:
+							System.out.println("WIN");
+							winLevel = true;
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setWinLevel(winLevel);
+							viewAllPanels.getInGamePanel().setGameStart(false);
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
+							break;
+							
 						case GET_NEWGAME:
 							System.out.println("HELLO GET NEW GAME");
 							lost = true;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(false);
+							break;
+							
+						case INFO_UPDATE:
+							System.out.println("RESTART");
+							lost = false;
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
+							viewAllPanels.getInGamePanel().setGameStart(true);
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
+							break;
+												
+						
+							
+						
 							
 						default: 
 							break;
@@ -533,6 +562,16 @@ public class View implements Runnable
 		viewAllPanels.getInGamePanel().getBoardGamePanel().redraw(colors);	
 	}
 	
+	public void setLost(boolean lost)
+	{
+		this.lost = lost;
+	}
+	
+	public void setWinLevel(boolean winLevel)
+	{
+		this.winLevel = winLevel;
+	}
+	
 	private boolean lost = false;
 	private Color [][] colors;
 	private BlockingQueue <Message> controllerToViewQueue;
@@ -543,6 +582,7 @@ public class View implements Runnable
 	private BoardGamePanel panel;
 	private View view;
 	private JFrame frame;
+	private boolean winLevel = false;
 	
 	
 }		

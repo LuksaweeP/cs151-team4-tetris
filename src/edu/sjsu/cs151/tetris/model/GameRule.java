@@ -30,6 +30,7 @@ public class GameRule
 		nextFigure = rand.nextInt(7) + 1;
 		scores = 0;
 		lost = false;
+		win = false;
 	}
 	
 	/**
@@ -318,14 +319,31 @@ public class GameRule
 	
 	public void setLevel(int level)
 	{
-		this.level = level;
+		GameRule.level = level;
 	}
 	
 	public int getLevel()
 	{
 		return level;
 	}
+	
+	public boolean isWin()
+	{
+		if((level == 1) && (getScores() >= 100))
+			return true;
+		
+		return false;
+	}
+	
+	public void setWin(boolean win)
+	{
+		this.win = win;
+	}
 
+	public boolean getWin()
+	{
+		return win;
+	}
 	
 	private int [][] board;	
 	private int [][] boardToPlayer = new int [20][10];
@@ -333,11 +351,12 @@ public class GameRule
 	private int fRotation;  /*0, 1, 2, 3 which will determine the position of each figure after move*/
 	private Block fPosition;  /*to record the first block of figure when it will drop in the board*/
 	private int nextFigure;
-	private int scores = 0; /*player's score*/
+	private static int scores; /*player's score*/
 	private static int level = 1;
 	/**
 	 * Information if the game is lost. True means game is over.
 	 */
 	public boolean lost;
+	public boolean win;
 	SingleRandom rand = SingleRandom.getInstance();
 }

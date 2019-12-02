@@ -8,8 +8,10 @@ package edu.sjsu.cs151.tetris.controller;
 	{
 		public static enum ValveResponse 
 		{
+			INFO_UPDATE,
 			REDRAW, 
 			CHANGE_NEXT, 
+			LEVEL_UPDATE,
 			SCORES_UPDATE, 
 			LOST, 
 			MOVE_LEFT, 
@@ -19,9 +21,11 @@ package edu.sjsu.cs151.tetris.controller;
 			ROTATE_RIGHT, 
 			RESTART, 
 			GET_NEWGAME,
+			GET_NEXTLEVEL,
 			WIN;};
 		private ValveResponse valveResponse;
-		private int add_info;  // for the score
+		private int add_info;  	// for the score
+		private int level;		// 
 		private int [][] data;  // to draw figure
 		
 		/**
@@ -41,6 +45,17 @@ package edu.sjsu.cs151.tetris.controller;
 		{
 			valveResponse = v;
 			add_info = a;
+		}
+		
+		/**
+		 * @param t	Type of the message we create.
+		 * @param a	Additional information for example scores while updating scores.
+		 */
+		public Message (ValveResponse v, int a, int b)
+		{
+			valveResponse = v;
+			add_info = a;
+			level = b;
 		}
 		
 		/**
@@ -68,6 +83,15 @@ package edu.sjsu.cs151.tetris.controller;
 		{
 			return add_info;
 		}	
+		
+		/**
+		 * @return Additional information (single int value)
+		 */
+		public int getLevel()
+		{
+			return level;
+		}
+		
 		
 		/**
 		 * @return Received data to be shown on the screen.
