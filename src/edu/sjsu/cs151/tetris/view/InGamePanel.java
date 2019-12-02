@@ -110,7 +110,6 @@ public class InGamePanel extends JPanel{
 		inGamePanel.add(boardGamePanel, BorderLayout.CENTER);
 		inGamePanel.add(gameInfo, BorderLayout.WEST);
 		inGamePanel.setVisible(true);
-		
 	}
 	
 	public void setLevelInGamePanel(String playerLevel)
