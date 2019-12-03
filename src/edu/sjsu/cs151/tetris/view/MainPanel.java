@@ -44,12 +44,15 @@ public class MainPanel extends Panel
 		gameLabel.setOpaque(true);
 		
 		playgameButton = new JButton	("    Play Game   ");
+		playgameButton.setBackground(Color.WHITE);
 		setButton(playgameButton, 48);
 		
 		leaderboardsButton = new JButton(" Leaderboards ");
+		leaderboardsButton.setBackground(Color.WHITE);
 		setButton(leaderboardsButton, 48);
 
 		quitButton = new JButton		("         Quit         ");
+		quitButton.setBackground(Color.WHITE);
 		setButton(quitButton, 48);
 		
 		JPanel box1 = empty3Boxs();

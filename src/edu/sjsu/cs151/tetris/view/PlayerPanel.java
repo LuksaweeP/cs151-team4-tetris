@@ -31,7 +31,7 @@ public class PlayerPanel extends Panel {
 
 		back = new JButton("   <-  Back   ");
 		back.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		back.setBackground(Color.BLACK);
+		back.setBackground(Color.WHITE);
 		back.setOpaque(true);
 		back.setAlignmentX(Component.CENTER_ALIGNMENT);
 		back.setAlignmentY(Component.BOTTOM_ALIGNMENT);
@@ -55,6 +55,7 @@ public class PlayerPanel extends Panel {
 		inputBox.setOpaque(true);
 
 		createButton = new JButton("   Create   ");
+		createButton.setBackground(Color.WHITE);
 		setButton(createButton, 36);
 		createButton.setVisible(true);
 		
@@ -112,7 +113,7 @@ public class PlayerPanel extends Panel {
 			String name = player.getName();
 			existPlayer[i] = new JButton(players[i]);
 			existPlayer[i].setFont(new Font("TimesRoman", Font.PLAIN, 30));
-			existPlayer[i].setBackground(Color.BLACK);
+			existPlayer[i].setBackground(Color.WHITE);
 			existPlayer[i].setOpaque(true);
 			existPlayer[i].setBorderPainted(true);
 			c.ipady = 5;

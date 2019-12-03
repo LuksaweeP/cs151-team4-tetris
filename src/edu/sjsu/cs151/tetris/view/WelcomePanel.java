@@ -59,7 +59,7 @@ public class WelcomePanel
 
 		welcomeButton = new JButton("Start Tetris Game");
 		welcomeButton.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		welcomeButton.setBackground(Color.BLACK);
+		welcomeButton.setBackground(Color.WHITE);
 		welcomeButton.setOpaque(true);
 		welcomeButton.setBorderPainted(true);
 		welcomeButton.setVisible(true);

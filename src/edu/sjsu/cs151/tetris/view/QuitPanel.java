@@ -30,9 +30,11 @@ public class QuitPanel extends Panel
 		setLabelCenter(confirm);
 		
 		yes = new JButton("  YES  ");
+		yes.setBackground(Color.WHITE);
 		setButton(yes, 48);
 		
 		no = new JButton("  NO  ");
+		no.setBackground(Color.WHITE);
 		setButton(no, 48);
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));

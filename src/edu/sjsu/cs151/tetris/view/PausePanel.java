@@ -33,6 +33,7 @@ public class PausePanel extends Panel
 			backPanel.setLayout(new BoxLayout(backPanel, BoxLayout.X_AXIS));
 			
 			back = new JButton("   <-  Back   ");
+			back.setBackground(Color.WHITE);
 			setButton(back, 36);
 
 			JLabel back1 = new JLabel("                   ");  // create empty box
@@ -43,12 +44,15 @@ public class PausePanel extends Panel
 			backPanel.add(back1);
 
 			leaderboardsButton = new JButton	(" Leaderboards ");
+			leaderboardsButton.setBackground(Color.WHITE);
 			setButton(leaderboardsButton, 48);
 			
 			controlsButton = new JButton(" Controls ");
+			controlsButton.setBackground(Color.WHITE);
 			setButton(controlsButton, 48);
 			
-			returnToMainManuButton = new JButton		("  Return to Main Manu  ");
+			returnToMainManuButton = new JButton		("  Return to Main Menu  ");
+			returnToMainManuButton.setBackground(Color.WHITE);
 			setButton(returnToMainManuButton, 40);
 				
 			JPanel box1 = empty2Boxs();					

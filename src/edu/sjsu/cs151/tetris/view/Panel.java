@@ -18,7 +18,7 @@ public class Panel
 	public JButton setButton(JButton button, int fontSize)
 	{
 		button.setFont(new Font("TimesRoman", Font.BOLD, fontSize));
-		button.setBackground(Color.BLACK);
+		button.setBackground(Color.WHITE);
 		button.setOpaque(true);
 		button.setBorderPainted(true);
 		button.setAlignmentX(Component.CENTER_ALIGNMENT);

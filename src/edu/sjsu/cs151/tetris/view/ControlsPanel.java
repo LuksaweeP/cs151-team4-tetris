@@ -28,7 +28,7 @@ public class ControlsPanel extends Panel
 	
 	back = new JButton("   <-  Back   ");
 	back.setFont(new Font("TimesRoman", Font.BOLD, 30));
-	back.setBackground(Color.BLACK);
+	back.setBackground(Color.WHITE);
 	back.setOpaque(true);
 	back.setAlignmentX(Component.CENTER_ALIGNMENT);
 	back.setAlignmentY(Component.BOTTOM_ALIGNMENT);

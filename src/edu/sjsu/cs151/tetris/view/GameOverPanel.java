@@ -28,9 +28,11 @@ public class GameOverPanel extends Panel
 		setLabelCenter(gameOver);
 		
 		retryButton = new JButton("  Retry Level  ");
+		retryButton.setBackground(Color.WHITE);
 		setButton(retryButton, 48);
 		
 		returnToMainManu = new JButton("  Return to Main Manu  ");
+		returnToMainManu.setBackground(Color.WHITE);
 		setButton(returnToMainManu, 48);
 		
 		JPanel box1 = new JPanel(new GridLayout(1, 10));

@@ -3,6 +3,7 @@ package edu.sjsu.cs151.tetris.view;
 import edu.sjsu.cs151.tetris.model.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -23,6 +24,7 @@ public class LeaderboardInPausePanel extends Panel {
 		backPanel.setLayout(new BoxLayout(backPanel, BoxLayout.X_AXIS));
 		
 		back = new JButton("   <-  Back   ");
+		back.setBackground(Color.WHITE);
 		setButton(back, 36);
 
 		JLabel back1 = new JLabel("                   ");  // create empty box
