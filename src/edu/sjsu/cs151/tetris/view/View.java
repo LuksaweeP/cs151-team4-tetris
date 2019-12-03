@@ -220,6 +220,7 @@ public class View implements Runnable
 		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getQuitPanel().getQuitPane()));
 		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));
 		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().repaint());
+		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
 		viewAllPanels.getQuitPanel().getNo().addActionListener(event -> viewAllPanels.getFrame().pack());
 		
 		//yes
@@ -357,6 +358,7 @@ public class View implements Runnable
 				
 				viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel());
 				viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel());	
+				viewAllPanels.getFrame().pack();
 				viewAllPanels.getFrame().setSize(600, 800);	
 				viewAllPanels.getFrame().repaint();
 				
