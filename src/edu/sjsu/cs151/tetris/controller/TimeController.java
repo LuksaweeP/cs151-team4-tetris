@@ -61,27 +61,29 @@ public class TimeController implements Runnable
 					controllerToViewQueue.put(message);
 				}
 				
-				else if (model.getGameRule().isWin())
+				
+				else
+				{
+					model.getGameRule().figureCopy();
+					model.getGameRule().newFigure();
+					
+					if(model.getGameRule().removeFullLines())
+					{
+						message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+						controllerToViewQueue.put(message);
+					}
+					
+					message = new Message(Message.ValveResponse.CHANGE_NEXT, model.getGameRule().getNext());
+					controllerToViewQueue.put(message);
+				}
+				
+				if (model.getGameRule().isWin())
 				{
 					model.getGameRule().setWin(true);
 					message = new Message(Message.ValveResponse.WIN, model.getGameRule().getScores(), model.getGameRule().getLevel());				
 					controllerToViewQueue.put(message);
 				}
 				
-					else
-					{
-						model.getGameRule().figureCopy();
-						model.getGameRule().newFigure();
-						
-						if(model.getGameRule().removeFullLines())
-						{
-							message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
-							controllerToViewQueue.put(message);
-						}
-						
-						message = new Message(Message.ValveResponse.CHANGE_NEXT, model.getGameRule().getNext());
-						controllerToViewQueue.put(message);
-					}
 				message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData() );
 				controllerToViewQueue.put(message);
 
