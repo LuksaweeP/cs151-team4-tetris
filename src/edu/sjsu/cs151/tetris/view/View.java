@@ -108,7 +108,6 @@ public class View implements Runnable
 					viewAllPanels.getInGamePanel().getBoardGamePanel().setPlayerName(input);
 					viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(model.getGameRule().getLevel());
 					viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(model.getGameRule().getScores());
-					
 
 					viewAllPanels.getInGamePanel().setGameStart(true);
 					viewAllPanels.getFrame().remove(viewAllPanels.getPlayerPanel().getPlayerPanel());
@@ -147,6 +146,7 @@ public class View implements Runnable
 					
 					viewAllPanels.getInGamePanel().setPlayerInGamePanel(text);
 					viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
+					viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(model.getGameRule().getScores());
 					viewAllPanels.getInGamePanel().setLabelName(text);
 					
 					Player loadPlayer = model.getLeaderboard().loadPlayer(text);
@@ -341,13 +341,6 @@ public class View implements Runnable
 		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
 		viewAllPanels.getPausePanel().getControlsButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 			
-		//retrunToMainMnuButton
-		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel()));
-		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));	
-		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
-		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
-		//viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(event -> viewAllPanels.getFrame().pack());
-		
 		viewAllPanels.getPausePanel().getReturnToMainManuButton().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -377,8 +370,7 @@ public class View implements Runnable
 		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().repaint());
 		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().setSize(600, 800));	
 		viewAllPanels.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> viewAllPanels.getFrame().pack());
-		
-		
+			
 		/**
 		 * ControlPanel     
 		 */	
@@ -429,7 +421,6 @@ public class View implements Runnable
 		}
 		catch (Exception exception) 
 		{
-			//System.out.println(exception);
 		}
 	}
 	
@@ -467,47 +458,39 @@ public class View implements Runnable
 							
 						case LEVEL_UPDATE:
 							viewAllPanels.getInGamePanel().setLevelLabel(Integer.toString(message.getAdd()));
-							viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getAdd());
+							viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
 							break;	
 							
 						case LOST:
-							System.out.println("HELLO LOST");
 							lost = true;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(false);
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
 							break;
 							
 						case WIN:
-							System.out.println("WIN");
 							winLevel = true;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setWinLevel(winLevel);
 							viewAllPanels.getInGamePanel().setGameStart(false);
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
-							//viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
 							break;
 							
 						case GET_NEWGAME:
-							System.out.println("HELLO GET NEW GAME");
 							lost = true;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(false);
 							break;
 							
 						case INFO_UPDATE:
-							System.out.println("RESTART");
 							lost = false;
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLost(lost);
 							viewAllPanels.getInGamePanel().setGameStart(true);
+							
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
 							viewAllPanels.getInGamePanel().getBoardGamePanel().setLevel(message.getLevel());
+							
+							viewAllPanels.getInGamePanel().setScoreLabel(Integer.toString(message.getAdd()));
+							viewAllPanels.getInGamePanel().setLevelLabel(Integer.toString(message.getLevel()));
 							break;
-												
-						
-							
-						
-							
+
 						default: 
 							break;
 					}

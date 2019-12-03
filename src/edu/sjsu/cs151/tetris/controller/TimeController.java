@@ -39,14 +39,12 @@ public class TimeController implements Runnable
 			{
 				if(model.getGameRule().getLost()) 
 				{
-					System.out.println("GETLOST");
 					Thread.sleep(500);
 					continue;
 				}
 				
 				if(model.getGameRule().getWin()) 
 				{
-					System.out.println("GETWIN");
 					Thread.sleep(500);
 					continue;
 				}
@@ -58,7 +56,6 @@ public class TimeController implements Runnable
 										
 				else if(model.getGameRule().isOver())
 				{
-					System.out.println("Time detect lost");
 					model.getGameRule().setGetLost(true);
 					message = new Message(Message.ValveResponse.LOST, model.getGameRule().getScores(), model.getGameRule().getLevel());
 					controllerToViewQueue.put(message);
@@ -66,7 +63,6 @@ public class TimeController implements Runnable
 				
 				else if (model.getGameRule().isWin())
 				{
-					System.out.println("Time win");
 					model.getGameRule().setWin(true);
 					message = new Message(Message.ValveResponse.WIN, model.getGameRule().getScores(), model.getGameRule().getLevel());				
 					controllerToViewQueue.put(message);

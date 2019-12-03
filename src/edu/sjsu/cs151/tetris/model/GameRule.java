@@ -329,7 +329,15 @@ public class GameRule
 	
 	public boolean isWin()
 	{
-		if((level == 1) && (getScores() >= 100))
+		if((level == 1) && (getScores() >= 4000))
+			return true;
+		else if((level == 2) && (getScores() >= 8000))
+			return true;
+		else if((level == 3) && (getScores() >= 12000))
+			return true;
+		else if((level == 4) && (getScores() >= 16000))
+			return true;
+		else if((level == 5) && (getScores() >= 20000))
 			return true;
 		
 		return false;
