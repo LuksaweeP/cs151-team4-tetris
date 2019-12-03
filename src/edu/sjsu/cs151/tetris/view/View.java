@@ -49,17 +49,17 @@ public class View implements Runnable
 		/**
 		 * WelcomePanel
 		 */
-		viewAllPanels.getFrame().add(viewAllPanels.getWelcomePanel().getWelcomePanel());
+		viewAllPanels.getFrame().add(viewAllPanels.getWelcomePanel().getWelcomePanel());	
 		viewAllPanels.getFrame().setVisible(true);
+		
+		//welcomeButton
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getWelcomePanel().getWelcomePanel()));		
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));		
+		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().pack());
 
 		/**
 		 * MainPanel
 		 */
-		//welcomeButton
-		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getWelcomePanel().getWelcomePanel()));		
-		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel()));		
-		viewAllPanels.getWelcomePanel().getWelcomeButton().addActionListener(event -> viewAllPanels.getFrame().pack());		
-		
 		// playgameButton
 		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getMainPanel().getMainPanel()));	
 		viewAllPanels.getMainPanel().getPlaygameButtun().addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getPlayerPanel().getPlayerPanel()));
@@ -114,8 +114,9 @@ public class View implements Runnable
 					viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel());
 					viewAllPanels.getInGamePanel().getInGamePanel().setFocusable(true);
 					viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow();
+					viewAllPanels.getFrame().setSize(800, 822);
 					viewAllPanels.getFrame().repaint();
-					viewAllPanels.getFrame().pack();
+					//viewAllPanels.getFrame().pack();
 					viewAllPanels.getFrame().setVisible(true);
 				}
 				
@@ -181,7 +182,7 @@ public class View implements Runnable
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));
 							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel()));
-							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setSize(800, 890));							
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setSize(800, 822));							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow());
 							
@@ -356,9 +357,10 @@ public class View implements Runnable
 				
 				viewAllPanels.getFrame().remove(viewAllPanels.getPausePanel().getPausePanel());
 				viewAllPanels.getFrame().add(viewAllPanels.getMainPanel().getMainPanel());	
-				viewAllPanels.getFrame().repaint();
 				viewAllPanels.getFrame().setSize(600, 800);	
-				viewAllPanels.getFrame().pack();
+				viewAllPanels.getFrame().repaint();
+				
+				//viewAllPanels.getFrame().pack();
 			}
 		});
 		
