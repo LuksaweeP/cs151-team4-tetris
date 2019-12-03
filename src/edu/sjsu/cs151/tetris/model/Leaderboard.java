@@ -207,7 +207,8 @@ public class Leaderboard
 				writer.write(newPlayer);
 							
 				//int [] playerScore = newPlayer.getPlayerScore();
-				for(int i = 0; i < 5; i++)
+				writer.write(", 0");
+				for(int i = 1; i < 5; i++)
 				{
 					writer.write(", -1");	
 					//writer.write(Integer.toString(playerScore[i]));
