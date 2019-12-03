@@ -25,9 +25,8 @@ import javax.swing.KeyStroke;
 
 public class InGamePanel extends JPanel{
 	public InGamePanel() {
-		
 		inGamePanel = new JPanel();
-		inGamePanel.setSize(600, 800);
+		inGamePanel.setSize(800, 800);
 		inGamePanel.setFocusable(true);
 
 		level = new JLabel();

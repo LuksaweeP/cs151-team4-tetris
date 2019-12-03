@@ -181,6 +181,7 @@ public class View implements Runnable
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().setGameStart(true));
 							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().remove(viewAllPanels.getSelectLevelPanel().getSelectLevelPanel()));
+							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().setSize(800, 890));							
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getFrame().add(viewAllPanels.getInGamePanel().getInGamePanel()));	
 							viewAllPanels.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> viewAllPanels.getInGamePanel().getInGamePanel().requestFocusInWindow());
 							
