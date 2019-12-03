@@ -22,8 +22,8 @@ public class Main {
 	private Thread tControllerThread;
 
 	/* Creating BlockongQueues */
-	private BlockingQueue<Message> controllerToViewQueue = new LinkedBlockingQueue<>();
-	private BlockingQueue<Message> viewToControllerQueue = new LinkedBlockingQueue<>();
+	private BlockingQueue<Message> controllerToViewQueue = new LinkedBlockingQueue<Message>();
+	private BlockingQueue<Message> viewToControllerQueue = new LinkedBlockingQueue<Message>();
 
 	public Main() {
 		/* Creating MVC (with 2 controllers) */

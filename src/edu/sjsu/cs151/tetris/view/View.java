@@ -566,6 +566,4 @@ public class View implements Runnable
 	private View view;
 	private JFrame frame;
 	private boolean winLevel = false;
-	
-	
 }		
