@@ -2,9 +2,15 @@ package edu.sjsu.cs151.tetris.model;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Leaderboard 
@@ -16,7 +22,10 @@ public class Leaderboard
 		Player tmp = new Player();
 		try 
 		{
-			BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
+			InputStream is = getClass().getResourceAsStream("players.txt");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			//BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
 			while (br.ready()) 
 			{
 				// The output from br.readLine() is string; therefore we need to convert from string to int.
@@ -68,7 +77,10 @@ public class Leaderboard
 		Player tmp = new Player();
 		try 
 		{
-			BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
+			InputStream is = getClass().getResourceAsStream("players.txt");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			//BufferedReader br = new BufferedReader(new FileReader("src/edu/sjsu/cs151/tetris/model/players.txt")); // /Users/Luksawee/Desktop/
 			while (br.ready()) 
 			{
 				// The output from br.readLine() is string; therefore we need to convert from string to int.
@@ -202,7 +214,9 @@ public class Leaderboard
 			player.setName(newPlayer);
 			
 			try 
-			{				
+			{	
+				//OutputStream outputStream = new FileOutputStream("players.txt");
+				//OutputStreamWriter writer = new OutputStreamWriter(outputStream);
 				FileWriter writer = new FileWriter("src/edu/sjsu/cs151/tetris/model/players.txt", true); // /Users/Luksawee/Desktop/
 				writer.write(newPlayer);
 							
@@ -210,7 +224,7 @@ public class Leaderboard
 				writer.write(", 0");
 				for(int i = 1; i < 5; i++)
 				{
-					writer.write(", -1");	
+					writer.append(", -1");	
 					//writer.write(Integer.toString(playerScore[i]));
 				}
 				writer.write(", 0");
