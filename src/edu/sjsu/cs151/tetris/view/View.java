@@ -5,9 +5,9 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
-public class ViewAllPanels
+public class View
 {
-	public ViewAllPanels()
+	public View()
 	{
 		frame = new JFrame("TETRIS");
 		frame.setSize(600, 800);
