@@ -1,7 +1,5 @@
 package edu.sjsu.cs151.tetris.view;
 
-import edu.sjsu.cs151.tetris.model.*;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -103,18 +101,8 @@ public class SelectLevelPanel extends PlayerPanel
 		return levelButton;
 	}
 	
-	public void setPlayerInSelectLevel(Player player)
-	{
-		this.player = player;
-	}
-	
-	public Player getPlayerInSelectLevel()
-	{
-		return player;
-	}
-	
 	private JPanel selectLevelPanel;
 	private JButton [] levelButton;
-	private Player player;
+
 }
 

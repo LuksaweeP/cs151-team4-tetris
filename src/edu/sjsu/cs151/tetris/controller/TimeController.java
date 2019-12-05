@@ -1,6 +1,6 @@
 package edu.sjsu.cs151.tetris.controller;
 import edu.sjsu.cs151.tetris.model.Model;
-import edu.sjsu.cs151.tetris.view.View;
+import edu.sjsu.cs151.tetris.view.ViewMain;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -9,10 +9,10 @@ public class TimeController implements Runnable
 	/**
 	 * @param m Model shared with controller.
 	 */
-	public void setModel(Model model, View view)
+	public void setModel(Model model, ViewMain viewMain)
 	{
 		this.model = model;
-		this.view = view;
+		this.viewMain = viewMain;
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class TimeController implements Runnable
 		{
 			//continue;
 			System.out.print("");
-			while (view.getViewAllPanels().getInGamePanel().getGameStart() == true)
+			while (viewMain.getViewAllPanels().getInGamePanel().getGameStart() == true)
 			{
 				if(model.getGameRule().getLost()) 
 				{
@@ -125,7 +125,7 @@ public class TimeController implements Runnable
 	}
 	
 	private Model model;
-	private View view;
+	private ViewMain viewMain;
 	private BlockingQueue <Message> controllerToViewQueue;	
 }
 

@@ -1,27 +1,14 @@
 package edu.sjsu.cs151.tetris.view;
 
-import edu.sjsu.cs151.tetris.model.*;
-import edu.sjsu.cs151.tetris.animation.*;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
 public class InGamePanel extends JPanel{
 	public InGamePanel() {
@@ -220,13 +207,6 @@ public class InGamePanel extends JPanel{
 		return gameStart;
 	}
 	
-	
-	
-	
-	Tetromino cur = new Tetromino();
-	Block [] blockCur = new Block[4];
-	Tetromino next = new Tetromino();
-	Block [] blockNext = new Block[4];
 	
 	private String playerLevel;
 	private String playerName;

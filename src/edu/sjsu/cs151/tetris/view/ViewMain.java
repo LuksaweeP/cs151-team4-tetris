@@ -1,6 +1,5 @@
 package edu.sjsu.cs151.tetris.view;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -11,11 +10,9 @@ import java.awt.event.WindowEvent;
 import java.util.concurrent.BlockingQueue;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 
+import edu.sjsu.cs151.tetris.controller.GameInfo;
 import edu.sjsu.cs151.tetris.controller.Message;
-import edu.sjsu.cs151.tetris.model.Model;
-import edu.sjsu.cs151.tetris.model.Player;
 
 /**
  *  View class has 2 queues to communicate with controller.
@@ -35,7 +32,7 @@ public class ViewMain implements Runnable
 		panel = new BoardGamePanel(colors);
 		panel.setVisible(true);
 		
-		model = new Model();
+		gameInfo = new GameInfo();
 		
 		actionListenner();
 		
@@ -92,22 +89,20 @@ public class ViewMain implements Runnable
 				String input = view.getPlayerPanel().getInputBox().getText();
 				System.out.println(input);
 				
-				boolean validname = model.getLeaderboard().isValidNewPlayers(input);
+				
+				boolean validname = gameInfo.getModel().getLeaderboard().isValidNewPlayers(input);
+				System.out.println(validname);
+				
 				if(validname)
 				{
-					model.getLeaderboard().addNewPlayer(input);
-					model = new Model();
-					model.getLeaderboard().loadPlayer(input);
-					model.getGameRule().setLevel(1);
+					gameInfo.getModel().getLeaderboard().addNewPlayer(input);
+					gameInfo.getModel().getLeaderboard().loadPlayer(input);
+					gameInfo.getModel().getGameRule().setLevel(1);
 					
 					view.getInGamePanel().setPlayerInGamePanel(input);
-					view.getInGamePanel().setLevelLabel(Integer.toString(model.getGameRule().getLevel()));
-					view.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
 					view.getInGamePanel().setLabelName(input);
 					
 					view.getInGamePanel().getBoardGamePanel().setPlayerName(input);
-					view.getInGamePanel().getBoardGamePanel().setLevel(model.getGameRule().getLevel());
-					view.getInGamePanel().getBoardGamePanel().setScores(model.getGameRule().getScores());
 
 					view.getInGamePanel().setGameStart(true);
 					view.getFrame().remove(view.getPlayerPanel().getPlayerPanel());
@@ -146,21 +141,19 @@ public class ViewMain implements Runnable
 					String text = pressedButton.getText();
 					
 					view.getInGamePanel().setPlayerInGamePanel(text);
-					view.getInGamePanel().setScoreLabel(Integer.toString(model.getGameRule().getScores()));
-					view.getInGamePanel().getBoardGamePanel().setScores(model.getGameRule().getScores());
+					view.getInGamePanel().setScoreLabel(Integer.toString(gameInfo.getModel().getGameRule().getScores()));
+					view.getInGamePanel().getBoardGamePanel().setScores(gameInfo.getModel().getGameRule().getScores());
 					view.getInGamePanel().setLabelName(text);
 					
-					Player loadPlayer = model.getLeaderboard().loadPlayer(text);
-					System.out.println("Load Player:  " + loadPlayer.getName());
-					System.out.println("highScore: " + loadPlayer.getPlayerHighScore());
+					gameInfo.getModel().getLeaderboard().loadPlayer(text);
 					
-					view.getPlayerPanel().setLoadPlayer(loadPlayer);			
+					view.getPlayerPanel().setLoadPlayer(gameInfo.getModel().getLeaderboard().loadPlayer(text));			
 					view.setSelectLevelPanel();					
 					
 					view.getFrame().remove(view.getPlayerPanel().getPlayerPanel());		
 					view.getFrame().add(view.getSelectLevelPanel().getSelectLevelPanel());
 					view.getFrame().repaint();
-					view.getFrame().pack();
+					//view.getFrame().pack();
 					view.getFrame().setVisible(true);
 					
 					/**
@@ -169,15 +162,15 @@ public class ViewMain implements Runnable
 					//case select level unlock
 					for(int i = 1; i <= 5; i++)
 					{
-						if(loadPlayer.isLevelUnlocked(i) == true)
+						if(gameInfo.getModel().getLeaderboard().loadPlayer(text).isLevelUnlocked(i) == true)
 						{
 							String selectLevel = Integer.toString(i);
 							int level = i;
 							
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setPlayerName(loadPlayer.getName()));
+							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setPlayerName(gameInfo.getModel().getLeaderboard().loadPlayer(text).getName()));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(level));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(model.getGameRule().getScores()));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> model.getGameRule().setLevel(level));
+							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(gameInfo.getModel().getGameRule().getScores()));
+							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> gameInfo.getModel().getGameRule().setLevel(level));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setLevelLabel(selectLevel));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setGameStart(true));
 							
@@ -566,9 +559,7 @@ public class ViewMain implements Runnable
 	private BlockingQueue <Message> viewToControllerQueue;
 	private View view;
 	private Message message;
-	private Model model;
 	private BoardGamePanel panel;
-	private ViewMain viewMain;
-	private JFrame frame;
 	private boolean winLevel = false;
+	private GameInfo gameInfo;
 }		

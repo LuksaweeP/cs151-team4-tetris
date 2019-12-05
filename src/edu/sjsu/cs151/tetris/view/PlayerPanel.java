@@ -10,8 +10,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -82,7 +80,7 @@ public class PlayerPanel extends Panel {
 		northPanel.add(box);
 		northPanel.add(loadPlayerLabel);
 
-		Leaderboard playerList = new Leaderboard();
+		playerList = new Leaderboard();
 		//playerList.readPlayers();
 		ArrayList<Player> list = playerList.getPlayer();
 		number = playerList.getNumberPlayers(); // number of players
@@ -178,5 +176,6 @@ public class PlayerPanel extends Panel {
 	private JButton back;
 	private JButton [] existPlayer;
 	private int number;
+	Leaderboard playerList = new Leaderboard();
 
 }

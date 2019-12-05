@@ -102,6 +102,7 @@ public class View
 		this.leaderboardInPausePanel = new LeaderboardInPausePanel();
 	}
 	
+	
 	private JFrame frame;
 	private WelcomePanel welcomePanel = new WelcomePanel();
 	private MainPanel mainPanel = new MainPanel();

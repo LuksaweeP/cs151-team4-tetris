@@ -8,11 +8,11 @@ import edu.sjsu.cs151.tetris.controller.Controller;
 import edu.sjsu.cs151.tetris.controller.Message;
 import edu.sjsu.cs151.tetris.controller.TimeController;
 import edu.sjsu.cs151.tetris.model.Model;
-import edu.sjsu.cs151.tetris.view.View;
+import edu.sjsu.cs151.tetris.view.ViewMain;
 
 public class Main {
 
-	private View view;
+	private ViewMain viewMain;
 	private Model model;
 	private Controller controller;
 	private TimeController tController;
@@ -28,7 +28,7 @@ public class Main {
 	public Main() {
 		/* Creating MVC (with 2 controllers) */
 		model = new Model();
-		view = new View();
+		viewMain = new ViewMain();
 		controller = new Controller();
 		tController = new TimeController();
 
@@ -41,19 +41,19 @@ public class Main {
 		 * TimeController does not need viewToController BlockingQueue because it does
 		 * not interact with user
 		 */
-		tController.setModel(model, view);
+		tController.setModel(model, viewMain);
 		tController.setControllerToViewQueue(controllerToViewQueue);
 
 		/*
 		 * View does not need Model (data) because all it needs it receives from
 		 * messages
 		 */
-		view.setControllerToViewQueue(controllerToViewQueue);
-		view.setViewToControllerQueue(viewToControllerQueue);
+		viewMain.setControllerToViewQueue(controllerToViewQueue);
+		viewMain.setViewToControllerQueue(viewToControllerQueue);
 
 		/* Creating and running threads */
 		controllerThread = new Thread(controller);
-		viewThread = new Thread(view);
+		viewThread = new Thread(viewMain);
 		tControllerThread = new Thread(tController);
 		controllerThread.start();
 		viewThread.start();
