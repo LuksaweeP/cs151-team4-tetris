@@ -14,6 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The class that create leaderboard in pause panel.
+ * @author Luksawee
+ *
+ */
 public class LeaderboardInPausePanel extends Panel {
 	public LeaderboardInPausePanel() {
 		leaderboardPanel = new JPanel();

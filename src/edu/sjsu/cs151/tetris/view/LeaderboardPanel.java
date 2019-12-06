@@ -13,6 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The class that create the leaderboard panel.
+ * @author Luksawee
+ *
+ */
 public class LeaderboardPanel extends Panel {
 	public LeaderboardPanel() {
 		leaderboardPanel = new JPanel();
