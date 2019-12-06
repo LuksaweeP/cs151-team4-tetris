@@ -1,6 +1,5 @@
 package edu.sjsu.cs151.tetris.game;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -10,7 +9,12 @@ import edu.sjsu.cs151.tetris.controller.TimeController;
 import edu.sjsu.cs151.tetris.model.Model;
 import edu.sjsu.cs151.tetris.view.ViewMain;
 
-public class Main {
+/**
+ * The main class to compile the Tetris game
+ * @author Luksawee
+ *
+ */
+public class Tetris {
 
 	private ViewMain viewMain;
 	private Model model;
@@ -25,7 +29,7 @@ public class Main {
 	private BlockingQueue<Message> controllerToViewQueue = new LinkedBlockingQueue<Message>();
 	private BlockingQueue<Message> viewToControllerQueue = new LinkedBlockingQueue<Message>();
 
-	public Main() {
+	public Tetris() {
 		/* Creating MVC (with 2 controllers) */
 		model = new Model();
 		viewMain = new ViewMain();
@@ -58,5 +62,11 @@ public class Main {
 		controllerThread.start();
 		viewThread.start();
 		tControllerThread.start();
+	}
+	
+	public static void main(String[] args) 
+	{
+		/* Creating Main class object starts the game */
+		Tetris Tetris = new Tetris();
 	}
 }
