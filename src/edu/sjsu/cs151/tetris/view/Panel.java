@@ -13,8 +13,19 @@ import javax.swing.JPanel;
 
 import edu.sjsu.cs151.tetris.animation.*;
 
+/**
+ * Class that use to set the format for panel.
+ * @author Luksawee
+ *
+ */
 public class Panel 
 {
+	/**
+	 * Method to set format to button.
+	 * @param button the button that want to set the format
+	 * @param fontSize size of font
+	 * @return
+	 */
 	public JButton setButton(JButton button, int fontSize)
 	{
 		button.setFont(new Font("TimesRoman", Font.BOLD, fontSize));
@@ -27,6 +38,11 @@ public class Panel
 		return button;
 	}
 	
+	/**
+	 * Method to set label to locate in the middle.
+	 * @param label
+	 * @return label
+	 */
 	public JLabel setLabelCenter(JLabel label)
 	{
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -35,6 +51,10 @@ public class Panel
 		return label;
 	}
 	
+	/**
+	 * Method to create empty box size 3.
+	 * @return return containner
+	 */
 	public JPanel empty3Boxs()
 	{
 		JPanel containner = new JPanel();
@@ -57,6 +77,10 @@ public class Panel
 		return containner;
 	}
 	
+	/**
+	 * Method to create empty box size 2.
+	 * @return return containner
+	 */
 	public JPanel empty2Boxs()
 	{
 		JPanel containner = new JPanel();
@@ -71,6 +95,10 @@ public class Panel
 		return containner;
 	}
 	
+	/**
+	 * Method to create figure Z.
+	 * @return panelZ
+	 */
 	public JPanel iconZ()
 	{
 		MoveableShape zShape = new DrawTetromino('Z', 0, 0, 30);
@@ -83,6 +111,10 @@ public class Panel
 		return panelZ;
 	}
 	
+	/**
+	 * Method to create figure I.
+	 * @return panelI
+	 */
 	public JPanel iconI()
 	{	
 		MoveableShape iShape = new DrawTetromino('I', 0, 0, 30);
@@ -95,6 +127,10 @@ public class Panel
 		return panelI;
 	}
 	
+	/**
+	 * Method to create figure O.
+	 * @return panelO
+	 */
 	public JPanel iconO()
 	{	
 		MoveableShape oShape = new DrawTetromino('O', 0, 0, 30);
@@ -107,6 +143,10 @@ public class Panel
 		return panelO;
 	}
 	
+	/**
+	 * Method to create figure L.
+	 * @return panelL
+	 */
 	public JPanel iconL()
 	{
 		MoveableShape lShape = new DrawTetromino('L', 0, 0, 30);
@@ -119,6 +159,10 @@ public class Panel
 		return panelL;
 	}
 	
+	/**
+	 * Method to create figure T.
+	 * @return panelT
+	 */
 	public JPanel iconT()
 	{
 		MoveableShape tShape = new DrawTetromino('T', 0, 0, 30);
@@ -131,6 +175,10 @@ public class Panel
 		return panelT;
 	}
 	
+	/**
+	 * Method to create figure J.
+	 * @return panelJ
+	 */
 	public JPanel iconJ()
 	{
 		MoveableShape jShape = new DrawTetromino('J', 0, 0, 30);
@@ -143,6 +191,10 @@ public class Panel
 		return panelJ;
 	}
 	
+	/**
+	 * Method to create figure S.
+	 * @return panelS
+	 */
 	public JPanel iconS()
 	{
 		MoveableShape sShape = new DrawTetromino('S', 0, 0, 30);
