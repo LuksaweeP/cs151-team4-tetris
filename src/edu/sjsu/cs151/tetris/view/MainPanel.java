@@ -11,6 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The class that creats the main panel.
+ * @author Luksawee
+ *
+ */
 public class MainPanel extends Panel
 {
 	public MainPanel()
@@ -36,8 +41,8 @@ public class MainPanel extends Panel
 		iconO.setBackground(new Color(204,229,255));
 		iconO.setOpaque(true);
 		
-		JLabel gameLabel = new JLabel("T E R I S");	
-		gameLabel.setFont(new Font("TimesRoman", Font.BOLD, 84));
+		JLabel gameLabel = new JLabel("T E T R I S");	
+		gameLabel.setFont(new Font("TimesRoman", Font.BOLD, 70));
 		setLabelCenter(gameLabel);
 		gameLabel.setBackground(new Color(204,229,255));
 		gameLabel.setOpaque(true);
@@ -100,21 +105,37 @@ public class MainPanel extends Panel
 		mainPanel.setVisible(true);
 	}
 	
+	/**
+	 * Method to return the main panel.
+	 * @return mainPanel
+	 */
 	public JPanel getMainPanel()
 	{
 		return mainPanel;
 	}
 	
+	/**
+	 * The method to return playgame button.
+	 * @return playgame button
+	 */
 	public JButton getPlaygameButtun()
 	{
 		return playgameButton;
 	}
 	
+	/**
+	 * The method to return the leaderboard button.
+	 * @return leaderboard buttton
+	 */
 	public JButton getLeaderboardsButton()
 	{
 		return leaderboardsButton;
 	}
 	
+	/**
+	 * The method to return get quit button
+	 * @return quit button
+	 */
 	public JButton getQuitButton()
 	{
 		return quitButton;
