@@ -5,11 +5,12 @@ import java.util.concurrent.BlockingQueue;
 import edu.sjsu.cs151.tetris.model.Model;
 
 /**
- * Class which interact to the user
+ * Class which interact to the user with we will implements as Runnable.
  */
 public class Controller implements Runnable
 {
 	/**
+	 * The method to set the controller to the model.
 	 * @param m Model object shared with TimeController
 	 */
 	public void setModel(Model model)
@@ -18,7 +19,8 @@ public class Controller implements Runnable
 	}
 	
 	/**
-	 * @param c BlockingQueue used to sending requests to View (shared with TimeController)
+	 * The method to set the controlller to view queue
+	 * @param controllerToViewQueue BlockingQueue used to sending requests to View (shared with TimeController)
 	 */
 	public void setControllerToViewQueue(BlockingQueue<Message> controllerToViewQueue) 
 	{
@@ -26,13 +28,17 @@ public class Controller implements Runnable
 	}
 	
 	/**
-	 * @param v Blocking Queue used to receiving requests from user (View)
+	 * The method to set the view to controller queue.
+	 * @param viewToControllerQueue Blocking Queue used to receiving requests from user (View)
 	 */
 	public void setViewToControllerQueue(BlockingQueue<Message> viewToControllerQueue) 
 	{
 		this.viewToControllerQueue = viewToControllerQueue;
 	}
 	
+	/**
+	 * Overwrite run method of Runnable.
+	 */
 	public void run()
 	{
 		try 
