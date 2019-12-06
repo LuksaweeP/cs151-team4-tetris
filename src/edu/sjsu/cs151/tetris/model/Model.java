@@ -18,7 +18,6 @@ public class Model
 		block = new Block();
 		tetromino = new Tetromino();
 		leaderboard = new Leaderboard();
-		playfield = new Playfield();
 		gameRule = new GameRule();
 	}
 	
@@ -59,15 +58,6 @@ public class Model
 	}
 	
 	/**
-	 * The method to get the playfield.
-	 * @return playfield
-	 */
-	public Playfield getPlayfield()
-	{
-		return playfield;
-	}
-	
-	/**
 	 * The method to set the start.
 	 * @param start
 	 */
@@ -98,7 +88,6 @@ public class Model
 	private Block block;
 	private Tetromino tetromino;
 	private Leaderboard leaderboard;
-	private Playfield playfield;
 	private boolean start = false;
 	private boolean gameOver = false;
 	private boolean gameWin = false;
