@@ -10,6 +10,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The class that class the panel for player to play a game.
+ * @author Luksawee
+ */
 public class InGamePanel extends JPanel{
 	public InGamePanel() {
 		inGamePanel = new JPanel();
@@ -98,41 +102,72 @@ public class InGamePanel extends JPanel{
 		inGamePanel.setVisible(true);
 	}
 	
+	/**
+	 * The method to set the level.
+	 * @param playerLevel
+	 */
 	public void setLevelInGamePanel(String playerLevel)
 	{
 		this.playerLevel = playerLevel;
 	}
 	
+	/**
+	 * The method to get the level.
+	 * @return palyerlevel
+	 */
 	public String getLevelInGamePanel()
 	{
 		return playerLevel;
 	}
 	
+	/**
+	 * The method to set the player name.
+	 * @param playerName
+	 */
 	public void setPlayerInGamePanel(String playerName)
 	{
 		this.playerName = playerName;
 	}
 	
+	/**
+	 * The method to get player name.
+	 * @return playerName
+	 */
 	public String getNameInGamePanel()
 	{
 		return playerName;
 	}
 	
+	/**
+	 * The method to set the score.
+	 * @param playerScore
+	 */
 	public void setScoreInGamePanel(String playerScore)
 	{
 		this.playerScore = playerScore;
 	}
 	
+	/**
+	 * The method to return score.
+	 * @return playerScore
+	 */
 	public String getScoreInGamePanel()
 	{
 		return playerScore;
 	}
-	
+	/**
+	 * method to return Ingame panel.
+	 * @return ingamePanel.
+	 */
 	public JPanel getInGamePanel()
 	{
 		return inGamePanel;
 	}
 	
+	/**
+	 * Method to set name in label name.
+	 * @param name
+	 */
 	public void setLabelName(String name)
 	{
 		
@@ -140,68 +175,120 @@ public class InGamePanel extends JPanel{
 		//this.name.setText("Name:   " + name);
 	}
 	
+	/**
+	 * Method to return name label.
+	 * @return
+	 */
 	public JLabel getNameLabel()
 	{
 		return name;
 	}
 	
+	/**
+	 * Method to set the score.
+	 * @param score
+	 */
 	public void setScoreLabel(String score)
 	{
 		this.score.setText("");
 		//this.score.setText("Score:   " + score);
 	}
 	
+	/**
+	 * Method to return score label.
+	 * @return score label
+	 */
 	public JLabel getScoreLabel()
 	{
 		return score;
 	}
 	
+	/**
+	 * Method to set the score label.
+	 * @param level
+	 */
 	public void setLevelLabel(String level)
 	{
 		this.level.setText("");
 		//this.level.setText("Level:   " + level);
 	}
 	
+	/**
+	 * Method to get level label
+	 * @return level
+	 */
 	public JLabel getLevelLabel()
 	{
 		return level;
 	}
 	
+	/**
+	 * Method to set score
+	 * @param aScore
+	 */
 	public void setAScore(int aScore)
 	{
 		this.aScore = this.aScore + aScore;
 	}
 	
+	/**
+	 * Method to set aLevel.
+	 * @param aLevel
+	 */
 	public void setALevel(int aLevel)
 	{
 		this.aLevel = aLevel;
 	}
 	
+	/**
+	 * Method to return aLevel.
+	 * @return aScore
+	 */
 	public int getAScore()
 	{
 		return aScore;
 	}
 	
+	/**
+	 * Method to return aLevel.
+	 * @return aLevel
+	 */
 	public int getALevel()
 	{
 		return aLevel;
 	}
 	
+	/**
+	 * Method to get boardgamePanel.
+	 * @return boardGamePanel
+	 */
 	public BoardGamePanel getBoardGamePanel()
 	{
 		return boardGamePanel;
 	}
 	
+	/**
+	 * The method to set boolean lost.
+	 * @param lost
+	 */
 	public void setLost(boolean lost)
 	{
 		this.lost = lost;
 	}
 	
+	/**
+	 * Method to set boolean start.
+	 * @param gameStart
+	 */
 	public void setGameStart(boolean gameStart)
 	{
 		this.gameStart = gameStart;
 	}
 	
+	/**
+	 * Method to get boolean start.
+	 * @return
+	 */
 	public boolean getGameStart()
 	{
 		return gameStart;
