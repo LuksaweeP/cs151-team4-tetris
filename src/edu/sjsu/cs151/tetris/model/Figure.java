@@ -1,7 +1,7 @@
 package edu.sjsu.cs151.tetris.model;
 
 /**
- * A class for creating testrominos which will use in GameRule class.
+ * A class for creating figures which will use in GameRule class.
  * @author Luksawee
  */
 
