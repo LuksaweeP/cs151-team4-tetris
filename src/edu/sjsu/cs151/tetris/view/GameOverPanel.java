@@ -10,6 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The method to create game over panel
+ * @author Luksawee
+ *
+ */
 public class GameOverPanel extends Panel
 {
 	public GameOverPanel()
@@ -58,16 +63,28 @@ public class GameOverPanel extends Panel
 		
 	}
 	
+	/**
+	 * The method to return game over Panel.
+	 * @return return game over panel
+	 */
 	public JPanel getGameOverPanel()
 	{
 		return gameOverPanel;
 	}
 	
+	/**
+	 * The method to return retry button.
+	 * @return retry button
+	 */
 	public JButton getRetryButton()
 	{
 		return retryButton;
 	}
 	
+	/**
+	 * The method to return main manu button.
+	 * @return return main manu button
+	 */
 	public JButton getReturnToMainManu()
 	{
 		return returnToMainManu;
