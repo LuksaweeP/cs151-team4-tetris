@@ -7,6 +7,9 @@ package edu.sjsu.cs151.tetris.model;
  */
 public class GameRule 
 {
+	/**
+	 * THe construction
+	 */
 	public GameRule()
 	{
 		restart();
