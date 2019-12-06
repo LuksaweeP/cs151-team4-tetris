@@ -3,7 +3,10 @@ package edu.sjsu.cs151.tetris.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * The class to test the block.
+ * @author Luksawee
+ */
 class BlockTest {
 
 	@Test
