@@ -18,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.Border;
 
+/**
+ * Test the welcomeScreen
+ * @author Luksawee
+ */
 public class WelcomeScreen {
 
 	public static void main(String[] args) {
