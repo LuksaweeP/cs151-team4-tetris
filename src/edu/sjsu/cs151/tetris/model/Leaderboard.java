@@ -13,8 +13,16 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
+/**
+ * The class that will manage and update the player in the game.
+ * @author Luksawee
+ *
+ */
 public class Leaderboard 
 {
+	/**
+	 * The construction of Leaderboard
+	 */
 	public Leaderboard()
 	{
 		playerList = new ArrayList<Player>();
@@ -140,7 +148,11 @@ public class Leaderboard
 		return numberPlayers;
 	}
 	
-	
+	/**
+	 * This method will return the index of the player
+	 * @param aName that use to download player name
+	 * @return index
+	 */
 	public int getPlayerIndex(String aName)
 	{
 		Player tmp = new Player();
@@ -154,12 +166,22 @@ public class Leaderboard
 			return index;
 	}
 	
+	/**
+	 * This method will use to return playerlist at select index
+	 * @param aName that use to download player name
+	 * @return player
+	 */
 	public Player loadPlayer(String aName)
 	{
 		int index = getPlayerIndex(aName);
 		return playerList.get(index);
 	}
 	
+	/**
+	 * This method will use to return player
+	 * @param aName that use to download player name
+	 * @return player 
+	 */
 	public Player getCurPlayer(String aName)
 	{
 		int index = getPlayerIndex(aName);
