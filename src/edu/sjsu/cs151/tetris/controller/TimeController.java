@@ -4,10 +4,15 @@ import edu.sjsu.cs151.tetris.view.ViewMain;
 
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * The class that will generate new figure, manage game over, and win the level which will implement as Runnable.
+ * @author Luksawee
+ */
 public class TimeController implements Runnable
 {
 	/**
-	 * @param m Model shared with controller.
+	 * The method to set the model, and viewMain to TimeController.
+	 * @param Model shared with controller.
 	 */
 	public void setModel(Model model, ViewMain viewMain)
 	{
@@ -16,7 +21,8 @@ public class TimeController implements Runnable
 	}
 	
 	/**
-	 * @param c BlockingQueue shared with controller.
+	 * The method to set the queue to controllerToViewQueue 
+	 * @param controllerToViewQueu BlockingQueue shared with controller.
 	 */
 	public void setControllerToViewQueue(BlockingQueue<Message> controllerToViewQueue) 
 	{
@@ -24,7 +30,7 @@ public class TimeController implements Runnable
 	}
 	
 	/**
-	 * Main method of this class. It checks is it possible for falling figure to move one lvl down.
+	 * Main method of this class. It checks is it possible for falling figure to move one step down.
 	 * If not it checks is it a loose or not, remove full lines, add points and pass it to View, random new figure,
 	 * send information about falling figure and next figure to the View by BlockingQueue of Message objects. Figure drops every 0.5s.
 	 */
@@ -90,19 +96,19 @@ public class TimeController implements Runnable
 				switch (model.getGameRule().getLevel())
 				{
 				case 1:
-					Thread.sleep(400);
+					Thread.sleep(500);
 					break;
 				case 2:
-					Thread.sleep(300);
+					Thread.sleep(400);
 					break;
 				case 3:
-					Thread.sleep(250);
+					Thread.sleep(300);
 					break;
 				case 4:
-					Thread.sleep(200);
+					Thread.sleep(250);
 					break;
 				case 5:
-					Thread.sleep(150);
+					Thread.sleep(200);
 					break;
 				default:
 					Thread.sleep(300);
@@ -112,6 +118,9 @@ public class TimeController implements Runnable
 		}
 	}
 	
+	/**
+	 * Overwrite run()
+	 */
 	public void run()
 	{
 		try 
