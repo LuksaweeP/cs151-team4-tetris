@@ -13,6 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class that create the control panel.
+ * @author Luksawee
+ *
+ */
 public class ControlsPanel extends Panel
 {
 	public ControlsPanel()
@@ -169,11 +174,19 @@ public class ControlsPanel extends Panel
 	controlsPanel.setVisible(true);	
 	}
 	
+	/**
+	 * Method to get controlPanel
+	 * @return controlsPanel
+	 */
 	public JPanel getControlsPanel()
 	{
 		return controlsPanel;
 	}
 	
+	/**
+	 * Method to return the back button
+	 * @return back button
+	 */
 	public JButton getBack()
 	{
 		return back;
