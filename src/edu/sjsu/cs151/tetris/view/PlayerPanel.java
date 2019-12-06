@@ -19,6 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+/**
+ * The class to create player Panel.
+ * @author Luksawee
+ *
+ */
 public class PlayerPanel extends Panel {
 	public PlayerPanel() {
 		playerPanel = new JPanel();
@@ -140,30 +145,58 @@ public class PlayerPanel extends Panel {
 		playerPanel.setVisible(true);
 	}
 	
+	/**
+	 * Method to set loadPlayer.
+	 * @param player
+	 */
 	public void setLoadPlayer(Player player) {
 		loadPlayer = player;
 	}
 	
+	/**
+	 * Method to get loadPlayer.
+	 * @return loadPlayer.
+	 */
 	public Player getLoadPlayer() {
 		return loadPlayer;
 	}
 
+	/**
+	 * Method to return create new player button.
+	 * @return createButton
+	 */
 	public JButton getCreateButton() {
 		return createButton;
 	}
 	
+	/**
+	 * Method to return back button
+	 * @return back button
+	 */
 	public JButton getBackButton() {
 		return back;
 	}
 
+	/**
+	 * Method to return Input new player box.
+	 * @return inputBox
+	 */
 	public JTextField getInputBox() {
 		return inputBox;
 	}
 
+	/**
+	 * Method to return PlayerPanel
+	 * @return playerPanel
+	 */
 	public JPanel getPlayerPanel() {
 		return playerPanel;
 	}
 	
+	/**
+	 * Method to return ExistPlayer button
+	 * @return existPlayer
+	 */
 	public JButton[] getExistPlayerButton()
 	{
 		return existPlayer;
