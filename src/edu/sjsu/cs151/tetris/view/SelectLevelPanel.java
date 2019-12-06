@@ -91,11 +91,19 @@ public class SelectLevelPanel extends PlayerPanel
 	
 	}
 	
+	/**
+	 * Mehod to return selectPanel.
+	 * @return selectLevelPanel
+	 */
 	public JPanel getSelectLevelPanel()
 	{
 		return selectLevelPanel;
 	}
 	
+	/**
+	 * Method to return level button.
+	 * @return levelButton
+	 */
 	public JButton[] getLevelButton()
 	{
 		return levelButton;
