@@ -139,7 +139,6 @@ public class LeaderboardInPausePanel extends Panel {
 
 	/**
 	 * Function to sort array by using quickSort
-	 * 
 	 * @param array The original unsorted array
 	 */
 	public void quickSort(String[] name, int[] array) {
@@ -148,6 +147,13 @@ public class LeaderboardInPausePanel extends Panel {
 		quickSort(name, array, p, n);
 	}
 
+	/**
+	 * Function recursive function of quickSort
+	 * @param name player
+	 * @param array the array that contain all player
+	 * @param p first index
+	 * @param r last index
+	 */
 	public void quickSort(String[] name, int[] array, int p, int r) {
 		if (p < r) {
 			int q = partition(name, array, p, r);
@@ -156,6 +162,14 @@ public class LeaderboardInPausePanel extends Panel {
 		}
 	}
 
+	/**
+	 * The function to partition data that will use in quickSort
+	 * @param name playername
+	 * @param array array the array that contain all player
+	 * @param p first index
+	 * @param r last index
+	 * @return
+	 */
 	public int partition(String[] name, int[] array, int p, int r) {
 		int x = array[r];
 		int i = p - 1;
@@ -171,7 +185,12 @@ public class LeaderboardInPausePanel extends Panel {
 		return i + 1;
 	}
 
-	// Swap two nodes of the heap at index first second
+	/**
+	 * The method to swap two nodes of the heap at index first second
+	 * @param array data
+	 * @param first first index
+	 * @param seconds second index
+	 */
 	private void swap(int[] array, int first, int seconds) {
 		int tmp;
 		tmp = array[first];
@@ -179,6 +198,12 @@ public class LeaderboardInPausePanel extends Panel {
 		array[seconds] = tmp;
 	}
 
+	/**
+	 * The method to swap two String of the heap at index first second.
+	 * @param array data
+	 * @param first first index
+	 * @param seconds second index
+	 */
 	private void swap(String[] array, int first, int seconds) {
 		String tmp;
 		tmp = array[first];
@@ -186,12 +211,19 @@ public class LeaderboardInPausePanel extends Panel {
 		array[seconds] = tmp;
 	}
 	
-	
+	/**
+	 * The method to return backButton.
+	 * @return back button
+	 */
 	public JButton getBackButton()
 	{
 		return back;
 	}
 	
+	/**
+	 * The method to return leaderboardPanel.
+	 * @return leaderboardPanel
+	 */
 	public JPanel getLeaderboardPanel()
 	{
 		return leaderboardPanel;
