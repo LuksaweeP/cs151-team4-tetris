@@ -2,6 +2,11 @@ package edu.sjsu.cs151.tetris.model;
 
 import java.util.ArrayList;
 
+/**
+ * The class that use to test the player.
+ * @author Luksawee
+ *
+ */
 public class PlayerTest 
 {
 	public static void main(String[] args)
