@@ -15,11 +15,14 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
+/**
+ * The class that use to draw the figure
+ * @author Luksawee
+ */
 public class DrawTetromino implements MoveableShape {
 
 	/**
-	 * Constructs a car item.
-	 * 
+	 * Constructs a figure item.
 	 * @param x     the left of the bounding rectangle
 	 * @param y     the top of the bounding rectangle
 	 * @param width the width of the bounding rectangle
@@ -31,11 +34,17 @@ public class DrawTetromino implements MoveableShape {
 		this.width = width;
 	}
 
+	/**
+	 * Method to move figure up
+	 */
 	public void translate(int dx, int dy) {
 		x += dx;
 		y += dy;
 	}
 	
+	/**
+	 * Method to move figure down
+	 */
 	public void moveUp(int dx, int dy) {
 		x -= dx;
 		y -= dy;
