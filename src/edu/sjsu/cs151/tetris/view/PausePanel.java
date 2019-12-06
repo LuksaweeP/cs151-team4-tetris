@@ -11,6 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class that create the pause panel.
+ * @author Luksawee
+ *
+ */
 public class PausePanel extends Panel
 {
 	public PausePanel()
@@ -79,26 +84,46 @@ public class PausePanel extends Panel
 			pausePanel.setVisible(true);
 	}
 	
+	/***
+	 * Method to get pause panel.
+	 * @return pausePanel
+	 */
 	public JPanel getPausePanel()
 	{
 		return pausePanel;
 	}
 	
+	/**
+	 * Method to get back button.
+	 * @return back button
+	 */
 	public JButton getBack()
 	{
 		return back;
 	}
 	
+	/**
+	 * Method to get leaderboard button.
+	 * @return leaderboardButton
+	 */
 	public JButton getLeaderboardsButton()
 	{
 		return leaderboardsButton;
 	}
 	
+	/**
+	 * Method to get controls button.
+	 * @return controlsButton
+	 */
 	public JButton getControlsButton()
 	{
 		return controlsButton;
 	}
 	
+	/**
+	 * Method to get Return to main manu button.
+	 * @return returnToMainManuButton
+	 */
 	public JButton getReturnToMainManuButton()
 	{
 		return returnToMainManuButton;
