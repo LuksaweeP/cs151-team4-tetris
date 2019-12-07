@@ -92,7 +92,7 @@ public class InGamePanel extends JPanel{
 				colors[i][j] = Color.DARK_GRAY;
 		
 		boardGamePanel = new BoardGamePanel(colors);
-		boardGamePanel.setPreferredSize(new Dimension(400, 800));
+		boardGamePanel.setPreferredSize(new Dimension(400, 820));
 		boardGamePanel.setVerifyInputWhenFocusTarget(true);
 		boardGamePanel.setVisible(true);
 		

@@ -117,7 +117,7 @@ public class ViewMain implements Runnable
 					view.getFrame().add(view.getInGamePanel().getInGamePanel());
 					view.getInGamePanel().getInGamePanel().setFocusable(true);
 					view.getInGamePanel().getInGamePanel().requestFocusInWindow();
-					//view.getFrame().setSize(800, 822);
+					//view.getFrame().setSize(800, 890);
 					view.getFrame().repaint();
 					view.getFrame().pack();
 					view.getFrame().setVisible(true);
@@ -183,7 +183,7 @@ public class ViewMain implements Runnable
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setGameStart(true));
 							
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().remove(view.getSelectLevelPanel().getSelectLevelPanel()));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().setSize(800, 822));							
+							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().setSize(800, 890));							
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getFrame().add(view.getInGamePanel().getInGamePanel()));	
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getInGamePanel().requestFocusInWindow());
 							
@@ -201,7 +201,7 @@ public class ViewMain implements Runnable
 		//back
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getPlayerPanel().getPlayerPanel()));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(800, 822));
+		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(800, 890));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 		
