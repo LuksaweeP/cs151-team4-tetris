@@ -66,6 +66,7 @@ public class BoardGamePanel extends JPanel
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 400, 800);
 		
+		
 		g.setColor(new Color(176, 196, 222));
 		g.fillRect(0, 801, 401, 890);
 		

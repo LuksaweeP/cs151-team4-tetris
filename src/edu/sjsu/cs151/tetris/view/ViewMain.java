@@ -201,7 +201,7 @@ public class ViewMain implements Runnable
 		//back
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getPlayerPanel().getPlayerPanel()));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(800, 890));
+		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 		
@@ -327,6 +327,7 @@ public class ViewMain implements Runnable
 		//back
 		view.getPausePanel().getBack().addActionListener(event -> view.getInGamePanel().setGameStart(true));
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
+		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().setSize(800, 890));	
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().add(view.getInGamePanel().getInGamePanel()));
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().repaint());
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().pack());
