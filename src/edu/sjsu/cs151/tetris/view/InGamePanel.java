@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class InGamePanel extends JPanel{
 	public InGamePanel() {
 		inGamePanel = new JPanel();
-		inGamePanel.setSize(800, 700);
+		inGamePanel.setSize(800, 820);
 		inGamePanel.setFocusable(true);
 
 		level = new JLabel();
@@ -32,19 +32,19 @@ public class InGamePanel extends JPanel{
 		score.setFont(new Font("TimesRoman", Font.BOLD, 24));
 		score.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
-		JLabel pause = new JLabel		("");
+		JLabel pause = new JLabel		("esc        PAUSE      ");
 		pause.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
-		JLabel moveLeft = new JLabel	("");
+		JLabel moveLeft = new JLabel	(" <-          Move Left  ");
 		moveLeft.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
-		JLabel moveRight = new JLabel	("");
+		JLabel moveRight = new JLabel	("   ->          Move Right  ");
 		moveRight.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
-		JLabel rotate = new JLabel		("");
+		JLabel rotate = new JLabel		("z          Rotate      ");
 		rotate.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
-		JLabel dropFaster = new JLabel	("");
+		JLabel dropFaster = new JLabel	(" Space   Drop faster");
 		dropFaster.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		
 		JPanel gameInfo = new JPanel();
@@ -170,9 +170,7 @@ public class InGamePanel extends JPanel{
 	 */
 	public void setLabelName(String name)
 	{
-		
-		this.name.setText("");
-		//this.name.setText("Name:   " + name);
+		this.name.setText("Name:   " + name);
 	}
 	
 	/**
@@ -190,8 +188,7 @@ public class InGamePanel extends JPanel{
 	 */
 	public void setScoreLabel(String score)
 	{
-		this.score.setText("");
-		//this.score.setText("Score:   " + score);
+		this.score.setText("Score:   " + score);
 	}
 	
 	/**
@@ -209,8 +206,7 @@ public class InGamePanel extends JPanel{
 	 */
 	public void setLevelLabel(String level)
 	{
-		this.level.setText("");
-		//this.level.setText("Level:   " + level);
+		this.level.setText("Level:   " + level);
 	}
 	
 	/**

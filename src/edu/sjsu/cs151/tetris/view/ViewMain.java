@@ -38,6 +38,9 @@ public class ViewMain implements Runnable
 		
 	}
 	
+	/**
+	 * Method to add action listenner to each button.
+	 */
 	public void actionListenner()
 	{
 		/**
@@ -100,18 +103,23 @@ public class ViewMain implements Runnable
 					gameInfo.getModel().getGameRule().setLevel(1);
 					
 					view.getInGamePanel().setPlayerInGamePanel(input);
-					view.getInGamePanel().setLabelName(input);
-					
+					view.getInGamePanel().setLabelName(input);	
 					view.getInGamePanel().getBoardGamePanel().setPlayerName(input);
-
+					
+					view.getInGamePanel().setLevelLabel(Integer.toString(1));
+					view.getInGamePanel().getBoardGamePanel().setLevel(1);
+					
+					view.getInGamePanel().setScoreLabel(Integer.toString(0));
+					view.getInGamePanel().getBoardGamePanel().setScores(0);
+					
 					view.getInGamePanel().setGameStart(true);
 					view.getFrame().remove(view.getPlayerPanel().getPlayerPanel());
 					view.getFrame().add(view.getInGamePanel().getInGamePanel());
 					view.getInGamePanel().getInGamePanel().setFocusable(true);
 					view.getInGamePanel().getInGamePanel().requestFocusInWindow();
-					view.getFrame().setSize(800, 822);
+					//view.getFrame().setSize(800, 822);
 					view.getFrame().repaint();
-					//viewAllPanels.getFrame().pack();
+					view.getFrame().pack();
 					view.getFrame().setVisible(true);
 				}
 				
@@ -169,7 +177,7 @@ public class ViewMain implements Runnable
 							
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setPlayerName(gameInfo.getModel().getLeaderboard().loadPlayer(text).getName()));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(level));
-							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(gameInfo.getModel().getGameRule().getScores()));
+							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().getBoardGamePanel().setLevel(gameInfo.getModel().getGameRule().getLevel()));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> gameInfo.getModel().getGameRule().setLevel(level));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setLevelLabel(selectLevel));
 							view.getSelectLevelPanel().getLevelButton()[i].addActionListener(event -> view.getInGamePanel().setGameStart(true));
@@ -193,8 +201,8 @@ public class ViewMain implements Runnable
 		//back
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getPlayerPanel().getPlayerPanel()));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
+		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(800, 822));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
-		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 		
 		/**
@@ -211,9 +219,9 @@ public class ViewMain implements Runnable
 		 */
 		//no
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().remove(view.getQuitPanel().getQuitPane()));
+		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().setSize(600, 800));
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().repaint());
-		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().setSize(600, 800));	
+		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().repaint());	
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().pack());
 		
 		//yes
@@ -450,8 +458,8 @@ public class ViewMain implements Runnable
 							break;
 						
 						case SCORES_UPDATE:
-							view.getInGamePanel().setScoreLabel(Integer.toString(message.getAdd()));
 							view.getInGamePanel().getBoardGamePanel().setScores(message.getAdd());
+							view.getInGamePanel().setScoreLabel(Integer.toString(message.getAdd()));
 							break;
 							
 						case LEVEL_UPDATE:
@@ -543,11 +551,19 @@ public class ViewMain implements Runnable
 		view.getInGamePanel().getBoardGamePanel().redraw(colors);	
 	}
 	
+	/** 
+	 * Method to set lost game.
+	 * @param lost
+	 */
 	public void setLost(boolean lost)
 	{
 		this.lost = lost;
 	}
 	
+	/**
+	 * Method to set win level.
+	 * @param winLevel
+	 */
 	public void setWinLevel(boolean winLevel)
 	{
 		this.winLevel = winLevel;

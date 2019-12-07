@@ -139,6 +139,8 @@ public class BoardGamePanel extends JPanel
 		this.winLevel = winLevel;
 	}
 	
+
+	
 	private static final long serialVersionUID = -8715353373678321308L;
 	private Color [][] colors;
 	private int nextShape;

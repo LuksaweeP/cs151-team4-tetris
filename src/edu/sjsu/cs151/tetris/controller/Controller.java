@@ -108,7 +108,9 @@ public class Controller implements Runnable
 			case GET_NEWGAME:
 					model.getGameRule().restart();
 					message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
+					System.out.println(model.getGameRule().getScores());
 					message = new Message(Message.ValveResponse.LEVEL_UPDATE, model.getGameRule().getLevel());
+					System.out.println(model.getGameRule().getLevel());
 					message = new Message(Message.ValveResponse.REDRAW, model.getGameRule().getData());
 					controllerToViewQueue.put(message);
 					break;
@@ -167,8 +169,11 @@ public class Controller implements Runnable
 							if(model.getGameRule().removeFullLines())
 							{
 								message = new Message(Message.ValveResponse.SCORES_UPDATE, model.getGameRule().getScores());
-								message = new Message(Message.ValveResponse.LEVEL_UPDATE, model.getGameRule().getLevel());
 								controllerToViewQueue.put(message);
+								System.out.println("Get Score");
+								//message = new Message(Message.ValveResponse.LEVEL_UPDATE, model.getGameRule().getLevel());
+								//controllerToViewQueue.put(message);
+								//System.out.println(model.getGameRule().getLevel());
 							}
 							message = new Message(Message.ValveResponse.CHANGE_NEXT, model.getGameRule().getNext());
 							controllerToViewQueue.put(message);
