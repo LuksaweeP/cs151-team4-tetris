@@ -117,9 +117,9 @@ public class ViewMain implements Runnable
 					view.getFrame().add(view.getInGamePanel().getInGamePanel());
 					view.getInGamePanel().getInGamePanel().setFocusable(true);
 					view.getInGamePanel().getInGamePanel().requestFocusInWindow();
-					//view.getFrame().setSize(800, 890);
-					view.getFrame().repaint();
 					view.getFrame().pack();
+					view.getFrame().setSize(800, 890);
+					view.getFrame().repaint();		
 					view.getFrame().setVisible(true);
 				}
 				
