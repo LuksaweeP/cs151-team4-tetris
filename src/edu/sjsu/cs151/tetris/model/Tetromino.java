@@ -1,8 +1,9 @@
 package edu.sjsu.cs151.tetris.model;
 
-
 /**
  * A class for managing the Tetromino game pieces and handle their movement.
+ * @author Luksawee
+ * @author Nick
  */
 public class Tetromino {
 	/**
@@ -18,9 +19,8 @@ public class Tetromino {
 	}
 
 	/**
-	 * This constructs a Tetromino.
-	 * 
-	 * @param aShape The shape to set the Tetromino to the constructor.
+	 * The Tetromino constructor
+	 * @param aShape The shape to set the Tetromino to [I,O,T,S,Z,L,J]
 	 */
 	public Tetromino(char aShape) {
 		shape = Character.toUpperCase(aShape);
@@ -71,10 +71,8 @@ public class Tetromino {
 	}
 
 	/**
-	 * This method sets the shape of the Tetromino to one of the following:
-	 * I,O,T,S,Z,L,J.
-	 * 
-	 * @param aShape The shape to set the Tetromino to.
+	 * This method sets the shape of the Tetromino to a valid shape
+	 * @param aShape The shape to set the Tetromino to [I,O,T,S,Z,L,J]
 	 */
 	public void setShape(char aShape) {
 		shape = aShape;
@@ -145,18 +143,15 @@ public class Tetromino {
 
 	/**
 	 * This method returns the shape of the Tetromino.
-	 * 
-	 * @return The shape of the Tetromino game piece.
+	 * @return shape The shape of the Tetromino game piece.
 	 */
 	public char getShape() {
 		return shape;
 	}
 
 	/**
-	 * This method returns the array that contains each Block object of the
-	 * Tetromino.
-	 * 
-	 * @return The array that contains Block Objects of the Tetromino.
+	 * This method returns the array that contains Tetromino Blocks
+	 * @return blocks The array that contains Block Objects of the Tetromino.
 	 */
 	public Block[] getBlocks() {
 		return blocks;
@@ -164,8 +159,7 @@ public class Tetromino {
 
 	/**
 	 * The method to return the width of the tetromino
-	 * 
-	 * @return the width of the tetromino
+	 * @return blockWidth the width of the tetromino
 	 */
 	public int getBlockWidth() {
 		int minX = blocks[0].getXPosition();
@@ -184,8 +178,7 @@ public class Tetromino {
 
 	/**
 	 * This method return the height of the Tetromino
-	 * 
-	 * @return the height of the block
+	 * @return height the height of the block
 	 */
 	public int getBlockHeight() {
 		int minY = blocks[0].getYPosition();
@@ -203,8 +196,8 @@ public class Tetromino {
 	}
 
 	/**
-	 * This method calculates the lowest Y coordinate of a tetromino.
-	 * @return the lowest Y coordinate
+	 * This method calculates the max Y coordinate of a tetromino.
+	 * @return maxY the max Y coordinate
 	 */
 	public int getMaxY() {
 		int maxY = blocks[0].getYPosition();
@@ -217,7 +210,7 @@ public class Tetromino {
 	
 	/**
 	 * This method calculates and return the index of the blocks at the lowest Y coordinate of a tetromino.
-	 * @return the lowest Y coordinate
+	 * @return index the lowest Y coordinate
 	 */
 	public int getIndexSkirt() {
 		int maxY = blocks[3].getYPosition();
@@ -262,7 +255,6 @@ public class Tetromino {
 			int x = blocks[i].getYPosition() + 1;
 			blocks[i].setYPosition(x);
 		}
-
 	}
 
 	/**

@@ -5,10 +5,14 @@ import java.util.ArrayList;
 /**
  * The class that use to test the player.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class PlayerTest 
 {
+	/**
+	 * Main method to test the player
+	 * @param args unused
+	 */
 	public static void main(String[] args)
 	{
 			Leaderboard playerList = new Leaderboard();
