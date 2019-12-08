@@ -18,9 +18,10 @@ import java.awt.geom.Rectangle2D.Double;
 /**
  * The class that use to draw the figure
  * @author Luksawee
+ * @author Nick
  */
-public class DrawTetromino implements MoveableShape {
-
+public class DrawTetromino implements MoveableShape 
+{
 	/**
 	 * Constructs a figure item.
 	 * @param x     the left of the bounding rectangle
@@ -36,6 +37,8 @@ public class DrawTetromino implements MoveableShape {
 
 	/**
 	 * Method to move figure up
+	 * @param dx The x value
+	 * @param dy The y value
 	 */
 	public void translate(int dx, int dy) {
 		x += dx;
@@ -44,12 +47,18 @@ public class DrawTetromino implements MoveableShape {
 	
 	/**
 	 * Method to move figure down
+	 * @param dx The x value
+	 * @param dy The y value
 	 */
 	public void moveUp(int dx, int dy) {
 		x -= dx;
 		y -= dy;
 	}
 
+	/**
+	 * Method to draw the tetromino
+	 * @param g2 The graphics context
+	 */
 	public void draw(Graphics2D g2) {
 		 tetromino.setShape(shape);
 		 tetromino.setBlocks();
@@ -92,9 +101,22 @@ public class DrawTetromino implements MoveableShape {
 		}
 	 }
 	
+	/**
+	 * Method to return y coordinate
+	 * @return y The y coordinate
+	 */
 	public int getY()
 	{
 		return y;
+	}
+	
+	/**
+	 * Method to return x coordinate
+	 * @return x The x coordinate
+	 */
+	public int getX()
+	{
+		return x;
 	}
 
 	private int x;
