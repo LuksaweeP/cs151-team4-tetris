@@ -2,6 +2,8 @@ package edu.sjsu.cs151.tetris.model;
 
 /**
  * A class for managing a player's name, unlocked levels, and high-scores for each player.
+ * @author Luksawee
+ * @author Nick
  */
 public class Player
 {	
@@ -34,7 +36,8 @@ public class Player
 	
 	/**
 	 * Sets the player's score at given level.
-	 * @param aName The provided score.
+	 * @param aName The provided name
+	 * @param aScore The provided score
 	 */
 	public void setPlayerScore(int aLevel, int aScore)
 	{
@@ -43,8 +46,8 @@ public class Player
 	}
 	
 	/**
-	 * THe method to get the player score
-	 * @return The playerScore
+	 * Method to get the player score
+	 * @return playerScore The player score
 	 */
 	public int[] getPlayerScore()
 	{
@@ -65,13 +68,18 @@ public class Player
 	
 	/**
 	 * The method to get the max score
-	 * @return the max player's score
+	 * @return playerScore[5] the max player's score
 	 */
 	public int getPlayerHighScore()
 	{
 		return playerScore[5];
 	}
 	
+	/**
+	 * Method to check if a level is unlocked
+	 * @param aLevel the level to check
+	 * @return true if level is unlocked, false if not
+	 */
 	public boolean isLevelUnlocked (int aLevel)
 	{
 		if (playerScore [aLevel - 1] > -1)

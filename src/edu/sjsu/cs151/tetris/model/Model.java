@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * The class that wrap all the model information that will use in the controller.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class Model 
 {
 	/**
-	 * The construction
+	 * The model constructor
 	 */
 	public Model()
 	{
@@ -68,7 +68,7 @@ public class Model
 	
 	/**
 	 * The method to set start new game.
-	 * @return
+	 * @return start the start value
 	 */
 	public boolean isStarted()
 	{
@@ -77,7 +77,7 @@ public class Model
 	
 	/**
 	 * The method to get the GameRule
-	 * @return gameRule
+	 * @return gameRule the game rules
 	 */
 	public GameRule getGameRule()
 	{
