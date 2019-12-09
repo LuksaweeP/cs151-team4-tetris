@@ -18,7 +18,11 @@ import javax.swing.JPanel;
  * @author Luksawee
  * @author Nick
  */
-public class LeaderboardPanel extends Panel {
+public class LeaderboardPanel extends Panel 
+{
+	/**
+	 * The constructor for the leaderboard panel
+	 */
 	public LeaderboardPanel() {
 		leaderboardPanel = new JPanel();
 		leaderboardPanel.setSize(600, 800);
@@ -145,7 +149,8 @@ public class LeaderboardPanel extends Panel {
 	}
 
 	/**
-	 * Function to sort array by using quickSort
+	 * Method to sort array using quickSort
+	 * @param name The string array of names
 	 * @param array The original unsorted array
 	 */
 	public void quickSort(String[] name, int[] array) {
@@ -155,7 +160,8 @@ public class LeaderboardPanel extends Panel {
 	}
 
 	/**
-	 * Function to sort array by using quickSort
+	 * Recursive method to sort array using quickSort
+	 * @param name The string array of names
 	 * @param array The original unsorted array
 	 */
 	public void quickSort(String[] name, int[] array, int p, int r) {
@@ -168,11 +174,11 @@ public class LeaderboardPanel extends Panel {
 
 	/**
 	 * The function to partition data that will use in quickSort
-	 * @param name playername
-	 * @param array array the array that contain all player
+	 * @param name The string array of names
+	 * @param array array the array that contain all players
 	 * @param p first index
 	 * @param r last index
-	 * @return
+	 * @return i+1 the partition value
 	 */
 	public int partition(String[] name, int[] array, int p, int r) {
 		int x = array[r];
@@ -191,7 +197,7 @@ public class LeaderboardPanel extends Panel {
 
 	/**
 	 * The method to swap two nodes of the heap at index first second
-	 * @param array data
+	 * @param array data array
 	 * @param first first index
 	 * @param seconds second index
 	 */
@@ -204,7 +210,7 @@ public class LeaderboardPanel extends Panel {
 
 	/**
 	 * The method to swap two String of the heap at index first second.
-	 * @param array data
+	 * @param array data array
 	 * @param first first index
 	 * @param seconds second index
 	 */
@@ -217,7 +223,7 @@ public class LeaderboardPanel extends Panel {
 	
 	/**
 	 * The method to return backButton.
-	 * @return back button
+	 * @return back the back-button
 	 */
 	public JButton getBackButton()
 	{
@@ -226,7 +232,7 @@ public class LeaderboardPanel extends Panel {
 	
 	/**
 	 * The method to return leaderboardPanel.
-	 * @return leaderboardPanel
+	 * @return leaderboardPanel the leaderboard panel
 	 */
 	public JPanel getLeaderboardPanel()
 	{

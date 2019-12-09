@@ -12,12 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * The class that creats the main panel.
+ * The class that creates the main panel
  * @author Luksawee
- *
+ * @author Nick
  */
 public class MainPanel extends Panel
 {
+	/**
+	 * The constructor for the main panel
+	 */
 	public MainPanel()
 	{
 		mainPanel = new JPanel();
@@ -106,8 +109,8 @@ public class MainPanel extends Panel
 	}
 	
 	/**
-	 * Method to return the main panel.
-	 * @return mainPanel
+	 * Method to return the main panel
+	 * @return mainPanel the main panel
 	 */
 	public JPanel getMainPanel()
 	{
@@ -115,8 +118,8 @@ public class MainPanel extends Panel
 	}
 	
 	/**
-	 * The method to return playgame button.
-	 * @return playgame button
+	 * The method to return playgame button
+	 * @return playgame the play-game button
 	 */
 	public JButton getPlaygameButtun()
 	{
@@ -124,8 +127,8 @@ public class MainPanel extends Panel
 	}
 	
 	/**
-	 * The method to return the leaderboard button.
-	 * @return leaderboard buttton
+	 * The method to return the leaderboard button
+	 * @return leaderboard the leaderboard button
 	 */
 	public JButton getLeaderboardsButton()
 	{
@@ -134,7 +137,7 @@ public class MainPanel extends Panel
 	
 	/**
 	 * The method to return get quit button
-	 * @return quit button
+	 * @return quitbutton the quit button
 	 */
 	public JButton getQuitButton()
 	{

@@ -14,17 +14,17 @@ import javax.swing.JPanel;
 import edu.sjsu.cs151.tetris.animation.*;
 
 /**
- * Class that use to set the format for panel.
+ * Class that use to set the format for panel
  * @author Luksawee
- *
+ * @author Nick
  */
 public class Panel 
 {
 	/**
-	 * Method to set format to button.
-	 * @param button the button that want to set the format
-	 * @param fontSize size of font
-	 * @return
+	 * Method to set format for buttons
+	 * @param button the button to set the format
+	 * @param fontSize the size of font
+	 * @return button the formatted button
 	 */
 	public JButton setButton(JButton button, int fontSize)
 	{
@@ -39,9 +39,9 @@ public class Panel
 	}
 	
 	/**
-	 * Method to set label to locate in the middle.
-	 * @param label
-	 * @return label
+	 * Method to set label at the center
+	 * @param label the label to set
+	 * @return label the set label
 	 */
 	public JLabel setLabelCenter(JLabel label)
 	{
@@ -52,8 +52,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create empty box size 3.
-	 * @return return containner
+	 * Method to create empty box size 3
+	 * @return containner the container with 3 boxes in it
 	 */
 	public JPanel empty3Boxs()
 	{
@@ -78,8 +78,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create empty box size 2.
-	 * @return return containner
+	 * Method to create empty box size 2
+	 * @return containner the container with 2 boxes in it
 	 */
 	public JPanel empty2Boxs()
 	{
@@ -96,8 +96,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure Z.
-	 * @return panelZ
+	 * Method to create figure Z
+	 * @return panelZ the Z panel
 	 */
 	public JPanel iconZ()
 	{
@@ -112,8 +112,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure I.
-	 * @return panelI
+	 * Method to create figure I
+	 * @return panelI the I panel
 	 */
 	public JPanel iconI()
 	{	
@@ -128,8 +128,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure O.
-	 * @return panelO
+	 * Method to create figure O
+	 * @return panelO the O panel
 	 */
 	public JPanel iconO()
 	{	
@@ -144,8 +144,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure L.
-	 * @return panelL
+	 * Method to create figure L
+	 * @return panelL the L panel
 	 */
 	public JPanel iconL()
 	{
@@ -160,8 +160,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure T.
-	 * @return panelT
+	 * Method to create figure T
+	 * @return panelT the T panel
 	 */
 	public JPanel iconT()
 	{
@@ -176,8 +176,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure J.
-	 * @return panelJ
+	 * Method to create figure J
+	 * @return panelJ the J panel
 	 */
 	public JPanel iconJ()
 	{
@@ -192,8 +192,8 @@ public class Panel
 	}
 	
 	/**
-	 * Method to create figure S.
-	 * @return panelS
+	 * Method to create figure S
+	 * @return panelS the S panel
 	 */
 	public JPanel iconS()
 	{
