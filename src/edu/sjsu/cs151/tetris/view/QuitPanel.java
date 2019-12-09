@@ -15,12 +15,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Class to create quite panel.
+ * Class to create quit panel
  * @author Luksawee
- *
+ * @author Nick
  */
 public class QuitPanel extends Panel
 {
+	/**
+	 * The constructor for the quit panel
+	 */
 	public QuitPanel()
 	{
 		quitPanel = new JPanel();
@@ -68,8 +71,8 @@ public class QuitPanel extends Panel
 	}
 	
 	/**
-	 * The method to return quitPanel.
-	 * @return quitPanel
+	 * The method to return quitPanel
+	 * @return quitPanel the quit panel
 	 */
 	public JPanel getQuitPane()
 	{
@@ -77,8 +80,8 @@ public class QuitPanel extends Panel
 	}
 	
 	/**
-	 * Method to return yes button
-	 * @return yes
+	 * Method to return the yes button
+	 * @return yes the yes button
 	 */
 	public JButton getYes()
 	{
@@ -86,8 +89,8 @@ public class QuitPanel extends Panel
 	}
 	
 	/**
-	 * Method to return no button
-	 * @return no
+	 * Method to return the no button
+	 * @return no the no button
 	 */
 	public JButton getNo()
 	{

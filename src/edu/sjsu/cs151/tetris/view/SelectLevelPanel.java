@@ -14,8 +14,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The Class that creates the level select panel
+ * @author Luksawee
+ * @author Nick
+ */
 public class SelectLevelPanel extends PlayerPanel
 {
+	/**
+	 * The constructor for the level select panel
+	 */
 	public SelectLevelPanel()
 	{				
 		selectLevelPanel = new JPanel();
@@ -92,8 +100,8 @@ public class SelectLevelPanel extends PlayerPanel
 	}
 	
 	/**
-	 * Mehod to return selectPanel.
-	 * @return selectLevelPanel
+	 * Method to return level select panel
+	 * @return selectLevelPanel the level select panel
 	 */
 	public JPanel getSelectLevelPanel()
 	{
@@ -101,8 +109,8 @@ public class SelectLevelPanel extends PlayerPanel
 	}
 	
 	/**
-	 * Method to return level button.
-	 * @return levelButton
+	 * Method to return level button
+	 * @return levelButton the level button
 	 */
 	public JButton[] getLevelButton()
 	{
