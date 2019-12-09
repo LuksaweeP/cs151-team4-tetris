@@ -10,4 +10,5 @@ public interface Valve
 	EXECUTED,
 	FINISH;
 	}
+	
 }
