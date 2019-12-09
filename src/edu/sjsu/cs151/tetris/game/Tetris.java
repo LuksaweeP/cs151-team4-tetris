@@ -40,6 +40,7 @@ public class Tetris {
 		controller.setModel(model);
 		controller.setControllerToViewQueue(controllerToViewQueue);
 		controller.setViewToControllerQueue(viewToControllerQueue);
+		
 
 		/*
 		 * TimeController does not need viewToController BlockingQueue because it does
@@ -68,5 +69,6 @@ public class Tetris {
 	{
 		/* Creating Main class object starts the game */
 		Tetris Tetris = new Tetris();
+		
 	}
 }

@@ -1,5 +1,6 @@
 package edu.sjsu.cs151.tetris.controller;
 
+import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
 
 import edu.sjsu.cs151.tetris.model.Model;
@@ -188,10 +189,26 @@ public class Controller implements Runnable
 			}
 		}
 	}
+	public void mainLoop() throws Exception 
+	{
+		Valve.ValveResponse response = Valve.ValveResponse.EXECUTED;
+	    Message message = null;
+	    while (response != Valve.ValveResponse.FINISH) 
+	    {
+	      try {
+	        message = this.controllerToViewQueue.take();
+	      } catch (InterruptedException e) 
+	      {
+	        e.printStackTrace();
+	      } 
+	    }
+	}
+	
 	private Model model;
 	
 	private BlockingQueue <Message> controllerToViewQueue;
 	private BlockingQueue <Message> viewToControllerQueue;
+	private ArrayList<Valve> valves = new ArrayList<>();
 	
 }
 
