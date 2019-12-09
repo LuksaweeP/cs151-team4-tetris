@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /**
  * The class that create the leaderboard panel.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class LeaderboardPanel extends Panel {
 	public LeaderboardPanel() {

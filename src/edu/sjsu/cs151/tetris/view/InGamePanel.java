@@ -14,7 +14,11 @@ import javax.swing.JPanel;
  * The class that class the panel for player to play a game.
  * @author Luksawee
  */
-public class InGamePanel extends JPanel{
+public class InGamePanel extends JPanel
+{
+	/**
+	 * The in-game panel constuctor
+	 */
 	public InGamePanel() {
 		inGamePanel = new JPanel();
 		inGamePanel.setSize(800, 820);
@@ -104,7 +108,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to set the level.
-	 * @param playerLevel
+	 * @param playerLevel the level to set
 	 */
 	public void setLevelInGamePanel(String playerLevel)
 	{
@@ -113,7 +117,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to get the level.
-	 * @return palyerlevel
+	 * @return palyerlevel the current level
 	 */
 	public String getLevelInGamePanel()
 	{
@@ -122,7 +126,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to set the player name.
-	 * @param playerName
+	 * @param playerName the desired name
 	 */
 	public void setPlayerInGamePanel(String playerName)
 	{
@@ -131,7 +135,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to get player name.
-	 * @return playerName
+	 * @return playerName the current name
 	 */
 	public String getNameInGamePanel()
 	{
@@ -140,7 +144,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to set the score.
-	 * @param playerScore
+	 * @param playerScore the score to set
 	 */
 	public void setScoreInGamePanel(String playerScore)
 	{
@@ -149,15 +153,15 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to return score.
-	 * @return playerScore
+	 * @return playerScore the current score
 	 */
 	public String getScoreInGamePanel()
 	{
 		return playerScore;
 	}
 	/**
-	 * method to return Ingame panel.
-	 * @return ingamePanel.
+	 * method to return In-game panel.
+	 * @return ingamePanel the in-game panel
 	 */
 	public JPanel getInGamePanel()
 	{
@@ -166,7 +170,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to set name in label name.
-	 * @param name
+	 * @param name the desired name
 	 */
 	public void setLabelName(String name)
 	{
@@ -175,7 +179,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to return name label.
-	 * @return
+	 * @return name the current name label
 	 */
 	public JLabel getNameLabel()
 	{
@@ -184,7 +188,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to set the score.
-	 * @param score
+	 * @param score the desired score
 	 */
 	public void setScoreLabel(String score)
 	{
@@ -193,7 +197,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to return score label.
-	 * @return score label
+	 * @return score the score label
 	 */
 	public JLabel getScoreLabel()
 	{
@@ -201,8 +205,8 @@ public class InGamePanel extends JPanel{
 	}
 	
 	/**
-	 * Method to set the score label.
-	 * @param level
+	 * Method to set the level label.
+	 * @param level the desired level
 	 */
 	public void setLevelLabel(String level)
 	{
@@ -211,7 +215,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to get level label
-	 * @return level
+	 * @return level the level label
 	 */
 	public JLabel getLevelLabel()
 	{
@@ -220,7 +224,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to set score
-	 * @param aScore
+	 * @param aScore the desired score
 	 */
 	public void setAScore(int aScore)
 	{
@@ -228,8 +232,8 @@ public class InGamePanel extends JPanel{
 	}
 	
 	/**
-	 * Method to set aLevel.
-	 * @param aLevel
+	 * Method to set the level
+	 * @param aLevel the desired level
 	 */
 	public void setALevel(int aLevel)
 	{
@@ -237,8 +241,8 @@ public class InGamePanel extends JPanel{
 	}
 	
 	/**
-	 * Method to return aLevel.
-	 * @return aScore
+	 * Method to return the score
+	 * @return aScore the current score
 	 */
 	public int getAScore()
 	{
@@ -246,8 +250,8 @@ public class InGamePanel extends JPanel{
 	}
 	
 	/**
-	 * Method to return aLevel.
-	 * @return aLevel
+	 * Method to return the level.
+	 * @return aLevel the current level
 	 */
 	public int getALevel()
 	{
@@ -256,7 +260,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to get boardgamePanel.
-	 * @return boardGamePanel
+	 * @return boardGamePanel the board-game panel
 	 */
 	public BoardGamePanel getBoardGamePanel()
 	{
@@ -265,7 +269,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * The method to set boolean lost.
-	 * @param lost
+	 * @param lost the desired lost value
 	 */
 	public void setLost(boolean lost)
 	{
@@ -274,7 +278,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to set boolean start.
-	 * @param gameStart
+	 * @param gameStart the boolean game-start value
 	 */
 	public void setGameStart(boolean gameStart)
 	{
@@ -283,7 +287,7 @@ public class InGamePanel extends JPanel{
 	
 	/**
 	 * Method to get boolean start.
-	 * @return
+	 * @return gameStart the boolean game-start value
 	 */
 	public boolean getGameStart()
 	{
