@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * The class that will manage and update the player in the game.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class Leaderboard 
 {
@@ -268,6 +268,8 @@ public class Leaderboard
 	
 	/**
 	 * This method will save the player score to the player.txt
+	 * @param oldData the old data
+	 * @param newData the new data
 	 */
 	public void savePlayer(String oldData, String newData) 
 	{

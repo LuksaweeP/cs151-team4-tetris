@@ -4,17 +4,24 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * BoardGamePanel is the 2 dimension array of data to show the tetromino to the user.
+ * Class for the BoardGamePanel, the 2 dimension array of data that shows the tetromino to the user.
+ * @author Luksawee
+ * @author Nick
  */
 public class BoardGamePanel extends JPanel
 {
+	/**
+	 * The main constructor
+	 * @param colors the 2D color array
+	 */
 	public BoardGamePanel(Color[][] colors)
 	{
 		this.colors = colors;
 	}
 	
 	/**
-	 * If true it means that the game the player lost.
+	 * Method to set the lost value
+	 * @param lost the lost value
 	 */
 	public void setLost(boolean lost)
 	{
@@ -22,6 +29,7 @@ public class BoardGamePanel extends JPanel
 	}
 	
 	/**
+	 * Method to set the scores
 	 * @param scores points amount player have in current moment.
 	 */
 	public void setScores(int scores)
@@ -30,6 +38,7 @@ public class BoardGamePanel extends JPanel
 	}
 	
 	/**
+	 * Method to set the next shape
 	 * @param next ID of the next figure which will fall (figure which should be shown on the right panel.
 	 */
 	public void setNext(int next)
@@ -40,6 +49,7 @@ public class BoardGamePanel extends JPanel
 	/**
 	 * This method is used to simply redraw full interface of the game. All we need is colors array (when we want to redraw board 
 	 * with falling object). 
+	 * @param colors the 2D color array
 	 */
 	public void redraw (Color[][] colors)
 	{
@@ -59,6 +69,7 @@ public class BoardGamePanel extends JPanel
 	 * First we paint all board on the dark gray color. Next we draw all the main board squares using colors double array. 
 	 * Next using NextFigures we draw figure that will be next and the last one is to show scores. If the game is over it shows 
 	 * this string on the board.
+	 * @param g the graphics context
 	 */
 	public void paintComponent(Graphics g)
 	{
@@ -123,27 +134,41 @@ public class BoardGamePanel extends JPanel
 		}
 	}
 	
+	/**
+	 * MMethod to set the player name
+	 * @param name the desired name
+	 */
 	public void setPlayerName(String name)
 	{
 		this.name = name;
 	}
 	
+	/**
+	 * Method to set the level
+	 * @param level the desire level
+	 */
 	public void setLevel(int level)
 	{
 		this.level = level;
 	}
 	
+	/**
+	 * Method to get the current score
+	 * @return scores the current score
+	 */
 	public int getScore()
 	{
 		return scores;
 	}
 	
+	/**
+	 * Method to set the winLevel value
+	 * @param winLevel the value to set
+	 */
 	public void setWinLevel(boolean winLevel)
 	{
 		this.winLevel = winLevel;
 	}
-	
-
 	
 	private static final long serialVersionUID = -8715353373678321308L;
 	private Color [][] colors;
@@ -155,6 +180,4 @@ public class BoardGamePanel extends JPanel
 	private Font font = new Font("Dialog", Font.BOLD, 18);
 	private Font font1 = new Font("Dialog", Font.BOLD, 50);
 	private boolean winLevel = false;
-	
 }
-

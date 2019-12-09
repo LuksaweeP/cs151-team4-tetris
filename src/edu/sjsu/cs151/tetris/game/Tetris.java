@@ -12,7 +12,7 @@ import edu.sjsu.cs151.tetris.view.ViewMain;
 /**
  * The main class to compile the Tetris game
  * @author Luksawee
- *
+ * @author Nick
  */
 public class Tetris {
 
@@ -29,6 +29,9 @@ public class Tetris {
 	private BlockingQueue<Message> controllerToViewQueue = new LinkedBlockingQueue<Message>();
 	private BlockingQueue<Message> viewToControllerQueue = new LinkedBlockingQueue<Message>();
 
+	/**
+	 * Method to instantiate MVC and threads
+	 */
 	public Tetris() {
 		/* Creating MVC (with 2 controllers) */
 		model = new Model();
@@ -65,6 +68,10 @@ public class Tetris {
 		tControllerThread.start();
 	}
 	
+	/**
+	 * Main method to start the game
+	 * @param args unused
+	 */
 	public static void main(String[] args) 
 	{
 		/* Creating Main class object starts the game */

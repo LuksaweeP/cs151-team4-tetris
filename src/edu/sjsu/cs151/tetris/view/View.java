@@ -6,13 +6,14 @@ import java.awt.Component;
 import javax.swing.JFrame;
 
 /**
- * Class that contain all panel class.
+ * Class that contains all panel classes
  * @author Luksawee
+ * @author Nick
  */
 public class View
 {
 	/**
-	 * The construction of the View
+	 * The constructor of the View
 	 */
 	public View()
 	{
@@ -24,8 +25,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return frame.
-	 * @return frame
+	 * Method to return frame
+	 * @return frame the current frame
 	 */
 	public JFrame getFrame()
 	{
@@ -33,8 +34,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return welcomePanel.
-	 * @return welcomePanel
+	 * Method to return the welcome panel
+	 * @return welcomePanel the welcome panel
 	 */
 	public WelcomePanel getWelcomePanel()
 	{
@@ -42,8 +43,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return mainPanel.
-	 * @return mainPanel
+	 * Method to return the main panel
+	 * @return mainPanel the main panel
 	 */
 	public MainPanel getMainPanel()
 	{
@@ -51,8 +52,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return playerPanel.
-	 * @return playerPanel
+	 * Method to return the player panel
+	 * @return playerPanel the player panel
 	 */
 	public PlayerPanel getPlayerPanel()
 	{
@@ -60,8 +61,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return selectLevelPanel.
-	 * @return selectPanel
+	 * Method to return the level select panel
+	 * @return selectPanel the level select panel
 	 */
 	public SelectLevelPanel getSelectLevelPanel()
 	{
@@ -69,8 +70,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return leaderboardPanel.
-	 * @return leaderboardPanel
+	 * Method to return the leaderboard panel
+	 * @return leaderboardPanel the leaderboard panel
 	 */
 	public LeaderboardPanel getLeaderboardPanel()
 	{
@@ -78,8 +79,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return quitpanel.
-	 * @return quitPanel.
+	 * Method to return the quit panel
+	 * @return quitPanel the quit panel
 	 */
 	public QuitPanel getQuitPanel()
 	{
@@ -87,8 +88,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return InGamePanel.
-	 * @return inGamePanel
+	 * Method to return the in-game panel
+	 * @return inGamePanel the in-game panel
 	 */
 	public InGamePanel getInGamePanel()
 	{
@@ -96,8 +97,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return gameOverPanel.
-	 * @return gameOverPanel
+	 * Method to return the game over panel
+	 * @return gameOverPanel the game over panel
 	 */
 	public GameOverPanel getGameOverPanel()
 	{
@@ -105,8 +106,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return controlsPanel.
-	 * @return controlsPanel
+	 * Method to return the controls panel
+	 * @return controlsPanel the controls panel
 	 */
 	public ControlsPanel getControlsPanel()
 	{
@@ -115,8 +116,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return leaderboardInPausePanel.
-	 * @return leaderboardInPausePanel
+	 * Method to return the pause menu leaderboard panel
+	 * @return leaderboardInPausePanel the pause menu leaderboard panel
 	 */ 
 	public LeaderboardInPausePanel getLeaderboardInPausePanel()
 	{
@@ -124,8 +125,8 @@ public class View
 	}
 	
 	/**
-	 * Method to return pausePanel
-	 * @return pausePanel
+	 * Method to return the pause panel
+	 * @return pausePanel the pause panel
 	 */
 	public PausePanel getPausePanel()
 	{
@@ -133,8 +134,8 @@ public class View
 	}
 	
 	/**
-	 * Method to add component into frame
-	 * @param c compponent
+	 * Method to add a component into frame
+	 * @param c the desired component
 	 */
 	public void add(Component c)
 	{
@@ -167,7 +168,7 @@ public class View
 	}
 	
 	/**
-	 * Method to set leaderBoardInPausePanel.
+	 * Method to set the pause menu leaderboard panel
 	 */
 	public void setLeaderBoarInPausePanel()
 	{

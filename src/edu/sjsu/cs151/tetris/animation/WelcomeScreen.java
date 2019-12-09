@@ -19,11 +19,16 @@ import javax.swing.Timer;
 import javax.swing.border.Border;
 
 /**
- * Test the welcomeScreen
+ * Test Class for the welcomeScreen
  * @author Luksawee
+ * @author Nick
  */
 public class WelcomeScreen {
 
+	/**
+	 * Main method for welcome screen animation test
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setSize(600, 800);

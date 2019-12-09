@@ -16,10 +16,15 @@ import edu.sjsu.cs151.tetris.controller.Message;
 
 /**
  *  View class has 2 queues to communicate with controller.
- *  This class get the interaction from the player and store the data in order to redraw the BoardGamePanel.
-*/
+ *  This class gets the interaction from the player and stores the data in order to redraw the BoardGamePanel.
+ *  @author Luksawee
+ *  @author Nick
+ */
 public class ViewMain implements Runnable
 {
+	/**
+	 * The main View constructor
+	 */
 	public ViewMain()
 	{
 		view = new View();
@@ -39,27 +44,21 @@ public class ViewMain implements Runnable
 	}
 	
 	/**
-	 * Method to add action listenner to each button.
+	 * Method to add action listener to each button.
 	 */
 	public void actionListenner()
 	{
-		/**
-		 * Add action Listener to each JButton.
-		 */
-		/**
-		 * WelcomePanel
-		 */
+		// Add action Listener to each JButton.
+		// WelcomePanel
 		view.getFrame().add(view.getWelcomePanel().getWelcomePanel());	
 		view.getFrame().setVisible(true);
 		
-		//welcomeButton
+		// welcomeButton
 		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().remove(view.getWelcomePanel().getWelcomePanel()));		
 		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));		
 		view.getWelcomePanel().getWelcomeButton().addActionListener(event -> view.getFrame().pack());
 
-		/**
-		 * MainPanel
-		 */
+		// MainPanel
 		// playgameButton
 		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().remove(view.getMainPanel().getMainPanel()));	
 		view.getMainPanel().getPlaygameButtun().addActionListener(event -> view.getFrame().add(view.getPlayerPanel().getPlayerPanel()));
@@ -81,10 +80,8 @@ public class ViewMain implements Runnable
 		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().setSize(600, 800));
 		view.getMainPanel().getQuitButton().addActionListener(event -> view.getFrame().pack());
 		
-		/**
-		 * PlayerPanel
-		 */
-		//createButton
+		// PlayerPanel
+		// createButton
 		view.getPlayerPanel().getCreateButton().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -136,7 +133,7 @@ public class ViewMain implements Runnable
 			}
 		});
 		
-		//loadPlayer
+		// loadPlayer
 		int numberOfLoadPlayer = view.getPlayerPanel().getExistPlayerButton().length;
 		for(int i = 0; i < numberOfLoadPlayer; i++)
 		{
@@ -164,9 +161,7 @@ public class ViewMain implements Runnable
 					//view.getFrame().pack();
 					view.getFrame().setVisible(true);
 					
-					/**
-					 * InGamePanel
-					 */
+					// InGamePanel
 					//case select level unlock
 					for(int i = 1; i <= 5; i++)
 					{
@@ -198,39 +193,33 @@ public class ViewMain implements Runnable
 		});		
 		}
 		
-		//back
+		// back
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getPlayerPanel().getPlayerPanel()));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
 		view.getPlayerPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 		
-		/**
-		 * LeaderboardPanel
-		 */
+		// LeaderboardPanel
 		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().remove(view.getLeaderboardPanel().getLeaderboardPanel()));
 		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));	
 		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
 		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
 		view.getLeaderboardPanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 		
-		/**
-		 * QuitPanel
-		 */
-		//no
+		// QuitPanel
+		// no
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().remove(view.getQuitPanel().getQuitPane()));
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().setSize(600, 800));
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().add(view.getMainPanel().getMainPanel()));
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().repaint());	
 		view.getQuitPanel().getNo().addActionListener(event -> view.getFrame().pack());
 		
-		//yes
+		// yes
 		view.getQuitPanel().getYes().addActionListener(event -> view.getFrame().dispatchEvent(new WindowEvent(view.getFrame(), WindowEvent.WINDOW_CLOSING)));
 		
 		
-		/**
-		 * InGamePanel
-		 */	
+		// InGamePanel
 		view.getInGamePanel().getInGamePanel().addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {}
 			
@@ -238,9 +227,7 @@ public class ViewMain implements Runnable
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
 
-				/*
-				 *Case press esc to pause the game
-				 */
+				// Case press esc to pause the game
 				case KeyEvent.VK_ESCAPE:	
 					view.getInGamePanel().setGameStart(false);
 					view.getFrame().remove(view.getInGamePanel().getInGamePanel());
@@ -321,10 +308,8 @@ public class ViewMain implements Runnable
 			public void keyReleased(KeyEvent e) {}
 		});
 		
-		/**
-		 * PausePanel
-		 */
-		//back
+		// PausePanel
+		// back
 		view.getPausePanel().getBack().addActionListener(event -> view.getInGamePanel().setGameStart(true));
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().setSize(800, 890));	
@@ -332,14 +317,14 @@ public class ViewMain implements Runnable
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().repaint());
 		view.getPausePanel().getBack().addActionListener(event -> view.getFrame().pack());
 				
-		//LeaderBoardInPausePanel
+		// LeaderBoardInPausePanel
 		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
 		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().add(view.getLeaderboardInPausePanel().getLeaderboardPanel()));
 		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().repaint());
 		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
 		view.getPausePanel().getLeaderboardsButton().addActionListener(event -> view.getFrame().pack());
 		
-		//ControlsPanel
+		// ControlsPanel
 		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().remove(view.getPausePanel().getPausePanel()));
 		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().add(view.getControlsPanel().getControlsPanel()));
 		view.getPausePanel().getControlsButton().addActionListener(event -> view.getFrame().repaint());
@@ -369,18 +354,14 @@ public class ViewMain implements Runnable
 		});
 		
 		
-		/**
-		 * LeaderboardInGame
-		 */
+		// LeaderboardInGame
 		view.getLeaderboardInPausePanel().getBackButton().addActionListener(Event -> view.getFrame().remove(view.getLeaderboardInPausePanel().getLeaderboardPanel()));
 		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().add(view.getPausePanel().getPausePanel()));	
 		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().repaint());
 		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().setSize(600, 800));	
 		view.getLeaderboardInPausePanel().getBackButton().addActionListener(event -> view.getFrame().pack());
 			
-		/**
-		 * ControlPanel     
-		 */	
+		// ControlPanel
 		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().remove(view.getControlsPanel().getControlsPanel()));
 		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().add(view.getPausePanel().getPausePanel()));	
 		view.getControlsPanel().getBack().addActionListener(event -> view.getFrame().repaint());
@@ -390,7 +371,7 @@ public class ViewMain implements Runnable
 	
 	/**
 	 * Method to get viewAllPanels
-	 * @return
+	 * @return view the view
 	 */
 	public View getViewAllPanels()
 	{
@@ -398,6 +379,7 @@ public class ViewMain implements Runnable
 	}
 	
 	/**
+	 * Method to set controller to the view queue
 	 * @param c BlockingQueue used to receiving requests from Controller and TimeController
 	 */
 	public void setControllerToViewQueue(BlockingQueue<Message> c) 
@@ -406,6 +388,7 @@ public class ViewMain implements Runnable
     }
 
 	/**
+	 * Method to set the view to the controller queue
 	 * @param v Blocking Queue used to sending requests to Controller
 	 */
     public void setViewToControllerQueue(BlockingQueue<Message> v) 
@@ -413,6 +396,9 @@ public class ViewMain implements Runnable
         viewToControllerQueue = v;
     }
 	
+    /**
+     * Runnable method to handle the view
+     */
 	public void run()
 	{
 		try 
@@ -528,7 +514,7 @@ public class ViewMain implements Runnable
 					//J - shape
 					case 1:	colors[i][j] = Color.BLUE; 
 						break;
-						//Z shape
+					//Z shape
 					case 2:	colors[i][j] = Color.RED; 
 						break;
 					//L shape
@@ -553,8 +539,8 @@ public class ViewMain implements Runnable
 	}
 	
 	/** 
-	 * Method to set lost game.
-	 * @param lost
+	 * Method to set lost game
+	 * @param lost the lost boolean value
 	 */
 	public void setLost(boolean lost)
 	{
@@ -562,8 +548,8 @@ public class ViewMain implements Runnable
 	}
 	
 	/**
-	 * Method to set win level.
-	 * @param winLevel
+	 * Method to set win level
+	 * @param winLevel the boolean value for win
 	 */
 	public void setWinLevel(boolean winLevel)
 	{

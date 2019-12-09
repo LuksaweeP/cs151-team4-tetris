@@ -15,12 +15,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * The class that create leaderboard in pause panel.
+ * The class that creates leaderboard in pause panel.
  * @author Luksawee
- *
+ * @author Nick
  */
-public class LeaderboardInPausePanel extends Panel {
-	public LeaderboardInPausePanel() {
+public class LeaderboardInPausePanel extends Panel 
+{
+	/**
+	 * The constructor for pause menu leaderboard
+	 */
+	public LeaderboardInPausePanel() 
+	{
 		leaderboardPanel = new JPanel();
 		leaderboardPanel.setPreferredSize(new Dimension(600, 800));
 
@@ -143,7 +148,8 @@ public class LeaderboardInPausePanel extends Panel {
 	}
 
 	/**
-	 * Function to sort array by using quickSort
+	 * Method to sort array using quickSort
+	 * @param name The string array of names
 	 * @param array The original unsorted array
 	 */
 	public void quickSort(String[] name, int[] array) {
@@ -153,9 +159,9 @@ public class LeaderboardInPausePanel extends Panel {
 	}
 
 	/**
-	 * Function recursive function of quickSort
-	 * @param name player
-	 * @param array the array that contain all player
+	 * Recursive method for quickSort
+	 * @param name The string array of names
+	 * @param array the array that contain all players
 	 * @param p first index
 	 * @param r last index
 	 */
@@ -169,11 +175,11 @@ public class LeaderboardInPausePanel extends Panel {
 
 	/**
 	 * The function to partition data that will use in quickSort
-	 * @param name playername
-	 * @param array array the array that contain all player
+	 * @param name The string array of names
+	 * @param array array the array that contain all players
 	 * @param p first index
 	 * @param r last index
-	 * @return
+	 * @return i+1 the partition value
 	 */
 	public int partition(String[] name, int[] array, int p, int r) {
 		int x = array[r];
@@ -192,7 +198,7 @@ public class LeaderboardInPausePanel extends Panel {
 
 	/**
 	 * The method to swap two nodes of the heap at index first second
-	 * @param array data
+	 * @param array data array
 	 * @param first first index
 	 * @param seconds second index
 	 */
@@ -205,7 +211,7 @@ public class LeaderboardInPausePanel extends Panel {
 
 	/**
 	 * The method to swap two String of the heap at index first second.
-	 * @param array data
+	 * @param array data array
 	 * @param first first index
 	 * @param seconds second index
 	 */
@@ -218,7 +224,7 @@ public class LeaderboardInPausePanel extends Panel {
 	
 	/**
 	 * The method to return backButton.
-	 * @return back button
+	 * @return back the back-button
 	 */
 	public JButton getBackButton()
 	{
@@ -227,7 +233,7 @@ public class LeaderboardInPausePanel extends Panel {
 	
 	/**
 	 * The method to return leaderboardPanel.
-	 * @return leaderboardPanel
+	 * @return leaderboardPanel the leaderboard panel
 	 */
 	public JPanel getLeaderboardPanel()
 	{

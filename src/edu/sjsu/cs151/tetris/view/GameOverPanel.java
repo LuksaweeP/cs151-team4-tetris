@@ -11,12 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * The method to create game over panel
+ * The Class that creates the game over panel
  * @author Luksawee
- *
+ * @author Nick
  */
 public class GameOverPanel extends Panel
 {
+	/**
+	 * The constructor for the game over panel
+	 */
 	public GameOverPanel()
 	{
 		gameOverPanel = new JPanel();
@@ -65,7 +68,7 @@ public class GameOverPanel extends Panel
 	
 	/**
 	 * The method to return game over Panel.
-	 * @return return game over panel
+	 * @return gameOverPanel the game over panel
 	 */
 	public JPanel getGameOverPanel()
 	{
@@ -74,7 +77,7 @@ public class GameOverPanel extends Panel
 	
 	/**
 	 * The method to return retry button.
-	 * @return retry button
+	 * @return retryButton the retry button
 	 */
 	public JButton getRetryButton()
 	{
@@ -82,8 +85,8 @@ public class GameOverPanel extends Panel
 	}
 	
 	/**
-	 * The method to return main manu button.
-	 * @return return main manu button
+	 * The method to return main menu button.
+	 * @return returnToMainManu the return main menu button
 	 */
 	public JButton getReturnToMainManu()
 	{

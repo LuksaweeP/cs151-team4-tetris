@@ -22,10 +22,15 @@ import javax.swing.JTextField;
 /**
  * The class to create player Panel.
  * @author Luksawee
- *
+ * @author Nick
  */
-public class PlayerPanel extends Panel {
-	public PlayerPanel() {
+public class PlayerPanel extends Panel 
+{
+	/**
+	 * The constructor for the player panel
+	 */
+	public PlayerPanel() 
+	{
 		playerPanel = new JPanel();
 		playerPanel.setSize(600, 800);
 		
@@ -146,40 +151,40 @@ public class PlayerPanel extends Panel {
 	}
 	
 	/**
-	 * Method to set loadPlayer.
-	 * @param player
+	 * Method to set loadPlayer
+	 * @param player the desired player to load
 	 */
 	public void setLoadPlayer(Player player) {
 		loadPlayer = player;
 	}
 	
 	/**
-	 * Method to get loadPlayer.
-	 * @return loadPlayer.
+	 * Method to get loadPlayer
+	 * @return loadPlayer the current load player
 	 */
 	public Player getLoadPlayer() {
 		return loadPlayer;
 	}
 
 	/**
-	 * Method to return create new player button.
-	 * @return createButton
+	 * Method to return create new player button
+	 * @return createButton the create player button
 	 */
 	public JButton getCreateButton() {
 		return createButton;
 	}
 	
 	/**
-	 * Method to return back button
-	 * @return back button
+	 * Method to return the back button
+	 * @return back the back button
 	 */
 	public JButton getBackButton() {
 		return back;
 	}
 
 	/**
-	 * Method to return Input new player box.
-	 * @return inputBox
+	 * Method to return Input new player box
+	 * @return inputBox the input box
 	 */
 	public JTextField getInputBox() {
 		return inputBox;
@@ -187,7 +192,7 @@ public class PlayerPanel extends Panel {
 
 	/**
 	 * Method to return PlayerPanel
-	 * @return playerPanel
+	 * @return playerPanel the player panel
 	 */
 	public JPanel getPlayerPanel() {
 		return playerPanel;
@@ -195,7 +200,7 @@ public class PlayerPanel extends Panel {
 	
 	/**
 	 * Method to return ExistPlayer button
-	 * @return existPlayer
+	 * @return existPlayer the exist player button
 	 */
 	public JButton[] getExistPlayerButton()
 	{

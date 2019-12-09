@@ -14,10 +14,13 @@ import javax.swing.JPanel;
 /**
  * Class that create the pause panel.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class PausePanel extends Panel
 {
+	/**
+	 * The constructor for the pause panel
+	 */
 	public PausePanel()
 	{
 			pausePanel = new JPanel();
@@ -85,8 +88,8 @@ public class PausePanel extends Panel
 	}
 	
 	/***
-	 * Method to get pause panel.
-	 * @return pausePanel
+	 * Method to get pause panel
+	 * @return pausePanel the pause panel
 	 */
 	public JPanel getPausePanel()
 	{
@@ -94,8 +97,8 @@ public class PausePanel extends Panel
 	}
 	
 	/**
-	 * Method to get back button.
-	 * @return back button
+	 * Method to get back button
+	 * @return back the back button
 	 */
 	public JButton getBack()
 	{
@@ -103,8 +106,8 @@ public class PausePanel extends Panel
 	}
 	
 	/**
-	 * Method to get leaderboard button.
-	 * @return leaderboardButton
+	 * Method to get leaderboard button
+	 * @return leaderboardButton the leaderboard button
 	 */
 	public JButton getLeaderboardsButton()
 	{
@@ -112,8 +115,8 @@ public class PausePanel extends Panel
 	}
 	
 	/**
-	 * Method to get controls button.
-	 * @return controlsButton
+	 * Method to get controls button
+	 * @return controlsButton the controls button
 	 */
 	public JButton getControlsButton()
 	{
@@ -121,8 +124,8 @@ public class PausePanel extends Panel
 	}
 	
 	/**
-	 * Method to get Return to main manu button.
-	 * @return returnToMainManuButton
+	 * Method to get Return to main menu button.
+	 * @return returnToMainManuButton the return to main menu button
 	 */
 	public JButton getReturnToMainManuButton()
 	{

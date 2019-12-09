@@ -3,12 +3,14 @@ package edu.sjsu.cs151.tetris.model;
 /**
  * A class for creating a play field with a 2D grid of size height x width that can spawn in Tetrominos, and award points to the player when necessary. 
  * The default playfield is (Height x Width) = 20 x 10. 
- * THis class also contains all game rules
+ * This class also contains all game rules
+ * @author Luksawee
+ * @author Nick
  */
 public class GameRule 
 {
 	/**
-	 * THe construction
+	 * The construction
 	 */
 	public GameRule()
 	{
@@ -49,6 +51,7 @@ public class GameRule
 	}
 		
 	/**
+	 * Method to return the next figure
 	 * @return next figure id
 	 */
 	public int getNext()
@@ -57,6 +60,7 @@ public class GameRule
 	}
 	
 	/**
+	 * Method to return scores
 	 * @return scores
 	 */
 	public int getScores()
@@ -85,13 +89,17 @@ public class GameRule
 	
 	/**
 	 * This method will set the boolean lost to true or false
-	 * @param lost
+	 * @param lost the lost boolean value
 	 */
 	public void setGetLost(boolean lost)
 	{
 		this.lost = lost;
 	}
 	
+	/**
+	 * Method to return the lost value
+	 * @return lost the lost boolean value
+	 */
 	public boolean getLost()
 	{
 		return lost;
@@ -301,7 +309,8 @@ public class GameRule
 	}
 	
 	/**
-	 * @return Two dimensional array with all data.
+	 * Method to return the 2D array containing the game board data
+	 * @return boardToPlayer Two dimensional array with all data.
 	 */
 	public int [][] getData()
 	{
@@ -320,16 +329,28 @@ public class GameRule
 		return boardToPlayer;
 	}
 	
+	/**
+	 * Method to set the desired level
+	 * @param level the desired level
+	 */
 	public void setLevel(int level)
 	{
 		GameRule.level = level;
 	}
 	
+	/**
+	 * Method to return the current level
+	 * @return level the current level
+	 */
 	public int getLevel()
 	{
 		return level;
 	}
 	
+	/**
+	 * Method to determine aa game win
+	 * @return true if win, false if not
+	 */
 	public boolean isWin()
 	{
 		if((level == 1) && (getScores() >= 4000))
@@ -346,11 +367,19 @@ public class GameRule
 		return false;
 	}
 	
+	/**
+	 * Method to set the win value
+	 * @param win the win value
+	 */
 	public void setWin(boolean win)
 	{
 		this.win = win;
 	}
-
+	
+	/**
+	 * Method to return the current win value
+	 * @return win the current win value
+	 */
 	public boolean getWin()
 	{
 		return win;

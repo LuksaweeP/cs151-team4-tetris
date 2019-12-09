@@ -4,6 +4,8 @@ import java.util.Random;
 
 /**
  * A Singleton class for creating one instance of a random number generator.
+ * @author Nick
+ * @author Luksawee
  */
 public class SingleRandom {
 	/**
