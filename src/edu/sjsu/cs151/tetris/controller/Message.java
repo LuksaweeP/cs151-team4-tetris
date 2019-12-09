@@ -22,6 +22,7 @@ package edu.sjsu.cs151.tetris.controller;
 			RESTART, 
 			GET_NEWGAME,
 			GET_NEXTLEVEL,
+			EXIT,
 			WIN;};
 		private ValveResponse valveResponse;
 		private int add_info;  	// for the score
