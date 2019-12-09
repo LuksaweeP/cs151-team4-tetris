@@ -204,6 +204,7 @@ public class Controller implements Runnable
 	    }
 	}
 	
+	
 	private Model model;
 	
 	private BlockingQueue <Message> controllerToViewQueue;

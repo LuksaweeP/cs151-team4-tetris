@@ -10,5 +10,4 @@ public class Endgame implements Valve
 		
 		return ValveResponse.EXECUTED;
 	}
-
 }
