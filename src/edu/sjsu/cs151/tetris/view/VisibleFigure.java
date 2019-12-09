@@ -6,10 +6,13 @@ import java.awt.Color;
  * The class to determine color and shape of each figure that will show to a player.
  */
 
-public class VisibleFigure {
+public class VisibleFigure 
+{
+	/**
+	 * The color array for each figure
+	 */
 	public static final Color[][][] FiguresList = 
-		{
-				
+	{
 				{	//empty-shape
 					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},
 					{Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY},

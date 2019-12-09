@@ -18,10 +18,13 @@ import javax.swing.Timer;
 /**
  * Class that create the welcome panel.
  * @author Luksawee
- *
+ * @author Nick
  */
 public class WelcomePanel
 {
+	/**
+	 * The constructor of the welcome panel
+	 */
 	public WelcomePanel()
 	{
 		
@@ -140,8 +143,8 @@ public class WelcomePanel
 	}
 	
 	/**
-	 * Method to set welcome button.
-	 * @param welcomeButton
+	 * Method to set welcome button
+	 * @param welcomeButton the button to set
 	 */
 	public void setWelcomePanel(JButton welcomeButton)
 	{
@@ -149,8 +152,8 @@ public class WelcomePanel
 	}
 	
 	/**
-	 * Method to return welcomePanel.
-	 * @return welcomePanel
+	 * Method to return welcomePanel
+	 * @return welcomePanel the welcome panel
 	 */
 	public JPanel getWelcomePanel()
 	{
@@ -159,7 +162,7 @@ public class WelcomePanel
 	
 	/**
 	 * Method to return welcome button
-	 * @return welcome button
+	 * @return welcomeButton the welcome button
 	 */
 	public JButton getWelcomeButton()
 	{
