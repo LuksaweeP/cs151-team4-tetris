@@ -1,1 +1,6 @@
-tetris
+edu.sjsu.cs151.tetris.animation
+edu.sjsu.cs151.tetris.controller
+edu.sjsu.cs151.tetris.game
+edu.sjsu.cs151.tetris.model
+edu.sjsu.cs151.tetris.test
+edu.sjsu.cs151.tetris.view

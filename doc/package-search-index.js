@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"tetris"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"edu.sjsu.cs151.tetris.animation"},{"l":"edu.sjsu.cs151.tetris.controller"},{"l":"edu.sjsu.cs151.tetris.game"},{"l":"edu.sjsu.cs151.tetris.model"},{"l":"edu.sjsu.cs151.tetris.test"},{"l":"edu.sjsu.cs151.tetris.view"}]
